@@ -1,0 +1,24 @@
+{
+  "name": "bluezone-habitat-reel",
+  "private": true,
+  "version": "2.0.0",
+  "scripts": {
+    "studio": "remotion studio",
+    "render": "remotion render BlueZoneReel"
+  },
+  "dependencies": {
+    "remotion": "4.0.242",
+    "@remotion/cli": "4.0.242",
+    "@remotion/media-utils": "4.0.242",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "@fontsource/cormorant-garamond": "5.1.0",
+    "@fontsource/montserrat": "5.1.0",
+    "@fontsource/noto-serif-malayalam": "5.1.0",
+    "@fontsource/manjari": "5.1.0"
+  },
+  "devDependencies": {
+    "typescript": "5.6.3",
+    "@types/react": "18.3.12"
+  }
+}

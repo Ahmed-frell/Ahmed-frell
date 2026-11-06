@@ -1,0 +1,6 @@
+node_modules/
+out/
+# derived from private client media (rebuild with README steps)
+public/clips/
+public/img/
+public/brand/
