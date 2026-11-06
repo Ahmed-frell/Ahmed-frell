@@ -1,5 +1,7 @@
 # Blue Zone Habitat: APPROVED Malayalam voiceover transcript
 
+> **SUPERSEDED** on 2026-11-06 by `approved-transcript-v2.md` (new creative direction). Kept for history only.
+
 **Status: LOCKED.** Approved by the client on 2026-11-05 ("TRANSCRIPT APPROVED").
 Do not change words or narration order without explicit client permission.
 Source: `stage1-script.md`, Part 1 (verbatim).
