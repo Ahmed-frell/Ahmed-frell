@@ -1,6 +1,6 @@
 # Blue Zone Habitat v2: Malayalam transcript (APPROVED — LOCKED)
 
-Status: **LOCKED.** Approved by client 2026-11-06 ("transcript approved"). Voiceover: `audio/original/v2/bluezone_2.mp3` (sha256 f5acff47…). Do not change words or order without explicit client permission. v1 (`approved-transcript.md`) is superseded and kept for history.
+Status: **SUPERSEDED by `approved-transcript-v3.md` (lines 4 and 8 changed, 2026-11-06).** Was locked: approved by client 2026-11-06 ("transcript approved"). Voiceover: `audio/original/v2/bluezone_2.mp3` (sha256 f5acff47…). Do not change words or order without explicit client permission. v1 (`approved-transcript.md`) is superseded and kept for history.
 Text is the client's verbatim script, received 2026-11-06. Timings are measured from `audio/original/v2/bluezone_2.mp3` (89.81 s).
 
 | # | Time in recording | Line |
