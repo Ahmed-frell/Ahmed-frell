@@ -1,6 +1,6 @@
 # Blue Zone Habitat v3: Malayalam transcript (APPROVED — LOCKED)
 
-Status: **LOCKED.** Text supplied by the client on 2026-11-06 as the audio changes for V3. Only lines 4 and 8 changed from v2;
+Status: **SUPERSEDED by `approved-transcript-v4.md` (2026-11-07).** Was locked: text supplied by the client on 2026-11-06 as the audio changes for V3. Only lines 4 and 8 changed from v2;
 the other 20 lines are identical to `approved-transcript-v2.md`. Do not change words or order without explicit client permission.
 Voiceover: **pending** (pickup recording of lines 4 and 8, or a full re-record). Timings will be measured from the recording.
 

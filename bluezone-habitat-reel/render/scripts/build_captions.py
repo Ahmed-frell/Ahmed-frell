@@ -25,8 +25,18 @@ MINDUR = 0.75
 # never break right after these words (keeps names and phrases together)
 GLUE = {'Gen','Blue','Zone','Mission','Malappuram','IIT','Madras','Research','Where','Peace','Meets','Project','open','premium','dedicated','office','design','3,','4,','ഒരു','ആ'}
 chunks = []; words_out = []
+def expand(lines):
+    out = []
+    for L in lines:
+        ws_all = L['text'].split()
+        parts = L.get('parts') or [{'start': L['start'], 'end': L['end'], 'w0': 0}]
+        for k, p in enumerate(parts):
+            w1 = parts[k+1]['w0'] if k+1 < len(parts) else len(ws_all)
+            out.append({'n': L['n'], 'start': p['start'], 'end': p['end'], 'text': ' '.join(ws_all[p['w0']:w1])})
+    return out
+lines = expand(lines)
 for L in lines:
-    text = L['text'].replace('**', '').replace('threeG', '3G')
+    text = L['text'].replace('**', '').replace('threeG', '3G').replace('three, four , five', '3, 4, 5').replace('three, four, five', '3, 4, 5')
     ws = text.split()
     s, en = L['start'], L['end']
     W = np.array([weight(w) for w in ws]); cum = np.concatenate([[0], np.cumsum(W)])/W.sum()

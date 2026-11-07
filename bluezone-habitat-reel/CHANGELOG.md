@@ -1,5 +1,25 @@
 # Blue Zone Habitat reel: change log
 
+## Draft V3 (2026-11-07): in progress, preview sent for verification
+- **Client corrections:** (1) the research line now names Dr. Sahid Cholayil (founder, 3G IRPS) and longevity science;
+  (2) the villa line now says Blue Zone Habitat is a residential project within a township in the heart of Malappuram.
+- **Transcript v4** (`approved-transcript-v4.md`, locked; lines 4, 8 and 9 changed vs v3; v2 and v3 kept, marked superseded).
+- **New voiceover supplied by the client:** `audio/original/v4/bluezone_v4_elevenlabs.mp3`, 96.84 s, **AI-generated** (ElevenLabs "Roger"),
+  used as supplied (loudness only). Measured 26 speech segments → 22 lines (lines 2, 4 and 8 have internal pauses).
+- **Length:** 100.0 s (set by the new recording).
+- **Timeline:** V2 scenes follow the new voice through a line-anchored time map (`render/src/data/timemap_v3.json`).
+  New or re-timed scenes (V3 times):
+  - S04a IIT Madras / 3G IRPS (blueprint)
+  - **S04b1** "Dr. Sahid Cholayil · Founder, 3G IRPS" name card on "Dr. Sahid" (18.17 s) + "Research-driven vision" (walkthrough 130.2 s arbour garden)
+  - **S04b2** "Based on Longevity science" (22.44 s) + "A movement for Malappuram" (walkthrough 139.5 s amphitheatre with residents)
+  - **S08a** township aerial (walkthrough 186.0–194.1 s) with "Heart of Malappuram · Anakkayam · Manjeri" and a card
+    "Part of a planned township · Residential project" on "ടൗൺഷിപ്പിന്റെ" (42.1 s)
+  - S08b 51 counter lands on "51" (45.58 s); S09 BHK panels on "three / four / five" (48.43 / 48.8 / 49.3 s)
+  - S19 now uses the clubhouse roof (clubhouse 56.2 s), because the aerial moved to the township scene
+- Subtitles rebuilt from the new voice (47 chunks; "threeG" → "3G", "three, four, five" → "3, 4, 5" for readability).
+- Score regenerated for the new timing; voice 16.8 dB above the music; mix −13.6 LUFS.
+- On-screen wording is kept factual: "Part of a planned township" (the voiceover says ലോകോത്തര നിലവാരമുള്ള), and "Longevity science" with no health promise.
+
 ## Draft V2 (2026-11-06): first rendered draft
 - **New creative direction** (client brief 2026-11-06): Mission Malappuram 2050 → 3G IRPS vision → Blue Zone Habitat →
   51 villas → Gen Z / Gen Alpha → work-from-home, nature-first design, ~43% planned open space, gardens, clubhouse → brand reveal + CTA.

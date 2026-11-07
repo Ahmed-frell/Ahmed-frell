@@ -5,16 +5,26 @@ import { FullClip, KenBurns, Panel, Kinetic, Chip, Rule, Counter, ArtistTag, Bug
 import { TransitionIn, TransitionType } from './transitions';
 import { Subtitles } from './Subtitles';
 
-/* All times are absolute seconds on the video timeline (voice starts at 0.40 s).
- * Sync points come from the measured voiceover: work/v2_line_timings.json + render/src/data/captions.json. */
+/* Times are absolute seconds on the video timeline (voice starts at 0.40 s).
+ * V3 (2026-11-07): new client voiceover (transcript v4). Scenes written for Draft V2 keep their V2 times and are mapped
+ * onto the new voice by a piecewise-linear time map anchored on every VO line (src/data/timemap_v3.json).
+ * Scenes marked `v3: true` were (re)written for the changed lines and use V3 times directly
+ * (measured from work/v4_line_timings.json + src/data/captions.json). */
+import timemap from './data/timemap_v3.json';
+const W = (t: number) => {
+  const o = timemap.old, n = timemap.new;
+  for (let i = 0; i < o.length - 1; i++) if (t >= o[i] && t <= o[i + 1]) return n[i] + (t - o[i]) * (n[i + 1] - n[i]) / (o[i + 1] - o[i]);
+  return t;
+};
 type Scene = {
   id: string; start: number; end: number; tr: TransitionType; T?: number;
-  tag?: string | null; bug?: boolean;
+  tag?: string | null; bug?: boolean; v3?: boolean;
   render: (L: (abs: number) => number) => React.ReactNode;
 };
 
 const AI = "Artist's impression";
-export const TOTAL = 92.7;
+export const TOTAL = 92.7;          // V2 reference length (mapped below)
+export const TOTAL_OUT = W(TOTAL); // V3 output length
 // lines whose words are already shown as large on-screen statements (kept in the .srt)
 export const SUPPRESS_SUBS = [1, 7, 18, 19, 20, 21];
 
@@ -35,8 +45,22 @@ export const SCENES: Scene[] = [
     </>) },
   { id: 'S03 Mission Malappuram 2050', start: 8.8, end: 12.8, tr: 'bloom', T: 16, tag: null,
     render: (L) => <MissionLogo L={L} /> },
-  { id: 'S04 3G IRPS research vision', start: 12.8, end: 21.95, tr: 'wipeDown', tag: 'Master plan · indicative',
+  { id: 'S04a IIT Madras · 3G IRPS', start: 12.46, end: 18.05, tr: 'wipeDown', tag: 'Master plan · indicative', v3: true,
     render: (L) => <Research L={L} /> },
+  { id: 'S04b1 Dr. Sahid Cholayil · research vision', start: 18.05, end: 22.3, tr: 'leaf', tag: AI, v3: true,
+    render: (L) => (<>
+      <FullClip src="clips/wt_arbour_garden.mp4" x0={0.42} x1={0.55} z0={1.02} z1={1.1} dim={0.32} />
+      <FounderCard at={L(18.17)} />
+      <Kinetic text="Research-driven vision" at={L(19.69)} y={720} size={68} font={F.serif} weight={600} italic color="#CFE8F2" />
+    </>) },
+  { id: 'S04b2 longevity science', start: 22.3, end: 26.54, tr: 'push', tag: AI, v3: true,
+    render: (L) => (<>
+      <FullClip src="clips/wt_amphitheatre.mp4" x0={0.5} x1={0.62} z0={1.02} z1={1.1} dim={0.3} />
+      <Kinetic text="BASED ON" at={L(22.44)} y={420} size={28} font={F.sans} weight={600} spacing={10} />
+      <Kinetic text="Longevity science" at={L(22.5)} stagger={0.14} y={470} size={104} font={F.serif} weight={700} maxWidth={960} />
+      <Rule at={L(23.3)} y={610} w={300} />
+      <Chip text="A movement for Malappuram" at={L(25.3)} y={650} size={28} accent="#9FD3E6" />
+    </>) },
   { id: 'S05 premium community', start: 21.95, end: 27.95, tr: 'leaf', tag: AI,
     render: (L) => (<>
       <FullClip src="clips/wt_boulevard_people.mp4" x0={0.55} x1={0.42} z0={1.02} z1={1.1} dim={0.1} />
@@ -47,9 +71,16 @@ export const SCENES: Scene[] = [
     render: () => <FullClip src="clips/wt_gate_approach.mp4" startFrom={1.2} x0={0.52} x1={0.6} z0={1.0} z1={1.14} /> },
   { id: 'S07 BLUE ZONE HABITAT title', start: 31.95, end: 33.8, tr: 'bloom', T: 16, tag: null,
     render: (L) => <TitleLogo L={L} at={L(32.11)} /> },
-  { id: 'S08 51 signature villas', start: 33.8, end: 39.85, tr: 'zoomBlur', tag: 'Villa layout · indicative',
+  { id: 'S08a township · residential project', start: 37.95, end: 45.45, tr: 'zoomBlur', tag: AI, v3: true,
+    render: (L) => (<>
+      <FullClip src="clips/wt_township_aerial.mp4" x0={0.5} x1={0.4} z0={1.04} z1={1.0} dim={0.22} />
+      <Kinetic text="HEART OF MALAPPURAM" at={L(38.1)} y={420} size={30} font={F.sans} weight={600} spacing={9} />
+      <Chip text="Anakkayam · Manjeri" at={L(39.5)} y={485} size={26} accent="#C9E2A0" />
+      <TownshipCard at={L(42.1)} sub={L(43.35)} />
+    </>) },
+  { id: 'S08b 51 signature villas', start: 45.45, end: 48.37, tr: 'zoomBlur', tag: 'Villa layout · indicative', v3: true,
     render: (L) => <FiftyOne L={L} /> },
-  { id: 'S09 3 / 4 / 5 BHK', start: 39.85, end: 43.0, tr: 'push', tag: AI, bug: true,
+  { id: 'S09 3 / 4 / 5 BHK', start: 48.37, end: 51.27, tr: 'push', tag: AI, bug: true, v3: true,
     render: (L) => <BHK L={L} /> },
   { id: 'S10 Gen Z · Gen Alpha', start: 43.0, end: 49.5, tr: 'leaf', tag: AI, bug: true,
     render: (L) => (<>
@@ -116,7 +147,7 @@ export const SCENES: Scene[] = [
     </>) },
   { id: 'S19 statement: future lifestyle', start: 80.05, end: 83.1, tr: 'zoomBlur', tag: AI,
     render: (L) => (<>
-      <FullClip src="clips/wt_aerial_final.mp4" x0={0.45} x1={0.55} z0={1.0} z1={1.1} dim={0.4} />
+      <FullClip src="clips/ch_roof.mp4" x0={0.5} x1={0.44} z0={1.0} z1={1.08} dim={0.42} />
       <Kinetic text="ഭാവിയിലേക്ക് ചിന്തിച്ചൊരു" at={L(80.12)} stagger={0.3} y={760} size={70} font={F.mlSerif} weight={700} maxWidth={960} />
       <Kinetic text="ജീവിതരീതിയാണ്." at={L(81.6)} y={870} size={84} font={F.mlSerif} weight={700} color="#D9EBB4" />
     </>) },
@@ -178,12 +209,36 @@ const Research: React.FC<{ L: (a: number) => number }> = ({ L }) => {
       <AbsoluteFill style={{ background: 'linear-gradient(180deg, rgba(8,26,34,0.88) 0%, rgba(8,26,34,0.72) 50%, rgba(8,26,34,0.6) 75%, rgba(8,26,34,0.8) 100%)' }} />
       <AbsoluteFill style={{ backgroundImage: 'linear-gradient(rgba(159,211,230,0.10) 1px, transparent 1px), linear-gradient(90deg, rgba(159,211,230,0.10) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
       <div style={{ position: 'absolute', top: scan, left: 0, width: 1080, height: 3, background: 'linear-gradient(90deg, transparent, rgba(159,211,230,0.9), transparent)', boxShadow: '0 0 24px rgba(159,211,230,0.7)' }} />
-      <Kinetic text="INCUBATED AT IIT MADRAS RESEARCH PARK" at={L(13.0)} stagger={0.06} y={430} size={26} font={F.sans} weight={500} spacing={5} maxWidth={940} />
-      <Rule at={L(14.2)} y={500} w={420} color="rgba(159,211,230,0.85)" />
-      <Kinetic text="3G IRPS" at={L(16.4)} y={560} size={170} font={F.serif} weight={700} spacing={4} />
-      <Kinetic text="Research-driven vision" at={L(17.45)} y={770} size={66} font={F.serif} weight={600} italic color="#CFE8F2" />
-      <Chip text="A movement for Malappuram" at={L(20.4)} y={900} size={26} accent="#9FD3E6" />
+      <Kinetic text="INCUBATED AT IIT MADRAS RESEARCH PARK" at={L(12.65)} stagger={0.06} y={430} size={26} font={F.sans} weight={500} spacing={5} maxWidth={940} />
+      <Rule at={L(14.4)} y={500} w={420} color="rgba(159,211,230,0.85)" />
+      <Kinetic text="3G IRPS" at={L(15.95)} y={560} size={170} font={F.serif} weight={700} spacing={4} />
     </AbsoluteFill>
+  );
+};
+
+const TownshipCard: React.FC<{ at: number; sub: number }> = ({ at, sub }) => {
+  const f = useCurrentFrame(); const p = prog(f, at, at + 0.7); const q = prog(f, sub, sub + 0.5);
+  return (
+    <div style={{ position: 'absolute', top: 580, width: 1080, display: 'flex', justifyContent: 'center', opacity: p }}>
+      <div style={{ padding: '28px 56px 24px', borderRadius: 30, background: 'rgba(12,24,12,0.5)', backdropFilter: 'blur(16px)', border: '1.5px solid rgba(255,255,255,0.3)', textAlign: 'center', transform: `translateY(${(1 - p) * 24}px)` }}>
+        <div style={{ fontFamily: F.serif, fontWeight: 600, fontStyle: 'italic', fontSize: 80, color: C.white, lineHeight: 1.05 }}>Part of a planned township</div>
+        <div style={{ width: 140 * q, height: 2, background: 'rgba(255,255,255,0.7)', margin: '18px auto 14px' }} />
+        <div style={{ fontFamily: F.sans, fontWeight: 600, fontSize: 28, letterSpacing: 9, color: 'rgba(255,255,255,0.92)', opacity: q }}>RESIDENTIAL PROJECT</div>
+      </div>
+    </div>
+  );
+};
+
+const FounderCard: React.FC<{ at: number }> = ({ at }) => {
+  const f = useCurrentFrame(); const p = prog(f, at, at + 0.7);
+  return (
+    <div style={{ position: 'absolute', top: 420, width: 1080, display: 'flex', justifyContent: 'center', opacity: p }}>
+      <div style={{ padding: '30px 60px 24px', borderRadius: 30, background: 'rgba(12,24,12,0.42)', backdropFilter: 'blur(16px)', border: '1.5px solid rgba(255,255,255,0.3)', textAlign: 'center', transform: `translateY(${(1 - p) * 24}px)` }}>
+        <div style={{ fontFamily: F.serif, fontWeight: 700, fontSize: 86, color: C.white, lineHeight: 1 }}>Dr. Sahid Cholayil</div>
+        <div style={{ width: 120 * p, height: 2, background: 'rgba(255,255,255,0.7)', margin: '18px auto 14px' }} />
+        <div style={{ fontFamily: F.sans, fontWeight: 600, fontSize: 26, letterSpacing: 7, color: 'rgba(255,255,255,0.9)', textTransform: 'uppercase' }}>Founder · 3G IRPS</div>
+      </div>
+    </div>
   );
 };
 
@@ -206,8 +261,8 @@ const TitleLogo: React.FC<{ L: (a: number) => number; at: number; hold?: boolean
 
 const FiftyOne: React.FC<{ L: (a: number) => number }> = ({ L }) => {
   const f = useCurrentFrame();
-  const plan = prog(f, L(33.85), L(34.6));
-  const sweep = prog(f, L(36.0), L(38.6));
+  const plan = prog(f, L(45.3), L(45.95));
+  const sweep = prog(f, L(45.9), L(48.0));
   return (
     <SageCard>
       <Img src={staticFile('img/villa_plot_plan.png')} style={{
@@ -217,18 +272,17 @@ const FiftyOne: React.FC<{ L: (a: number) => number }> = ({ L }) => {
       <div style={{ position: 'absolute', left: 140, top: 590, width: 800, height: 740, borderRadius: 22, overflow: 'hidden', pointerEvents: 'none' }}>
         <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(115deg, rgba(255,255,255,0) ${sweep * 140 - 40}%, rgba(255,252,235,0.55) ${sweep * 140 - 22}%, rgba(255,255,255,0) ${sweep * 140 - 4}%)`, mixBlendMode: 'screen' }} />
       </div>
-      <Chip text="Anakkayam · Manjeri · Malappuram" at={L(34.6)} y={300} size={24} accent={C.leaf} dark={false} />
-      <Counter to={51} start={L(36.0)} land={L(37.0)} y={385} size={150} color={C.leaf} />
-      <Kinetic text="PREMIUM SIGNATURE VILLAS" at={L(37.6)} y={540} size={28} font={F.sans} weight={600} spacing={8} color={C.leaf} shadow={false} />
+      <Counter to={51} start={L(45.35)} land={L(46.05)} y={360} size={170} color={C.leaf} />
+      <Kinetic text="PREMIUM SIGNATURE VILLAS" at={L(45.95)} y={535} size={28} font={F.sans} weight={600} spacing={8} color={C.leaf} shadow={false} />
     </SageCard>
   );
 };
 
 const BHK: React.FC<{ L: (a: number) => number }> = ({ L }) => (
   <AbsoluteFill style={{ background: C.forest }}>
-    <Panel src="img/villa_3bhk_neura.jpg" x={60} y={345} w={960} h={330} at={L(39.9)} from="right"><BhkLabel n="3" model="Neura" /></Panel>
-    <Panel src="img/villa_4bhk_quantra.jpg" x={60} y={700} w={960} h={330} at={L(40.4)} from="left"><BhkLabel n="4" model="Quantra · Aurexa" /></Panel>
-    <Panel src="img/villa_5bhk_lynora.jpg" x={60} y={1055} w={960} h={330} at={L(41.0)} from="right"><BhkLabel n="5" model="Lynora" /></Panel>
+    <Panel src="img/villa_3bhk_neura.jpg" x={60} y={345} w={960} h={330} at={L(48.43)} from="right"><BhkLabel n="3" model="Neura" /></Panel>
+    <Panel src="img/villa_4bhk_quantra.jpg" x={60} y={700} w={960} h={330} at={L(48.82)} from="left"><BhkLabel n="4" model="Quantra · Aurexa" /></Panel>
+    <Panel src="img/villa_5bhk_lynora.jpg" x={60} y={1055} w={960} h={330} at={L(49.28)} from="right"><BhkLabel n="5" model="Lynora" /></Panel>
   </AbsoluteFill>
 );
 const BhkLabel: React.FC<{ n: string; model: string }> = ({ n, model }) => (
@@ -269,10 +323,12 @@ export const Reel: React.FC = () => {
     <AbsoluteFill style={{ backgroundColor: '#000' }}>
       {SCENES.map((s) => {
         const T = s.T ?? (s.tr === 'cut' ? 0 : 14);
-        const from = Math.max(0, sec(s.start) - Math.floor(T / 2));
-        const dur = sec(s.end) - from + Math.ceil(T / 2);
+        const M = s.v3 ? (t: number) => t : W;           // V2-timed scenes follow the new voice via the time map
+        const from = Math.max(0, sec(M(s.start)) - Math.floor(T / 2));
+        const end = s.id.startsWith('S21') ? TOTAL_OUT : M(s.end);
+        const dur = sec(end) - from + Math.ceil(T / 2);
         const fromSec = from / FPS;
-        const L = (abs: number) => abs - fromSec;
+        const L = (abs: number) => M(abs) - fromSec;
         return (
           <Sequence key={s.id} name={s.id} from={from} durationInFrames={dur}>
             <TransitionIn type={s.tr} T={T}>
