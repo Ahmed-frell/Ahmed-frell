@@ -1,6 +1,6 @@
 # Blue Zone Habitat reel: change log
 
-## Draft V3 (2026-11-07): in progress, preview sent for verification
+## Draft V3 (2026-11-07): rendered — `output/bluezone-draft-v3.mp4` (preview approved by client; QC PASS)
 - **Client corrections:** (1) the research line now names Dr. Sahid Cholayil (founder, 3G IRPS) and longevity science;
   (2) the villa line now says Blue Zone Habitat is a residential project within a township in the heart of Malappuram.
 - **Transcript v4** (`approved-transcript-v4.md`, locked; lines 4, 8 and 9 changed vs v3; v2 and v3 kept, marked superseded).
