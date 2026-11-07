@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Quality control for a rendered reel. Usage: qc.py final.mp4 vo_clean.wav vo_offset captions.json report.md
+"""Quality control for a rendered reel. Usage: qc.py final.mp4 vo_clean.wav vo_offset captions.json report.md [expected_duration] [title_freeze_windows a-b,c-d]
 Checks: format/resolution/fps/duration, decode errors, black and frozen frames, VO sync (cross-correlation
 against the original voice), loudness/peak, voice-over-music separation proxy, subtitles vs speech."""
 import sys, subprocess, json, re, numpy as np
 mp4, vo, off, capf, rep = sys.argv[1], sys.argv[2], float(sys.argv[3]), sys.argv[4], sys.argv[5]
+EXP = float(sys.argv[6]) if len(sys.argv) > 6 else 92.7
+WIN = [tuple(map(float, w.split('-'))) for w in (sys.argv[7].split(',') if len(sys.argv) > 7 else ['31.5-34.2', '82.9-200'])]
 R = []; ok = True
 def run(a): return subprocess.run(a, capture_output=True, text=True)
 def chk(name, cond, detail):
@@ -15,16 +17,16 @@ chk('Video codec / pixel format', v['codec_name']=='h264' and v['pix_fmt']=='yuv
 chk('Resolution 1080×1920 (9:16)', (v['width'],v['height'])==(1080,1920), f"{v['width']}×{v['height']}")
 chk('Frame rate', v['r_frame_rate'] in ('30/1',), v['r_frame_rate'])
 chk('Audio AAC stereo 48 kHz', bool(a) and a[0]['codec_name']=='aac' and a[0]['channels']==2 and a[0]['sample_rate']=='48000', f"{a[0]['codec_name']} {a[0]['channels']}ch {a[0]['sample_rate']} Hz {int(a[0].get('bit_rate',0))//1000} kbps" if a else 'none')
-chk('Duration', abs(dur-92.7) < 0.15, f"{dur:.3f} s")
+chk('Duration', abs(dur-EXP) < 0.15, f"{dur:.3f} s")
 err = run(['ffmpeg','-v','error','-i',mp4,'-f','null','-']).stderr.strip()
 chk('Full decode without errors', err=='', 'clean' if not err else err[:200])
 bd = run(['ffmpeg','-i',mp4,'-vf','blackdetect=d=0.12:pix_th=0.06','-an','-f','null','-']).stderr
 blacks = re.findall(r'black_start:([\d.]+) black_end:([\d.]+)', bd)
-unexpected = [(s,e) for s,e in blacks if not (float(s) >= 91.9 or float(e) <= 0.45)]
-chk('No unintended black frames', not unexpected, f"black ranges {blacks} (allowed: fade-in <0.45 s, fade-out >91.9 s)")
+unexpected = [(s,e) for s,e in blacks if not (float(s) >= EXP-0.8 or float(e) <= 0.45)]
+chk('No unintended black frames', not unexpected, f"black ranges {blacks} (allowed: fade-in <0.45 s, final fade-out)")
 fz = run(['ffmpeg','-i',mp4,'-vf','freezedetect=n=0.0008:d=1.6','-an','-f','null','-']).stderr
 freezes = re.findall(r'freeze_start: ([\d.]+).*?freeze_end: ([\d.]+)', fz, re.S)
-chk('No frozen video > 1.6 s (outside title/end cards)', all(float(s) >= 31.5 and float(e) <= 34.2 or float(s) >= 82.9 for s,e in freezes), f"{freezes or 'none'}")
+chk('No frozen video > 1.6 s (outside title/end cards)', all(any(float(s) >= a and float(e) <= b for a, b in WIN) for s,e in freezes), f"{freezes or 'none'}")
 # VO sync: cross-correlate mix (mono) with the clean VO placed at offset
 def pcm(f, ss=None, t=None):
     cmd=['ffmpeg','-v','error']+(['-ss',str(ss)] if ss is not None else [])+['-i',f]+(['-t',str(t)] if t else [])+['-ac','1','-ar','8000','-f','f32le','-']
@@ -47,7 +49,7 @@ ordered = all(caps[i]['end'] <= caps[i+1]['start']+1e-6 for i in range(len(caps)
 mind = min(c['end']-c['start'] for c in caps)
 chk('Subtitles ordered, no overlaps, readable duration', ordered and mind >= 0.75, f"{len(caps)} chunks, min {mind:.2f} s")
 cover = sum(c['end']-c['start'] for c in caps)
-chk('Subtitles cover the narration', cover > 75, f"{cover:.1f} s of subtitles for 89.8 s VO")
+chk('Subtitles cover the narration', cover > 0.85 * (EXP - 3), f"{cover:.1f} s of subtitles")
 with open(rep,'w') as f:
     f.write(f"# QC report: {mp4.split('/')[-1]}\n\n**Overall: {'PASS' if ok else 'FAIL'}**\n\n| Check | Result | Detail |\n|---|---|---|\n" + "\n".join(R) + "\n")
 print(open(rep).read())
