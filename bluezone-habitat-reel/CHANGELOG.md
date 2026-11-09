@@ -1,5 +1,11 @@
 # Blue Zone Habitat reel: change log
 
+## WhatsApp version of V3 (2026-11-09)
+- `output/bluezone-v3-whatsapp.mp4`: **4.72 MB** (under 5 MB) for WhatsApp bulk sending. Made from the V3 master; no content changes.
+- 540×960, 30 fps, H.264 High (two-pass, 320 kbps); AAC mono 48 kbps, 44.1 kHz, −15.3 LUFS, peak −0.9 dBFS (limited to avoid clipping).
+- 540×960 chosen over 720×1280 at the same size: higher fidelity to the master (SSIM 0.923 vs 0.913), fewer compression blocks.
+  Subtitles, name card and phone number checked for legibility. Voice sync 0.0 ms.
+
 ## Draft V3 (2026-11-07): rendered — `output/bluezone-draft-v3.mp4` (preview approved by client; QC PASS)
 - **Client corrections:** (1) the research line now names Dr. Sahid Cholayil (founder, 3G IRPS) and longevity science;
   (2) the villa line now says Blue Zone Habitat is a residential project within a township in the heart of Malappuram.
