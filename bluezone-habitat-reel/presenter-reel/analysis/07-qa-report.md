@@ -36,3 +36,18 @@
 - Word timings for captions are **estimates**: line boundaries are exact (snapped to real pauses), but words within a line are spaced by length and snapped to syllable gaps. A word-level Malayalam recogniser was not available offline. Expect captions to be occasionally a few frames early or late inside long sentences.
 - Full-bleed B-roll is cropped from 16:9 1080p renders (about 1.8× scale), so it is slightly softer than native vertical footage.
 - No cloud-kitchen or morning-routine footage exists; villa kitchen, dining and rooftop-dining renders stand in.
+
+
+---
+# QA: `bluezone-presenter-reel-final-v2.mp4` (revision 2, 2026-11-12)
+| Check | Result |
+|---|---|
+| Format | H.264 High · 1080×1920 · 30 fps · yuv420p Rec.709 · AAC 48 kHz stereo 256 kbps · 186.7 MB |
+| Frames / duration | 4,087 / 136.23 s (= EDL + outro) |
+| Decode | Clean |
+| Black / freeze | Only the intended final fade (135.93–136.2 s) and the outro logo hold (from 134.0 s) |
+| Voice sync | 0.0 ms at 20 s, 70 s and 115 s |
+| Loudness | −13.3 LUFS, true peak −1.0 dBFS; voice 16.8 dB above music + SFX |
+| Grade | Natural: neutral whites, warm skin, true render colours; green only in design elements (`09-colour-grading-comparison.jpg`) |
+| Motion / text / transitions | Contact sheet every 2.5 s, plus spot frames of every effect; matches the approved 22 s segment (`11-reference-vs-final-motion.jpg`, `12-text-animation-map.md`) |
+| SFX | 70 frame-aligned cues (`10-sfx-timing-report.md`) |
