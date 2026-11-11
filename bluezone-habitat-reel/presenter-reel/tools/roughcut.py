@@ -42,6 +42,16 @@ def breath_points(env, a, b):
         if seg[i] == seg[i - 8:i + 9].min() and med - seg[i] > 14: pts.append((i0 + i) / 100)
     return pts
 
+LINES = []
+if cfg.get('transcript'):
+    LINES = [l for l in json.load(open(cfg['transcript']))['lines'] if not l['flag']]
+    HINT = {int(k): v for k, v in cfg.get('line_frames', {}).items()}
+
+def line_at(tid, t):
+    for l in LINES:
+        if l['take_in'] == tid and l['src_in'] - 0.05 <= t < l['src_out']: return l
+    return None
+
 shots = []
 for take in cfg['takes']:
     tid = take['id']; src = f"{ROOT}/work/proxy/th_{tid}.mp4"
@@ -50,6 +60,16 @@ for take in cfg['takes']:
     ex = [tuple(r) for r in take.get('exclude', [])]
     segs = [s for s in segs if s[0] >= take.get('start', 0) and s[1] <= take.get('end', dur)
             and not any(s[0] < e and s[1] > a for a, e in ex)]
+    if LINES:   # keep only speech inside kept transcript lines (clips a segment that runs into a retake)
+        rng = [(l['src_in'], l['src_out']) for l in LINES if l['take_in'] == tid]
+        segs = [[max(a, ra), min(b, rb)] for a, b in segs for ra, rb in rng if min(b, rb) - max(a, ra) > 0.15]
+        segs = sorted(segs)
+        merged = []
+        for a, b in segs:
+            if merged and a <= merged[-1][1] + 0.01: merged[-1][1] = max(merged[-1][1], b)
+            else: merged.append([a, b])
+        segs = merged
+        if not segs: continue
     # keep-intervals with handles; merge short natural pauses
     keep = []
     for a, b in segs:
@@ -67,13 +87,20 @@ for take in cfg['takes']:
     track = json.load(open(f"{ROOT}/work/track/th_{tid}.json"))
     for k, (a, b, jump) in enumerate(keep):
         # split long stretches at breaths into 1.6-3.2 s shots
+        forced = sorted(l['src_in'] for l in LINES if l['take_in'] == tid and a + 0.5 < l['src_in'] < b - 0.5)
         bps = breath_points(env, a + 1.6, b - 1.2); cuts = [a]
-        for p in bps:
-            if p - cuts[-1] >= 1.6 and (p - cuts[-1] >= 2.4 or b - p < 3.2): cuts.append(p)
+        for p in sorted(set(bps) | set(forced)):
+            if p in forced:
+                if p - cuts[-1] < 0.6 and len(cuts) > 1: cuts[-1] = p
+                else: cuts.append(p)
+            elif p - cuts[-1] >= 1.6 and (p - cuts[-1] >= 2.4 or b - p < 3.2) and all(abs(p - f) > 1.2 for f in forced): cuts.append(p)
         cuts.append(b)
         for j in range(len(cuts) - 1):
             s = {'take': tid, 'src': src, 'in': cuts[j], 'out': cuts[j + 1],
                  'after': 'take-start' if (k == 0 and j == 0) else ('jump' if (jump and j == 0) else 'breath')}
+            ln = line_at(tid, s['in'] + 0.06)
+            s['line'] = ln['n'] if ln else None
+            s['line_start'] = bool(ln and abs(ln['src_in'] - s['in']) < 0.7)
             near = min(track['samples'], key=lambda q: abs(q['t'] - (s['in'] + s['out']) / 2))
             s['cx'] = float(np.median([q['cx'] for q in track['samples'] if abs(q['t'] - near['t']) <= 4]))
             s['cy'] = float(np.median([q['cy'] for q in track['samples'] if abs(q['t'] - near['t']) <= 4]))
@@ -84,10 +111,24 @@ pattern = ['W', 'M', 'C', 'M', 'W', 'C', 'M', 'C']
 prev = None
 for i, s in enumerate(shots):
     f = pattern[i % len(pattern)]
-    if prev is not None and f == prev: f = 'M' if prev != 'M' else 'C'
+    if LINES and s.get('line_start') and s.get('line') in HINT: f = HINT[s['line']]
+    elif prev is not None and f == prev: f = 'M' if prev != 'M' else 'C'
+    if prev is not None and f == prev: f = 'M' if prev != 'M' else 'W'
     if s['after'] in ('jump', 'take-start') and prev is not None and abs(ZOOM[f] - ZOOM[prev]) < 0.3:
         f = 'W' if prev != 'W' else 'C'
     s['frame'] = f; prev = f
+
+# transcript hints win: if a hinted line-start shot was changed because the previous (pattern) shot had the same framing,
+# re-frame the previous shot instead
+if LINES:
+    for i, s in enumerate(shots):
+        h = HINT.get(s.get('line')) if s.get('line_start') else None
+        if h and s['frame'] != h and i > 0:
+            p = shots[i - 1]
+            if not (p.get('line_start') and HINT.get(p.get('line'))):
+                before = shots[i - 2]['frame'] if i > 1 else None
+                p['frame'] = next(f for f in ('W', 'M', 'C') if f != h and f != before)
+                s['frame'] = h
 
 # frame-accurate timeline
 t = 0

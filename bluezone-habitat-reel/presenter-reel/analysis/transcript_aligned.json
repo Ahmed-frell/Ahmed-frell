@@ -1,0 +1,2154 @@
+{
+ "source": "analysis/transcript_input.json",
+ "note": "Line boundaries snapped to real pauses; word times are estimates (proportional + pause-snapped).",
+ "lines": [
+  {
+   "n": 1,
+   "text": "Hey folks, welcome to Blue Zone Habitat, where we talk about better living, healthier lifestyle, and future of homes.",
+   "flag": null,
+   "rec_v1": [
+    0,
+    6
+   ],
+   "take_in": "0035",
+   "take_out": "0035",
+   "src_in": 3.94,
+   "src_out": 11.11,
+   "words": [
+    {
+     "w": "Hey",
+     "start_est": 3.94,
+     "end_est": 4.2
+    },
+    {
+     "w": "folks,",
+     "start_est": 4.2,
+     "end_est": 4.58
+    },
+    {
+     "w": "welcome",
+     "start_est": 4.58,
+     "end_est": 5.08
+    },
+    {
+     "w": "to",
+     "start_est": 5.08,
+     "end_est": 5.29
+    },
+    {
+     "w": "Blue",
+     "start_est": 5.29,
+     "end_est": 5.61
+    },
+    {
+     "w": "Zone",
+     "start_est": 5.61,
+     "end_est": 5.93
+    },
+    {
+     "w": "Habitat,",
+     "start_est": 5.93,
+     "end_est": 6.43
+    },
+    {
+     "w": "where",
+     "start_est": 6.43,
+     "end_est": 6.81
+    },
+    {
+     "w": "we",
+     "start_est": 6.81,
+     "end_est": 7.01
+    },
+    {
+     "w": "talk",
+     "start_est": 7.01,
+     "end_est": 7.33
+    },
+    {
+     "w": "about",
+     "start_est": 7.33,
+     "end_est": 7.72
+    },
+    {
+     "w": "better",
+     "start_est": 7.72,
+     "end_est": 8.15
+    },
+    {
+     "w": "living,",
+     "start_est": 8.15,
+     "end_est": 8.59
+    },
+    {
+     "w": "healthier",
+     "start_est": 8.59,
+     "end_est": 9.21
+    },
+    {
+     "w": "lifestyle,",
+     "start_est": 9.21,
+     "end_est": 9.82
+    },
+    {
+     "w": "and",
+     "start_est": 9.82,
+     "end_est": 10.09
+    },
+    {
+     "w": "future",
+     "start_est": 10.09,
+     "end_est": 10.52
+    },
+    {
+     "w": "of",
+     "start_est": 10.52,
+     "end_est": 10.73
+    },
+    {
+     "w": "homes.",
+     "start_est": 10.73,
+     "end_est": 11.11
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "text": "ഇന്ന് നമുക്ക് Blue Zone Habitat-ലെ മൂന്ന് key USPs-നെ കുറിച്ച് സംസാരിക്കാം. The first one is...",
+   "flag": null,
+   "rec_v1": [
+    6,
+    10
+   ],
+   "take_in": "0035",
+   "take_out": "0035",
+   "src_in": 11.11,
+   "src_out": 14.77,
+   "words": [
+    {
+     "w": "ഇന്ന്",
+     "start_est": 11.11,
+     "end_est": 11.32
+    },
+    {
+     "w": "നമുക്ക്",
+     "start_est": 11.32,
+     "end_est": 11.59
+    },
+    {
+     "w": "Blue",
+     "start_est": 11.59,
+     "end_est": 11.85
+    },
+    {
+     "w": "Zone",
+     "start_est": 11.85,
+     "end_est": 12.11
+    },
+    {
+     "w": "Habitat-ലെ",
+     "start_est": 12.11,
+     "end_est": 12.56
+    },
+    {
+     "w": "മൂന്ന്",
+     "start_est": 12.56,
+     "end_est": 12.77
+    },
+    {
+     "w": "key",
+     "start_est": 12.77,
+     "end_est": 12.99
+    },
+    {
+     "w": "USPs-നെ",
+     "start_est": 12.99,
+     "end_est": 13.3
+    },
+    {
+     "w": "കുറിച്ച്",
+     "start_est": 13.3,
+     "end_est": 13.56
+    },
+    {
+     "w": "സംസാരിക്കാം.",
+     "start_est": 13.56,
+     "end_est": 13.87
+    },
+    {
+     "w": "The",
+     "start_est": 13.87,
+     "end_est": 14.08
+    },
+    {
+     "w": "first",
+     "start_est": 14.08,
+     "end_est": 14.39
+    },
+    {
+     "w": "one",
+     "start_est": 14.39,
+     "end_est": 14.6
+    },
+    {
+     "w": "is...",
+     "start_est": 14.6,
+     "end_est": 14.77
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "text": "We align these villa project to Gen Z, Gen Alpha, and Gen Beta generation.",
+   "flag": null,
+   "rec_v1": [
+    10,
+    16
+   ],
+   "take_in": "0035",
+   "take_out": "0035",
+   "src_in": 14.77,
+   "src_out": 21.4,
+   "words": [
+    {
+     "w": "We",
+     "start_est": 14.77,
+     "end_est": 15.06
+    },
+    {
+     "w": "align",
+     "start_est": 15.06,
+     "end_est": 15.61
+    },
+    {
+     "w": "these",
+     "start_est": 15.61,
+     "end_est": 16.15
+    },
+    {
+     "w": "villa",
+     "start_est": 16.15,
+     "end_est": 16.7
+    },
+    {
+     "w": "project",
+     "start_est": 16.7,
+     "end_est": 17.41
+    },
+    {
+     "w": "to",
+     "start_est": 17.41,
+     "end_est": 17.71
+    },
+    {
+     "w": "Gen",
+     "start_est": 17.71,
+     "end_est": 18.08
+    },
+    {
+     "w": "Z,",
+     "start_est": 18.08,
+     "end_est": 18.29
+    },
+    {
+     "w": "Gen",
+     "start_est": 18.29,
+     "end_est": 18.67
+    },
+    {
+     "w": "Alpha,",
+     "start_est": 18.67,
+     "end_est": 19.22
+    },
+    {
+     "w": "and",
+     "start_est": 19.22,
+     "end_est": 19.6
+    },
+    {
+     "w": "Gen",
+     "start_est": 19.6,
+     "end_est": 19.97
+    },
+    {
+     "w": "Beta",
+     "start_est": 19.97,
+     "end_est": 20.43
+    },
+    {
+     "w": "generation.",
+     "start_est": 20.43,
+     "end_est": 21.4
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "text": "So ഇത് എങ്ങനെയാണെന്ന് വെച്ച് കഴിഞ്ഞാൽ, നമ്മൾ 51 villas-ന്റെ കൂടെ 51 workspaces-ഉം കൂടി നമ്മൾ ഈ ഒരു generation-ന് align ആയിട്ട് നമ്മുടെ project-ൽ കൊടുക്കുന്നുണ്ട്.",
+   "flag": null,
+   "rec_v1": [
+    16,
+    26
+   ],
+   "take_in": "0035",
+   "take_out": "0035",
+   "src_in": 21.4,
+   "src_out": 31.1,
+   "override": true,
+   "words": [
+    {
+     "w": "So",
+     "start_est": 21.4,
+     "end_est": 21.66
+    },
+    {
+     "w": "ഇത്",
+     "start_est": 21.66,
+     "end_est": 21.92
+    },
+    {
+     "w": "എങ്ങനെയാണെന്ന്",
+     "start_est": 21.92,
+     "end_est": 22.64
+    },
+    {
+     "w": "വെച്ച്",
+     "start_est": 22.64,
+     "end_est": 22.97
+    },
+    {
+     "w": "കഴിഞ്ഞാൽ,",
+     "start_est": 22.97,
+     "end_est": 23.46
+    },
+    {
+     "w": "നമ്മൾ",
+     "start_est": 23.46,
+     "end_est": 23.87
+    },
+    {
+     "w": "51",
+     "start_est": 23.87,
+     "end_est": 24.13
+    },
+    {
+     "w": "villas-ന്റെ",
+     "start_est": 24.13,
+     "end_est": 24.85
+    },
+    {
+     "w": "കൂടെ",
+     "start_est": 24.85,
+     "end_est": 25.11
+    },
+    {
+     "w": "51",
+     "start_est": 25.11,
+     "end_est": 25.37
+    },
+    {
+     "w": "workspaces-ഉം",
+     "start_est": 25.37,
+     "end_est": 26.31
+    },
+    {
+     "w": "കൂടി",
+     "start_est": 26.31,
+     "end_est": 26.57
+    },
+    {
+     "w": "നമ്മൾ",
+     "start_est": 26.57,
+     "end_est": 26.98
+    },
+    {
+     "w": "ഈ",
+     "start_est": 26.98,
+     "end_est": 27.17
+    },
+    {
+     "w": "ഒരു",
+     "start_est": 27.17,
+     "end_est": 27.43
+    },
+    {
+     "w": "generation-ന്",
+     "start_est": 27.43,
+     "end_est": 28.37
+    },
+    {
+     "w": "align",
+     "start_est": 28.37,
+     "end_est": 28.85
+    },
+    {
+     "w": "ആയിട്ട്",
+     "start_est": 28.85,
+     "end_est": 29.26
+    },
+    {
+     "w": "നമ്മുടെ",
+     "start_est": 29.26,
+     "end_est": 29.68
+    },
+    {
+     "w": "project-ൽ",
+     "start_est": 29.68,
+     "end_est": 30.39
+    },
+    {
+     "w": "കൊടുക്കുന്നുണ്ട്.",
+     "start_est": 30.39,
+     "end_est": 31.1
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "text": "So ഇത് work-out... Work from nature office concept. എനിക്ക് അത് അങ്ങനത്തെ പ്രശ്നം ഒന്നുമില്ല. Work from nature office എന്ന് പറഞ്ഞ concept okay, okay.",
+   "flag": "retake / fumble",
+   "rec_v1": [
+    26,
+    32
+   ],
+   "take_in": "0035",
+   "take_out": "0035",
+   "src_in": 31.1,
+   "src_out": 43.47,
+   "override": true,
+   "words": [
+    {
+     "w": "So",
+     "start_est": 31.1,
+     "end_est": 31.42
+    },
+    {
+     "w": "ഇത്",
+     "start_est": 31.42,
+     "end_est": 31.74
+    },
+    {
+     "w": "work-out...",
+     "start_est": 31.74,
+     "end_est": 32.52
+    },
+    {
+     "w": "Work",
+     "start_est": 32.52,
+     "end_est": 33.02
+    },
+    {
+     "w": "from",
+     "start_est": 33.02,
+     "end_est": 33.53
+    },
+    {
+     "w": "nature",
+     "start_est": 33.53,
+     "end_est": 34.22
+    },
+    {
+     "w": "office",
+     "start_est": 34.22,
+     "end_est": 34.9
+    },
+    {
+     "w": "concept.",
+     "start_est": 34.9,
+     "end_est": 35.68
+    },
+    {
+     "w": "എനിക്ക്",
+     "start_est": 35.68,
+     "end_est": 36.19
+    },
+    {
+     "w": "അത്",
+     "start_est": 36.19,
+     "end_est": 36.51
+    },
+    {
+     "w": "അങ്ങനത്തെ",
+     "start_est": 36.51,
+     "end_est": 37.19
+    },
+    {
+     "w": "പ്രശ്നം",
+     "start_est": 37.19,
+     "end_est": 37.7
+    },
+    {
+     "w": "ഒന്നുമില്ല.",
+     "start_est": 37.7,
+     "end_est": 38.38
+    },
+    {
+     "w": "Work",
+     "start_est": 38.38,
+     "end_est": 38.89
+    },
+    {
+     "w": "from",
+     "start_est": 38.89,
+     "end_est": 39.39
+    },
+    {
+     "w": "nature",
+     "start_est": 39.39,
+     "end_est": 40.08
+    },
+    {
+     "w": "office",
+     "start_est": 40.08,
+     "end_est": 40.77
+    },
+    {
+     "w": "എന്ന്",
+     "start_est": 40.77,
+     "end_est": 41.18
+    },
+    {
+     "w": "പറഞ്ഞ",
+     "start_est": 41.18,
+     "end_est": 41.68
+    },
+    {
+     "w": "concept",
+     "start_est": 41.68,
+     "end_est": 42.46
+    },
+    {
+     "w": "okay,",
+     "start_est": 42.46,
+     "end_est": 42.97
+    },
+    {
+     "w": "okay.",
+     "start_est": 42.97,
+     "end_est": 43.47
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "text": "ഇത് Work from Nature Office എന്നുള്ള ഒരു concept-നെ base ചെയ്തിട്ടാണ്. കാരണം കാലഘട്ടം മാറി.",
+   "flag": null,
+   "rec_v1": [
+    32,
+    37
+   ],
+   "take_in": "0036",
+   "take_out": "0036",
+   "src_in": 1.16,
+   "src_out": 6.14,
+   "fixed_take_span": {
+    "0035": 0.03333333333333144,
+    "0036": 4.966666666666669
+   },
+   "words": [
+    {
+     "w": "ഇത്",
+     "start_est": 1.16,
+     "end_est": 1.39
+    },
+    {
+     "w": "Work",
+     "start_est": 1.39,
+     "end_est": 1.75
+    },
+    {
+     "w": "from",
+     "start_est": 1.75,
+     "end_est": 2.1
+    },
+    {
+     "w": "Nature",
+     "start_est": 2.1,
+     "end_est": 2.59
+    },
+    {
+     "w": "Office",
+     "start_est": 2.59,
+     "end_est": 3.08
+    },
+    {
+     "w": "എന്നുള്ള",
+     "start_est": 3.08,
+     "end_est": 3.5
+    },
+    {
+     "w": "ഒരു",
+     "start_est": 3.5,
+     "end_est": 3.73
+    },
+    {
+     "w": "concept-നെ",
+     "start_est": 3.73,
+     "end_est": 4.35
+    },
+    {
+     "w": "base",
+     "start_est": 4.35,
+     "end_est": 4.71
+    },
+    {
+     "w": "ചെയ്തിട്ടാണ്.",
+     "start_est": 4.71,
+     "end_est": 5.2
+    },
+    {
+     "w": "കാരണം",
+     "start_est": 5.2,
+     "end_est": 5.49
+    },
+    {
+     "w": "കാലഘട്ടം",
+     "start_est": 5.49,
+     "end_est": 5.91
+    },
+    {
+     "w": "മാറി.",
+     "start_est": 5.91,
+     "end_est": 6.14
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "text": "ഇനി ആളുകൾ office-ൽ ഒന്നും ചിലപ്പോൾ പോയെന്ന് വരില്ല. Because നമുക്കറിയാം jobs are obsolating and entrepreneurship, business എന്നൊക്കെ പറയുന്നത് ഒരു mandatory thing ആയിട്ട് വരുന്നതാണ്.",
+   "flag": null,
+   "rec_v1": [
+    37,
+    46
+   ],
+   "take_in": "0036",
+   "take_out": "0036",
+   "src_in": 6.14,
+   "src_out": 15.15,
+   "words": [
+    {
+     "w": "ഇനി",
+     "start_est": 6.14,
+     "end_est": 6.34
+    },
+    {
+     "w": "ആളുകൾ",
+     "start_est": 6.34,
+     "end_est": 6.66
+    },
+    {
+     "w": "office-ൽ",
+     "start_est": 6.66,
+     "end_est": 7.15
+    },
+    {
+     "w": "ഒന്നും",
+     "start_est": 7.15,
+     "end_est": 7.41
+    },
+    {
+     "w": "ചിലപ്പോൾ",
+     "start_est": 7.41,
+     "end_est": 7.79
+    },
+    {
+     "w": "പോയെന്ന്",
+     "start_est": 7.79,
+     "end_est": 8.1
+    },
+    {
+     "w": "വരില്ല.",
+     "start_est": 8.1,
+     "end_est": 8.42
+    },
+    {
+     "w": "Because",
+     "start_est": 8.42,
+     "end_est": 8.91
+    },
+    {
+     "w": "നമുക്കറിയാം",
+     "start_est": 8.91,
+     "end_est": 9.35
+    },
+    {
+     "w": "jobs",
+     "start_est": 9.35,
+     "end_est": 9.66
+    },
+    {
+     "w": "are",
+     "start_est": 9.66,
+     "end_est": 9.92
+    },
+    {
+     "w": "obsolating",
+     "start_est": 9.92,
+     "end_est": 10.59
+    },
+    {
+     "w": "and",
+     "start_est": 10.59,
+     "end_est": 10.85
+    },
+    {
+     "w": "entrepreneurship,",
+     "start_est": 10.85,
+     "end_est": 11.86
+    },
+    {
+     "w": "business",
+     "start_est": 11.86,
+     "end_est": 12.41
+    },
+    {
+     "w": "എന്നൊക്കെ",
+     "start_est": 12.41,
+     "end_est": 12.78
+    },
+    {
+     "w": "പറയുന്നത്",
+     "start_est": 12.78,
+     "end_est": 13.22
+    },
+    {
+     "w": "ഒരു",
+     "start_est": 13.22,
+     "end_est": 13.42
+    },
+    {
+     "w": "mandatory",
+     "start_est": 13.42,
+     "end_est": 14.02
+    },
+    {
+     "w": "thing",
+     "start_est": 14.02,
+     "end_est": 14.4
+    },
+    {
+     "w": "ആയിട്ട്",
+     "start_est": 14.4,
+     "end_est": 14.72
+    },
+    {
+     "w": "വരുന്നതാണ്.",
+     "start_est": 14.72,
+     "end_est": 15.15
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "text": "അപ്പോൾ എല്ലാവർക്കും ഇനി സ്വന്തമായിട്ട് ഒരു workspace-ഉം കാര്യങ്ങളും ഒക്കെ needed ആണ്. So അതാണ് നമ്മുടെ ഒരു USP.",
+   "flag": null,
+   "rec_v1": [
+    46,
+    52
+   ],
+   "take_in": "0036",
+   "take_out": "0036",
+   "src_in": 15.15,
+   "src_out": 20.94,
+   "fixed_take_span": {
+    "0036": 5.699999999999996,
+    "0037": 0.29999999999999716
+   },
+   "override": true,
+   "words": [
+    {
+     "w": "അപ്പോൾ",
+     "start_est": 15.15,
+     "end_est": 15.52
+    },
+    {
+     "w": "എല്ലാവർക്കും",
+     "start_est": 15.52,
+     "end_est": 16.09
+    },
+    {
+     "w": "ഇനി",
+     "start_est": 16.09,
+     "end_est": 16.32
+    },
+    {
+     "w": "സ്വന്തമായിട്ട്",
+     "start_est": 16.32,
+     "end_est": 16.96
+    },
+    {
+     "w": "ഒരു",
+     "start_est": 16.96,
+     "end_est": 17.19
+    },
+    {
+     "w": "workspace-ഉം",
+     "start_est": 17.19,
+     "end_est": 17.96
+    },
+    {
+     "w": "കാര്യങ്ങളും",
+     "start_est": 17.96,
+     "end_est": 18.46
+    },
+    {
+     "w": "ഒക്കെ",
+     "start_est": 18.46,
+     "end_est": 18.76
+    },
+    {
+     "w": "needed",
+     "start_est": 18.76,
+     "end_est": 19.27
+    },
+    {
+     "w": "ആണ്.",
+     "start_est": 19.27,
+     "end_est": 19.5
+    },
+    {
+     "w": "So",
+     "start_est": 19.5,
+     "end_est": 19.74
+    },
+    {
+     "w": "അതാണ്",
+     "start_est": 19.74,
+     "end_est": 20.04
+    },
+    {
+     "w": "നമ്മുടെ",
+     "start_est": 20.04,
+     "end_est": 20.4
+    },
+    {
+     "w": "ഒരു",
+     "start_est": 20.4,
+     "end_est": 20.64
+    },
+    {
+     "w": "USP.",
+     "start_est": 20.64,
+     "end_est": 20.94
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "text": "The second one is shared maid quarters.",
+   "flag": null,
+   "rec_v1": [
+    52,
+    54
+   ],
+   "take_in": "0037",
+   "take_out": "0037",
+   "src_in": 1.05,
+   "src_out": 3.93,
+   "words": [
+    {
+     "w": "The",
+     "start_est": 1.05,
+     "end_est": 1.35
+    },
+    {
+     "w": "second",
+     "start_est": 1.35,
+     "end_est": 1.86
+    },
+    {
+     "w": "one",
+     "start_est": 1.86,
+     "end_est": 2.17
+    },
+    {
+     "w": "is",
+     "start_est": 2.17,
+     "end_est": 2.41
+    },
+    {
+     "w": "shared",
+     "start_est": 2.41,
+     "end_est": 2.91
+    },
+    {
+     "w": "maid",
+     "start_est": 2.91,
+     "end_est": 3.29
+    },
+    {
+     "w": "quarters.",
+     "start_est": 3.29,
+     "end_est": 3.93
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "text": "നമ്മൾ ഈ ഒരു culture, മലപ്പുറം culture-ലും കാര്യങ്ങളും ഞങ്ങൾ അവിടെ പഠിച്ച സമയത്ത് ഞങ്ങൾക്ക് കിട്ടിയ ഒരു കാര്യമുണ്ട്.",
+   "flag": null,
+   "rec_v1": [
+    54,
+    60
+   ],
+   "take_in": "0037",
+   "take_out": "0037",
+   "src_in": 3.93,
+   "src_out": 9.95,
+   "words": [
+    {
+     "w": "നമ്മൾ",
+     "start_est": 3.93,
+     "end_est": 4.3
+    },
+    {
+     "w": "ഈ",
+     "start_est": 4.3,
+     "end_est": 4.47
+    },
+    {
+     "w": "ഒരു",
+     "start_est": 4.47,
+     "end_est": 4.7
+    },
+    {
+     "w": "culture,",
+     "start_est": 4.7,
+     "end_est": 5.28
+    },
+    {
+     "w": "മലപ്പുറം",
+     "start_est": 5.28,
+     "end_est": 5.71
+    },
+    {
+     "w": "culture-ലും",
+     "start_est": 5.71,
+     "end_est": 6.35
+    },
+    {
+     "w": "കാര്യങ്ങളും",
+     "start_est": 6.35,
+     "end_est": 6.86
+    },
+    {
+     "w": "ഞങ്ങൾ",
+     "start_est": 6.86,
+     "end_est": 7.23
+    },
+    {
+     "w": "അവിടെ",
+     "start_est": 7.23,
+     "end_est": 7.53
+    },
+    {
+     "w": "പഠിച്ച",
+     "start_est": 7.53,
+     "end_est": 7.9
+    },
+    {
+     "w": "സമയത്ത്",
+     "start_est": 7.9,
+     "end_est": 8.34
+    },
+    {
+     "w": "ഞങ്ങൾക്ക്",
+     "start_est": 8.34,
+     "end_est": 8.84
+    },
+    {
+     "w": "കിട്ടിയ",
+     "start_est": 8.84,
+     "end_est": 9.21
+    },
+    {
+     "w": "ഒരു",
+     "start_est": 9.21,
+     "end_est": 9.45
+    },
+    {
+     "w": "കാര്യമുണ്ട്.",
+     "start_est": 9.45,
+     "end_est": 9.95
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "text": "Like ഇന്നുള്ള villa projects-ലും അല്ലെങ്കിൽ ഇന്ന് ആൾക്കാർ live ചെയ്യുന്ന space-ൽ, the maid and the owners of house അവർ തമ്മിൽ ഒരു privacy issues വരുന്നുണ്ട്.",
+   "flag": null,
+   "rec_v1": [
+    60,
+    70
+   ],
+   "take_in": "0037",
+   "take_out": "0037",
+   "src_in": 9.95,
+   "src_out": 20.2,
+   "words": [
+    {
+     "w": "Like",
+     "start_est": 9.95,
+     "end_est": 10.35
+    },
+    {
+     "w": "ഇന്നുള്ള",
+     "start_est": 10.35,
+     "end_est": 10.83
+    },
+    {
+     "w": "villa",
+     "start_est": 10.83,
+     "end_est": 11.3
+    },
+    {
+     "w": "projects-ലും",
+     "start_est": 11.3,
+     "end_est": 12.07
+    },
+    {
+     "w": "അല്ലെങ്കിൽ",
+     "start_est": 12.07,
+     "end_est": 12.61
+    },
+    {
+     "w": "ഇന്ന്",
+     "start_est": 12.61,
+     "end_est": 12.94
+    },
+    {
+     "w": "ആൾക്കാർ",
+     "start_est": 12.94,
+     "end_est": 13.42
+    },
+    {
+     "w": "live",
+     "start_est": 13.42,
+     "end_est": 13.82
+    },
+    {
+     "w": "ചെയ്യുന്ന",
+     "start_est": 13.82,
+     "end_est": 14.29
+    },
+    {
+     "w": "space-ൽ,",
+     "start_est": 14.29,
+     "end_est": 14.84
+    },
+    {
+     "w": "the",
+     "start_est": 14.84,
+     "end_est": 15.17
+    },
+    {
+     "w": "maid",
+     "start_est": 15.17,
+     "end_est": 15.57
+    },
+    {
+     "w": "and",
+     "start_est": 15.57,
+     "end_est": 15.9
+    },
+    {
+     "w": "the",
+     "start_est": 15.9,
+     "end_est": 16.22
+    },
+    {
+     "w": "owners",
+     "start_est": 16.22,
+     "end_est": 16.77
+    },
+    {
+     "w": "of",
+     "start_est": 16.77,
+     "end_est": 17.03
+    },
+    {
+     "w": "house",
+     "start_est": 17.03,
+     "end_est": 17.5
+    },
+    {
+     "w": "അവർ",
+     "start_est": 17.5,
+     "end_est": 17.83
+    },
+    {
+     "w": "തമ്മിൽ",
+     "start_est": 17.83,
+     "end_est": 18.23
+    },
+    {
+     "w": "ഒരു",
+     "start_est": 18.23,
+     "end_est": 18.49
+    },
+    {
+     "w": "privacy",
+     "start_est": 18.49,
+     "end_est": 19.11
+    },
+    {
+     "w": "issues",
+     "start_est": 19.11,
+     "end_est": 19.65
+    },
+    {
+     "w": "വരുന്നുണ്ട്.",
+     "start_est": 19.65,
+     "end_est": 20.2
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "text": "Because owners-ന്റെ side-ൽ ആണെങ്കിൽ അവർക്കും ആ issue trouble വരുന്നുണ്ട്, maids-നും ഇതേ trouble face ചെയ്യുന്നുണ്ട്.",
+   "flag": null,
+   "rec_v1": [
+    70,
+    76
+   ],
+   "take_in": "0037",
+   "take_out": "0037",
+   "src_in": 20.2,
+   "src_out": 25.51,
+   "words": [
+    {
+     "w": "Because",
+     "start_est": 20.2,
+     "end_est": 20.67
+    },
+    {
+     "w": "owners-ന്റെ",
+     "start_est": 20.67,
+     "end_est": 21.2
+    },
+    {
+     "w": "side-ൽ",
+     "start_est": 21.2,
+     "end_est": 21.56
+    },
+    {
+     "w": "ആണെങ്കിൽ",
+     "start_est": 21.56,
+     "end_est": 21.91
+    },
+    {
+     "w": "അവർക്കും",
+     "start_est": 21.91,
+     "end_est": 22.27
+    },
+    {
+     "w": "ആ",
+     "start_est": 22.27,
+     "end_est": 22.41
+    },
+    {
+     "w": "issue",
+     "start_est": 22.41,
+     "end_est": 22.77
+    },
+    {
+     "w": "trouble",
+     "start_est": 22.77,
+     "end_est": 23.24
+    },
+    {
+     "w": "വരുന്നുണ്ട്,",
+     "start_est": 23.24,
+     "end_est": 23.66
+    },
+    {
+     "w": "maids-നും",
+     "start_est": 23.66,
+     "end_est": 24.07
+    },
+    {
+     "w": "ഇതേ",
+     "start_est": 24.07,
+     "end_est": 24.27
+    },
+    {
+     "w": "trouble",
+     "start_est": 24.27,
+     "end_est": 24.74
+    },
+    {
+     "w": "face",
+     "start_est": 24.74,
+     "end_est": 25.04
+    },
+    {
+     "w": "ചെയ്യുന്നുണ്ട്.",
+     "start_est": 25.04,
+     "end_est": 25.51
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "text": "So രണ്ടാൾക്കും ഇവരുടെ കൂടെ ഉണ്ടാവുന്ന time കഴിഞ്ഞാൽ അവർക്ക് അവരുടേതായ private space എടുക്കാൻ വേണ്ടിയിട്ട് നമ്മൾ നമ്മുടെ clubhouse-ന്റെ ഉള്ളിൽ shared maid quarters കൊണ്ടുവരുന്നുണ്ട്.",
+   "flag": null,
+   "rec_v1": [
+    76,
+    86
+   ],
+   "take_in": "0037",
+   "take_out": "0037",
+   "src_in": 25.51,
+   "src_out": 35.86,
+   "words": [
+    {
+     "w": "So",
+     "start_est": 25.51,
+     "end_est": 25.76
+    },
+    {
+     "w": "രണ്ടാൾക്കും",
+     "start_est": 25.76,
+     "end_est": 26.3
+    },
+    {
+     "w": "ഇവരുടെ",
+     "start_est": 26.3,
+     "end_est": 26.69
+    },
+    {
+     "w": "കൂടെ",
+     "start_est": 26.69,
+     "end_est": 26.94
+    },
+    {
+     "w": "ഉണ്ടാവുന്ന",
+     "start_est": 26.94,
+     "end_est": 27.48
+    },
+    {
+     "w": "time",
+     "start_est": 27.48,
+     "end_est": 27.87
+    },
+    {
+     "w": "കഴിഞ്ഞാൽ",
+     "start_est": 27.87,
+     "end_est": 28.34
+    },
+    {
+     "w": "അവർക്ക്",
+     "start_est": 28.34,
+     "end_est": 28.8
+    },
+    {
+     "w": "അവരുടേതായ",
+     "start_est": 28.8,
+     "end_est": 29.34
+    },
+    {
+     "w": "private",
+     "start_est": 29.34,
+     "end_est": 29.95
+    },
+    {
+     "w": "space",
+     "start_est": 29.95,
+     "end_est": 30.42
+    },
+    {
+     "w": "എടുക്കാൻ",
+     "start_est": 30.42,
+     "end_est": 30.88
+    },
+    {
+     "w": "വേണ്ടിയിട്ട്",
+     "start_est": 30.88,
+     "end_est": 31.42
+    },
+    {
+     "w": "നമ്മൾ",
+     "start_est": 31.42,
+     "end_est": 31.81
+    },
+    {
+     "w": "നമ്മുടെ",
+     "start_est": 31.81,
+     "end_est": 32.21
+    },
+    {
+     "w": "clubhouse-ന്റെ",
+     "start_est": 32.21,
+     "end_est": 33.1
+    },
+    {
+     "w": "ഉള്ളിൽ",
+     "start_est": 33.1,
+     "end_est": 33.5
+    },
+    {
+     "w": "shared",
+     "start_est": 33.5,
+     "end_est": 34.03
+    },
+    {
+     "w": "maid",
+     "start_est": 34.03,
+     "end_est": 34.43
+    },
+    {
+     "w": "quarters",
+     "start_est": 34.43,
+     "end_est": 35.11
+    },
+    {
+     "w": "കൊണ്ടുവരുന്നുണ്ട്.",
+     "start_est": 35.11,
+     "end_est": 35.86
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "text": "So ഒരു രണ്ടോ മൂന്നോ വില്ലകൾക്ക് ഒരു maid എന്ന രീതിയിൽ നമുക്ക് എന്ത് ചെയ്യാം shared maid quarters-ലൂടെ ഇവർക്ക് കൊണ്ടുവരാം.",
+   "flag": null,
+   "rec_v1": [
+    86,
+    93
+   ],
+   "take_in": "0037",
+   "take_out": "0037",
+   "src_in": 35.86,
+   "src_out": 42.9,
+   "override": true,
+   "words": [
+    {
+     "w": "So",
+     "start_est": 35.86,
+     "end_est": 36.12
+    },
+    {
+     "w": "ഒരു",
+     "start_est": 36.12,
+     "end_est": 36.38
+    },
+    {
+     "w": "രണ്ടോ",
+     "start_est": 36.38,
+     "end_est": 36.71
+    },
+    {
+     "w": "മൂന്നോ",
+     "start_est": 36.71,
+     "end_est": 37.04
+    },
+    {
+     "w": "വില്ലകൾക്ക്",
+     "start_est": 37.04,
+     "end_est": 37.67
+    },
+    {
+     "w": "ഒരു",
+     "start_est": 37.67,
+     "end_est": 37.92
+    },
+    {
+     "w": "maid",
+     "start_est": 37.92,
+     "end_est": 38.33
+    },
+    {
+     "w": "എന്ന",
+     "start_est": 38.33,
+     "end_est": 38.66
+    },
+    {
+     "w": "രീതിയിൽ",
+     "start_est": 38.66,
+     "end_est": 39.07
+    },
+    {
+     "w": "നമുക്ക്",
+     "start_est": 39.07,
+     "end_est": 39.47
+    },
+    {
+     "w": "എന്ത്",
+     "start_est": 39.47,
+     "end_est": 39.8
+    },
+    {
+     "w": "ചെയ്യാം",
+     "start_est": 39.8,
+     "end_est": 40.14
+    },
+    {
+     "w": "shared",
+     "start_est": 40.14,
+     "end_est": 40.69
+    },
+    {
+     "w": "maid",
+     "start_est": 40.69,
+     "end_est": 41.09
+    },
+    {
+     "w": "quarters-ലൂടെ",
+     "start_est": 41.09,
+     "end_est": 41.94
+    },
+    {
+     "w": "ഇവർക്ക്",
+     "start_est": 41.94,
+     "end_est": 42.42
+    },
+    {
+     "w": "കൊണ്ടുവരാം.",
+     "start_est": 42.42,
+     "end_est": 42.9
+    }
+   ]
+  },
+  {
+   "n": 15,
+   "text": "രണ്ടോ മൂന്നോ വില്ലകൾക്ക് ഒരു maid എന്ന രീതിയിൽ എന്ത് ചെയ്യാം, ഇവർക്ക് maids-നെ share ചെയ്യാൻ പറ്റുന്ന ഒരു രീതി. Okay.",
+   "flag": "retake",
+   "rec_v1": [
+    93,
+    99
+   ],
+   "take_in": "0038",
+   "take_out": "0038",
+   "src_in": 2.91,
+   "src_out": 8.56,
+   "fixed_take_span": {
+    "0037": 0.4000000000000057,
+    "0038": 5.566666666666663,
+    "0043": 0.03333333333333144
+   },
+   "override": true,
+   "words": [
+    {
+     "w": "രണ്ടോ",
+     "start_est": 2.91,
+     "end_est": 3.19
+    },
+    {
+     "w": "മൂന്നോ",
+     "start_est": 3.19,
+     "end_est": 3.47
+    },
+    {
+     "w": "വില്ലകൾക്ക്",
+     "start_est": 3.47,
+     "end_est": 4.0
+    },
+    {
+     "w": "ഒരു",
+     "start_est": 4.0,
+     "end_est": 4.22
+    },
+    {
+     "w": "maid",
+     "start_est": 4.22,
+     "end_est": 4.56
+    },
+    {
+     "w": "എന്ന",
+     "start_est": 4.56,
+     "end_est": 4.85
+    },
+    {
+     "w": "രീതിയിൽ",
+     "start_est": 4.85,
+     "end_est": 5.19
+    },
+    {
+     "w": "എന്ത്",
+     "start_est": 5.19,
+     "end_est": 5.47
+    },
+    {
+     "w": "ചെയ്യാം,",
+     "start_est": 5.47,
+     "end_est": 5.75
+    },
+    {
+     "w": "ഇവർക്ക്",
+     "start_est": 5.75,
+     "end_est": 6.16
+    },
+    {
+     "w": "maids-നെ",
+     "start_est": 6.16,
+     "end_est": 6.62
+    },
+    {
+     "w": "share",
+     "start_est": 6.62,
+     "end_est": 7.03
+    },
+    {
+     "w": "ചെയ്യാൻ",
+     "start_est": 7.03,
+     "end_est": 7.37
+    },
+    {
+     "w": "പറ്റുന്ന",
+     "start_est": 7.37,
+     "end_est": 7.78
+    },
+    {
+     "w": "ഒരു",
+     "start_est": 7.78,
+     "end_est": 8.0
+    },
+    {
+     "w": "രീതി.",
+     "start_est": 8.0,
+     "end_est": 8.22
+    },
+    {
+     "w": "Okay.",
+     "start_est": 8.22,
+     "end_est": 8.56
+    }
+   ]
+  },
+  {
+   "n": 16,
+   "text": "And the third one is Internal Cloud Kitchen.",
+   "flag": null,
+   "rec_v1": [
+    99,
+    102
+   ],
+   "take_in": "0043",
+   "take_out": "0043",
+   "src_in": 0.22,
+   "src_out": 3.92,
+   "words": [
+    {
+     "w": "And",
+     "start_est": 0.22,
+     "end_est": 0.57
+    },
+    {
+     "w": "the",
+     "start_est": 0.57,
+     "end_est": 0.91
+    },
+    {
+     "w": "third",
+     "start_est": 0.91,
+     "end_est": 1.41
+    },
+    {
+     "w": "one",
+     "start_est": 1.41,
+     "end_est": 1.76
+    },
+    {
+     "w": "is",
+     "start_est": 1.76,
+     "end_est": 2.03
+    },
+    {
+     "w": "Internal",
+     "start_est": 2.03,
+     "end_est": 2.76
+    },
+    {
+     "w": "Cloud",
+     "start_est": 2.76,
+     "end_est": 3.26
+    },
+    {
+     "w": "Kitchen.",
+     "start_est": 3.26,
+     "end_est": 3.92
+    }
+   ]
+  },
+  {
+   "n": 17,
+   "text": "ഇതേപോലെ തന്നെ വേറെ നമ്മുടെ മലപ്പുറം culture-ൽ ആയാലും അല്ലെങ്കിൽ നമ്മളീ മലബാർ culture-ൽ face ചെയ്യുന്ന ഒരു trouble ആണ്, എല്ലാ ഉമ്മമാർക്കായാലും ഭാര്യമാർക്കായാലും ഒക്കെ morning hectic ആണ്.",
+   "flag": null,
+   "rec_v1": [
+    102,
+    112
+   ],
+   "take_in": "0043",
+   "take_out": "0043",
+   "src_in": 3.92,
+   "src_out": 14.16,
+   "words": [
+    {
+     "w": "ഇതേപോലെ",
+     "start_est": 3.92,
+     "end_est": 4.31
+    },
+    {
+     "w": "തന്നെ",
+     "start_est": 4.31,
+     "end_est": 4.63
+    },
+    {
+     "w": "വേറെ",
+     "start_est": 4.63,
+     "end_est": 4.88
+    },
+    {
+     "w": "നമ്മുടെ",
+     "start_est": 4.88,
+     "end_est": 5.27
+    },
+    {
+     "w": "മലപ്പുറം",
+     "start_est": 5.27,
+     "end_est": 5.73
+    },
+    {
+     "w": "culture-ൽ",
+     "start_est": 5.73,
+     "end_est": 6.4
+    },
+    {
+     "w": "ആയാലും",
+     "start_est": 6.4,
+     "end_est": 6.72
+    },
+    {
+     "w": "അല്ലെങ്കിൽ",
+     "start_est": 6.72,
+     "end_est": 7.25
+    },
+    {
+     "w": "നമ്മളീ",
+     "start_est": 7.25,
+     "end_est": 7.64
+    },
+    {
+     "w": "മലബാർ",
+     "start_est": 7.64,
+     "end_est": 8.03
+    },
+    {
+     "w": "culture-ൽ",
+     "start_est": 8.03,
+     "end_est": 8.7
+    },
+    {
+     "w": "face",
+     "start_est": 8.7,
+     "end_est": 9.09
+    },
+    {
+     "w": "ചെയ്യുന്ന",
+     "start_est": 9.09,
+     "end_est": 9.55
+    },
+    {
+     "w": "ഒരു",
+     "start_est": 9.55,
+     "end_est": 9.8
+    },
+    {
+     "w": "trouble",
+     "start_est": 9.8,
+     "end_est": 10.4
+    },
+    {
+     "w": "ആണ്,",
+     "start_est": 10.4,
+     "end_est": 10.65
+    },
+    {
+     "w": "എല്ലാ",
+     "start_est": 10.65,
+     "end_est": 10.97
+    },
+    {
+     "w": "ഉമ്മമാർക്കായാലും",
+     "start_est": 10.97,
+     "end_est": 11.72
+    },
+    {
+     "w": "ഭാര്യമാർക്കായാലും",
+     "start_est": 11.72,
+     "end_est": 12.46
+    },
+    {
+     "w": "ഒക്കെ",
+     "start_est": 12.46,
+     "end_est": 12.78
+    },
+    {
+     "w": "morning",
+     "start_est": 12.78,
+     "end_est": 13.38
+    },
+    {
+     "w": "hectic",
+     "start_est": 13.38,
+     "end_est": 13.91
+    },
+    {
+     "w": "ആണ്.",
+     "start_est": 13.91,
+     "end_est": 14.16
+    }
+   ]
+  },
+  {
+   "n": 18,
+   "text": "They can't be productive like through their morning routine activities.",
+   "flag": null,
+   "rec_v1": [
+    112,
+    117
+   ],
+   "take_in": "0043",
+   "take_out": "0043",
+   "src_in": 14.16,
+   "src_out": 19.08,
+   "words": [
+    {
+     "w": "They",
+     "start_est": 14.16,
+     "end_est": 14.52
+    },
+    {
+     "w": "can't",
+     "start_est": 14.52,
+     "end_est": 14.88
+    },
+    {
+     "w": "be",
+     "start_est": 14.88,
+     "end_est": 15.11
+    },
+    {
+     "w": "productive",
+     "start_est": 15.11,
+     "end_est": 15.87
+    },
+    {
+     "w": "like",
+     "start_est": 15.87,
+     "end_est": 16.23
+    },
+    {
+     "w": "through",
+     "start_est": 16.23,
+     "end_est": 16.78
+    },
+    {
+     "w": "their",
+     "start_est": 16.78,
+     "end_est": 17.21
+    },
+    {
+     "w": "morning",
+     "start_est": 17.21,
+     "end_est": 17.77
+    },
+    {
+     "w": "routine",
+     "start_est": 17.77,
+     "end_est": 18.33
+    },
+    {
+     "w": "activities.",
+     "start_est": 18.33,
+     "end_est": 19.08
+    }
+   ]
+  },
+  {
+   "n": 19,
+   "text": "അപ്പൊ അതിനെ solve ചെയ്യുക എന്നുള്ള രീതിയിലേക്ക് നമുക്ക് എല്ലാവർക്കും വീട്ടിലേക്ക് രാവിലെ specifically food എത്തിച്ചു കൊടുക്കുന്ന ഒരു model.",
+   "flag": null,
+   "rec_v1": [
+    117,
+    124
+   ],
+   "take_in": "0043",
+   "take_out": "0043",
+   "src_in": 19.08,
+   "src_out": 26.15,
+   "words": [
+    {
+     "w": "അപ്പൊ",
+     "start_est": 19.08,
+     "end_est": 19.39
+    },
+    {
+     "w": "അതിനെ",
+     "start_est": 19.39,
+     "end_est": 19.69
+    },
+    {
+     "w": "solve",
+     "start_est": 19.69,
+     "end_est": 20.13
+    },
+    {
+     "w": "ചെയ്യുക",
+     "start_est": 20.13,
+     "end_est": 20.51
+    },
+    {
+     "w": "എന്നുള്ള",
+     "start_est": 20.51,
+     "end_est": 20.95
+    },
+    {
+     "w": "രീതിയിലേക്ക്",
+     "start_est": 20.95,
+     "end_est": 21.46
+    },
+    {
+     "w": "നമുക്ക്",
+     "start_est": 21.46,
+     "end_est": 21.83
+    },
+    {
+     "w": "എല്ലാവർക്കും",
+     "start_est": 21.83,
+     "end_est": 22.41
+    },
+    {
+     "w": "വീട്ടിലേക്ക്",
+     "start_est": 22.41,
+     "end_est": 22.92
+    },
+    {
+     "w": "രാവിലെ",
+     "start_est": 22.92,
+     "end_est": 23.23
+    },
+    {
+     "w": "specifically",
+     "start_est": 23.23,
+     "end_est": 24.14
+    },
+    {
+     "w": "food",
+     "start_est": 24.14,
+     "end_est": 24.52
+    },
+    {
+     "w": "എത്തിച്ചു",
+     "start_est": 24.52,
+     "end_est": 24.96
+    },
+    {
+     "w": "കൊടുക്കുന്ന",
+     "start_est": 24.96,
+     "end_est": 25.47
+    },
+    {
+     "w": "ഒരു",
+     "start_est": 25.47,
+     "end_est": 25.71
+    },
+    {
+     "w": "model.",
+     "start_est": 25.71,
+     "end_est": 26.15
+    }
+   ]
+  },
+  {
+   "n": 20,
+   "text": "നമ്മൾ association തന്നെ run ചെയ്യുന്ന... എന്ന് വെച്ചാൽ like ഈ maids ഒക്കെ collaborate ചെയ്തുകൊണ്ടുള്ള ഒരു cloud kitchen. അതിലൂടെ അവർക്ക് രാവിലെ food കിട്ടുന്ന ഒരു method.",
+   "flag": null,
+   "rec_v1": [
+    124,
+    133
+   ],
+   "take_in": "0043",
+   "take_out": "0043",
+   "src_in": 26.15,
+   "src_out": 34.74,
+   "words": [
+    {
+     "w": "നമ്മൾ",
+     "start_est": 26.15,
+     "end_est": 26.48
+    },
+    {
+     "w": "association",
+     "start_est": 26.48,
+     "end_est": 27.24
+    },
+    {
+     "w": "തന്നെ",
+     "start_est": 27.24,
+     "end_est": 27.51
+    },
+    {
+     "w": "run",
+     "start_est": 27.51,
+     "end_est": 27.78
+    },
+    {
+     "w": "ചെയ്യുന്ന...",
+     "start_est": 27.78,
+     "end_est": 28.17
+    },
+    {
+     "w": "എന്ന്",
+     "start_est": 28.17,
+     "end_est": 28.44
+    },
+    {
+     "w": "വെച്ചാൽ",
+     "start_est": 28.44,
+     "end_est": 28.77
+    },
+    {
+     "w": "like",
+     "start_est": 28.77,
+     "end_est": 29.1
+    },
+    {
+     "w": "ഈ",
+     "start_est": 29.1,
+     "end_est": 29.25
+    },
+    {
+     "w": "maids",
+     "start_est": 29.25,
+     "end_est": 29.65
+    },
+    {
+     "w": "ഒക്കെ",
+     "start_est": 29.65,
+     "end_est": 29.92
+    },
+    {
+     "w": "collaborate",
+     "start_est": 29.92,
+     "end_est": 30.67
+    },
+    {
+     "w": "ചെയ്തുകൊണ്ടുള്ള",
+     "start_est": 30.67,
+     "end_est": 31.24
+    },
+    {
+     "w": "ഒരു",
+     "start_est": 31.24,
+     "end_est": 31.45
+    },
+    {
+     "w": "cloud",
+     "start_est": 31.45,
+     "end_est": 31.85
+    },
+    {
+     "w": "kitchen.",
+     "start_est": 31.85,
+     "end_est": 32.36
+    },
+    {
+     "w": "അതിലൂടെ",
+     "start_est": 32.36,
+     "end_est": 32.69
+    },
+    {
+     "w": "അവർക്ക്",
+     "start_est": 32.69,
+     "end_est": 33.08
+    },
+    {
+     "w": "രാവിലെ",
+     "start_est": 33.08,
+     "end_est": 33.35
+    },
+    {
+     "w": "food",
+     "start_est": 33.35,
+     "end_est": 33.69
+    },
+    {
+     "w": "കിട്ടുന്ന",
+     "start_est": 33.69,
+     "end_est": 34.08
+    },
+    {
+     "w": "ഒരു",
+     "start_est": 34.08,
+     "end_est": 34.29
+    },
+    {
+     "w": "method.",
+     "start_est": 34.29,
+     "end_est": 34.74
+    }
+   ]
+  },
+  {
+   "n": 21,
+   "text": "ഇത് അവർക്ക് ഉച്ചക്കായാലും രാത്രിക്കായാലും use ചെയ്യാം, but still morning specifically ഇവർക്ക് use ചെയ്യാൻ പറ്റുന്ന ഒരു model.",
+   "flag": null,
+   "rec_v1": [
+    133,
+    140
+   ],
+   "take_in": "0043",
+   "take_out": "0043",
+   "src_in": 34.74,
+   "src_out": 41.47,
+   "words": [
+    {
+     "w": "ഇത്",
+     "start_est": 34.74,
+     "end_est": 34.97
+    },
+    {
+     "w": "അവർക്ക്",
+     "start_est": 34.97,
+     "end_est": 35.4
+    },
+    {
+     "w": "ഉച്ചക്കായാലും",
+     "start_est": 35.4,
+     "end_est": 35.96
+    },
+    {
+     "w": "രാത്രിക്കായാലും",
+     "start_est": 35.96,
+     "end_est": 36.52
+    },
+    {
+     "w": "use",
+     "start_est": 36.52,
+     "end_est": 36.82
+    },
+    {
+     "w": "ചെയ്യാം,",
+     "start_est": 36.82,
+     "end_est": 37.12
+    },
+    {
+     "w": "but",
+     "start_est": 37.12,
+     "end_est": 37.41
+    },
+    {
+     "w": "still",
+     "start_est": 37.41,
+     "end_est": 37.84
+    },
+    {
+     "w": "morning",
+     "start_est": 37.84,
+     "end_est": 38.4
+    },
+    {
+     "w": "specifically",
+     "start_est": 38.4,
+     "end_est": 39.29
+    },
+    {
+     "w": "ഇവർക്ക്",
+     "start_est": 39.29,
+     "end_est": 39.72
+    },
+    {
+     "w": "use",
+     "start_est": 39.72,
+     "end_est": 40.02
+    },
+    {
+     "w": "ചെയ്യാൻ",
+     "start_est": 40.02,
+     "end_est": 40.38
+    },
+    {
+     "w": "പറ്റുന്ന",
+     "start_est": 40.38,
+     "end_est": 40.81
+    },
+    {
+     "w": "ഒരു",
+     "start_est": 40.81,
+     "end_est": 41.04
+    },
+    {
+     "w": "model.",
+     "start_est": 41.04,
+     "end_est": 41.47
+    }
+   ]
+  },
+  {
+   "n": 22,
+   "text": "So we are bringing cloud kitchen inside our villa project.",
+   "flag": null,
+   "rec_v1": [
+    140,
+    143.5
+   ],
+   "take_in": "0043",
+   "take_out": "0043",
+   "src_in": 41.47,
+   "src_out": 45.28,
+   "words": [
+    {
+     "w": "So",
+     "start_est": 41.47,
+     "end_est": 41.68
+    },
+    {
+     "w": "we",
+     "start_est": 41.68,
+     "end_est": 41.89
+    },
+    {
+     "w": "are",
+     "start_est": 41.89,
+     "end_est": 42.17
+    },
+    {
+     "w": "bringing",
+     "start_est": 42.17,
+     "end_est": 42.74
+    },
+    {
+     "w": "cloud",
+     "start_est": 42.74,
+     "end_est": 43.13
+    },
+    {
+     "w": "kitchen",
+     "start_est": 43.13,
+     "end_est": 43.65
+    },
+    {
+     "w": "inside",
+     "start_est": 43.65,
+     "end_est": 44.1
+    },
+    {
+     "w": "our",
+     "start_est": 44.1,
+     "end_est": 44.37
+    },
+    {
+     "w": "villa",
+     "start_est": 44.37,
+     "end_est": 44.77
+    },
+    {
+     "w": "project.",
+     "start_est": 44.77,
+     "end_est": 45.28
+    }
+   ]
+  }
+ ]
+}
