@@ -1,77 +1,80 @@
 import React from 'react';
 import { useCurrentFrame, interpolate, Easing } from 'remotion';
-import { G, FONT, FPS, isML, TEXT_SHADOW } from './theme';
+import { G, FONT, FPS, isML, SHADOW } from './theme';
+import { Marker } from './TextFx';
 import data from './data/beats.json';
 
 type Word = { w: string; t0: number; t1: number; style: 'pri' | 'em' | 'script'; line: number };
 type Beat = { line: number; t0: number; t1: number; words: Word[] };
 const BEATS = data.beats as Beat[];
+const MARK = /^(51|USP\.?|morning|cloud)$/i;
+const expo = Easing.bezier(0.16, 1, 0.3, 1);
+const back = Easing.bezier(0.34, 1.56, 0.64, 1);
+const C = { extrapolateLeft: 'clamp' as const, extrapolateRight: 'clamp' as const };
 
-// words that get a hand-drawn marker ellipse (reference: red marker circles), here in Green Apple
-const MARK = /^(51|USP\.|privacy|morning|cloud)$/i;
-const backOut = Easing.bezier(0.34, 1.56, 0.64, 1);
-
-/** Word-synced kinetic captions in the reference's grammar: 1–3 words per beat, words pop in as spoken
- *  (overshoot scale), mixed typefaces, alternating stacked/inline layouts, occasional vertical emphasis words,
- *  marker ellipses. `hidden` = time windows where a full graphic replaces captions. */
-export const Captions: React.FC<{ hidden: [number, number][] }> = ({ hidden }) => {
+/** Speech-synced kinetic captions in the reference's grammar (analysis/08 §A), Blue Zone typography:
+ *  primary = Montserrat 700 ivory, masked rise per word (T1/T2 timing: 5 f);
+ *  emphasis = Cormorant Garamond 700 pistachio, letters fly in with motion blur, 1 f stagger (T9) - or a vertical
+ *  baseline slide (T4) every few beats; accent = Cormorant italic champagne, typewriter (T2);
+ *  Malayalam = Manjari 700 (emphasis: Noto Serif Malayalam) animated per word.
+ *  Beat-to-beat continuity: the outgoing beat rises out through its mask while the next rises in (text-to-text). */
+export const Captions: React.FC<{ hidden: number[][] }> = ({ hidden }) => {
   const f = useCurrentFrame(); const t = f / FPS;
   if (hidden.some(([a, b]) => t >= a && t < b)) return null;
-  const idx = BEATS.findIndex((b) => t >= b.t0 - 0.03 && t < b.t1);
+  const idx = BEATS.findIndex((b, i) => t >= b.t0 - 0.03 && t < (BEATS[i + 1] ? Math.min(b.t1, BEATS[i + 1].t0) + 0.14 : b.t1));
   if (idx < 0) return null;
-  const beat = BEATS[idx];
-  const outP = interpolate(t, [beat.t1 - 0.12, beat.t1], [1, 0], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
+  const beat = BEATS[idx]; const next = BEATS[idx + 1];
+  const exitAt = next && next.t0 < beat.t1 + 0.01 ? next.t0 : beat.t1 - 0.14;
+  const xo = interpolate(t, [exitAt, exitAt + 0.14], [0, 1], C);
   const single = beat.words.length === 1;
-  const vertical = single && beat.words[0].style === 'em' && !isML(beat.words[0].w) && beat.words[0].w.length <= 12 && idx % 4 === 1;
-  const layout = vertical ? 'vertical' : ['left', 'center', 'right', 'center'][idx % 4];
-  const stacked = !vertical && beat.words.length > 1 && beat.words.map((w) => w.w).join(' ').length > 9;
-  const y = 1160 + ((idx * 37) % 3) * 40;
+  const vertical = single && beat.words[0].style === 'em' && !isML(beat.words[0].w) && beat.words[0].w.length <= 11 && idx % 5 === 2;
+  const align = ['flex-start', 'center', 'flex-end', 'center'][idx % 4] as 'flex-start' | 'center' | 'flex-end';
+  const stacked = !vertical && beat.words.length > 1 && beat.words.map((w) => w.w).join(' ').length > 11;
+  const y = 1150 + (idx % 3) * 36;
 
   const wordEl = (w: Word, k: number) => {
-    const ap = interpolate(t, [w.t0 - 0.02, w.t0 + 0.2], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: backOut });
-    const op = interpolate(t, [w.t0 - 0.03, w.t0 + 0.05], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
+    const lf = (t - w.t0) * FPS + 1;
     const ml = isML(w.w);
-    const style: React.CSSProperties =
-      w.style === 'em'
-        ? { fontFamily: ml ? FONT.ml : FONT.em, fontWeight: ml ? 900 : 400, fontSize: ml ? 74 : 124, color: G.apple, letterSpacing: ml ? 0 : 1, textTransform: ml ? 'none' : 'uppercase', WebkitTextStroke: ml ? undefined : `2px ${G.holly}`, lineHeight: ml ? 1.25 : 0.92 }
-        : w.style === 'script'
-          ? { fontFamily: FONT.script, fontSize: 112, color: G.pistachio, lineHeight: 0.9 }
-          : { fontFamily: ml ? FONT.ml : FONT.pri, fontWeight: 800, fontSize: ml ? 58 : 70, color: G.pistachio, lineHeight: 1.18 };
-    const rot = ((k + idx) % 3 - 1) * 2.2;
+    const em = w.style === 'em', sc = w.style === 'script';
+    const style: React.CSSProperties = em
+      ? { fontFamily: ml ? FONT.mlSerif : FONT.serif, fontWeight: 700, fontSize: ml ? 70 : 118, color: G.pistachio, lineHeight: ml ? 1.3 : 0.95, textTransform: ml ? 'none' : 'uppercase' }
+      : sc ? { fontFamily: FONT.serif, fontStyle: 'italic', fontWeight: 600, fontSize: 104, color: G.gold, lineHeight: 0.95 }
+        : { fontFamily: ml ? FONT.mlSans : FONT.sans, fontWeight: 700, fontSize: ml ? 64 : 60, color: G.ivory, lineHeight: 1.25 };
+    let body: React.ReactNode;
+    if (em && !ml) {         // letters fly in with directional blur (T9)
+      body = [...w.w].map((ch, i) => {
+        const p = back(interpolate(lf - i, [0, 7], [0, 1], C)); const v = 1 - interpolate(lf - i, [0, 7], [0, 1], C);
+        return <span key={i} style={{ display: 'inline-block', opacity: Math.min(1, (1 - v) * 3), transform: `translateX(${(1 - p) * 120}px) scaleX(${1 + 0.4 * v})`, filter: `blur(${v * 6}px)` }}>{ch}</span>;
+      });
+    } else if (sc && !ml) {  // typewriter (T2)
+      body = [...w.w].map((ch, i) => <span key={i} style={{ opacity: interpolate(lf - i * 1.2, [0, 2], [0, 1], C) }}>{ch}</span>);
+    } else {                 // masked rise (per word)
+      const p = expo(interpolate(lf, [0, 5], [0, 1], C));
+      body = <span style={{ display: 'inline-block', transform: `translateY(${(1 - p) * 105}%)` }}>{w.w}</span>;
+    }
+    const visible = lf > -0.5;
     return (
-      <span key={k} style={{ position: 'relative', display: 'inline-block', whiteSpace: 'nowrap', opacity: op,
-        transform: `translateY(${(1 - ap) * 26}px) scale(${0.55 + 0.45 * ap}) rotate(${rot}deg)`, textShadow: TEXT_SHADOW,
-        marginLeft: stacked ? ((k % 3) * 46) : 0, ...style }}>
-        {w.w}
-        {MARK.test(w.w.replace(/[.,]$/, '') ) && <Marker start={w.t0 + 0.12} t={t} />}
+      <span key={k} style={{ position: 'relative', display: 'inline-block', overflow: 'hidden', paddingBottom: '0.1em', whiteSpace: 'nowrap', opacity: visible ? 1 : 0,
+        marginLeft: stacked ? (k % 3) * 40 : 0, textShadow: SHADOW, ...style }}>
+        <span style={{ display: 'inline-block', transform: `translateY(${-expo(xo) * 105}%)` }}>{body}</span>
+        {MARK.test(w.w.replace(/[.,…]$/, '')) && <Marker lf={lf - 4} />}
       </span>
     );
   };
 
-  if (layout === 'vertical') {
+  if (vertical) {
+    const w = beat.words[0]; const lf = (t - w.t0) * FPS; const p = expo(interpolate(lf, [0, 6], [0, 1], C));
     return (
-      <div style={{ position: 'absolute', left: 150, top: 1000, transform: 'rotate(-90deg)', transformOrigin: 'left top', opacity: outP }}>
-        {wordEl(beat.words[0], 0)}
+      <div style={{ position: 'absolute', left: 140, top: 1500, transform: 'rotate(-90deg)', transformOrigin: 'left top', opacity: 1 - xo }}>
+        <div style={{ transform: `translateX(${(1 - p) * -300}px)`, filter: `blur(${(1 - p) * 8}px)`, fontFamily: FONT.serif, fontWeight: 700, fontSize: 150,
+          color: G.pistachio, textShadow: SHADOW, textTransform: 'uppercase', letterSpacing: 2 }}>{w.w}</div>
       </div>
     );
   }
   return (
     <div style={{ position: 'absolute', top: y, left: 90, width: 900, display: 'flex', flexDirection: stacked ? 'column' : 'row', flexWrap: 'wrap',
-      gap: stacked ? 0 : 18, alignItems: layout === 'left' ? 'flex-start' : layout === 'right' ? 'flex-end' : 'center',
-      justifyContent: layout === 'left' ? 'flex-start' : layout === 'right' ? 'flex-end' : 'center', opacity: outP,
-      transform: `scale(${0.96 + 0.04 * outP})` }}>
+      columnGap: 18, alignItems: align, justifyContent: align }}>
       {beat.words.map(wordEl)}
     </div>
-  );
-};
-
-/** Hand-drawn marker ellipse that draws itself around a word. */
-const Marker: React.FC<{ start: number; t: number }> = ({ start, t }) => {
-  const p = interpolate(t, [start, start + 0.35], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.out(Easing.quad) });
-  return (
-    <svg viewBox="0 0 200 100" preserveAspectRatio="none" style={{ position: 'absolute', left: '-22%', top: '-20%', width: '144%', height: '140%', overflow: 'visible', pointerEvents: 'none' }}>
-      <path d="M 100 8 C 175 6, 196 40, 188 62 C 178 92, 40 96, 14 70 C -6 46, 30 10, 112 12" fill="none" stroke={G.apple} strokeWidth={5}
-        strokeLinecap="round" pathLength={1} strokeDasharray={1} strokeDashoffset={1 - p} style={{ filter: `drop-shadow(0 2px 0 ${G.holly})` }} />
-    </svg>
   );
 };
