@@ -1,0 +1,14 @@
+{
+ "name": "BZH green look G2 (client palette: Holly #013408, Crusoe #005B0D, Fresh Grass #089F25, Green Apple #6DC839, Pistachio #B4F4A5)",
+ "aroll": "eq=contrast=1.10:saturation=1.0:gamma=0.97,colorbalance=rs=-0.08:gs=0.07:bs=-0.02:rm=-0.04:gm=0.05:bm=-0.03:rh=0.02:gh=0.04:bh=-0.03,curves=r='0/0.02 0.5/0.48 1/0.96':g='0/0.05 0.5/0.52 1/0.98':b='0/0.03 0.5/0.47 1/0.94',vignette=angle=PI/5:mode=forward",
+ "broll": "eq=contrast=1.10:saturation=1.0:gamma=0.97,colorbalance=rs=-0.08:gs=0.07:bs=-0.02:rm=-0.04:gm=0.05:bm=-0.03:rh=0.02:gh=0.04:bh=-0.03,curves=r='0/0.02 0.5/0.48 1/0.96':g='0/0.05 0.5/0.52 1/0.98':b='0/0.03 0.5/0.47 1/0.94',unsharp=5:5:0.3",
+ "notes": "Shared tonal curve and teal-shadow / warm-highlight balance on presenter and renders so both read as one production. Skin protected by limiting the warm push to highlights (rh) and using mix=0.4 on temperature. No LUT.",
+ "palette": {
+  "holly": "#013408",
+  "crusoe": "#005B0D",
+  "fresh_grass": "#089F25",
+  "green_apple": "#6DC839",
+  "pistachio": "#B4F4A5"
+ },
+ "previous": "look B (warm) superseded 2026-11-12 at client request"
+}

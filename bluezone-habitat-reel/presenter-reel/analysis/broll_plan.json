@@ -6,8 +6,8 @@
    "id": "B01",
    "line": 1,
    "rec": [
-    1.2,
-    3.1
+    0.86,
+    2.3
    ],
    "phrase": "welcome to Blue Zone Habitat",
    "src": "walkthrough_1.mp4",
@@ -15,14 +15,15 @@
    "dur": 1.9,
    "x": 0.85,
    "what": "Entrance gate with the BLUE ZONE HABITAT sign",
-   "use": "full screen, quick push"
+   "use": "full screen, quick push",
+   "clip_handle": 0.3
   },
   {
    "id": "B02",
    "line": 1,
    "rec": [
-    3.1,
-    4.2
+    3.37,
+    4.33
    ],
    "phrase": "better living",
    "src": "walkthrough_1.mp4",
@@ -30,14 +31,15 @@
    "dur": 1.1,
    "x": 0.5,
    "what": "Residents on the elevated garden walkway",
-   "use": "full screen, 3-cut montage"
+   "use": "full screen, 3-cut montage",
+   "clip_handle": 0.3
   },
   {
    "id": "B03",
    "line": 1,
    "rec": [
-    4.2,
-    5.3
+    4.33,
+    5.64
    ],
    "phrase": "healthier lifestyle",
    "src": "walkthrough_1.mp4",
@@ -45,14 +47,15 @@
    "dur": 1.1,
    "x": 0.55,
    "what": "Terraced amphitheatre with residents",
-   "use": "full screen, 3-cut montage"
+   "use": "full screen, 3-cut montage",
+   "clip_handle": 0.3
   },
   {
    "id": "B04",
    "line": 1,
    "rec": [
-    5.3,
-    6.6
+    5.64,
+    6.71
    ],
    "phrase": "future of homes",
    "src": "walkthrough_1.mp4",
@@ -60,14 +63,15 @@
    "dur": 1.3,
    "x": 0.45,
    "what": "Curved-facade villas",
-   "use": "full screen, 3-cut montage"
+   "use": "full screen, 3-cut montage",
+   "clip_handle": 0.3
   },
   {
    "id": "B05",
    "line": 3,
    "rec": [
-    12.4,
-    15.2
+    13.18,
+    15.9
    ],
    "phrase": "Gen Z, Gen Alpha, Gen Beta",
    "src": "clubhouse.mp4",
@@ -75,14 +79,15 @@
    "dur": 2.8,
    "x": 0.5,
    "what": "Clubhouse games room: children and family",
-   "use": "full screen"
+   "use": "full screen",
+   "clip_handle": 0.3
   },
   {
    "id": "B06",
    "line": 4,
    "rec": [
-    18.6,
-    20.8
+    18.57,
+    19.68
    ],
    "phrase": "51 villas",
    "src": "plot_plan_51.png",
@@ -96,8 +101,8 @@
    "id": "B07",
    "line": 4,
    "rec": [
-    20.8,
-    23.3
+    19.68,
+    21.7
    ],
    "phrase": "51 workspaces",
    "src": "clubhouse.mp4",
@@ -105,14 +110,15 @@
    "dur": 2.5,
    "x": 0.5,
    "what": "Clubhouse office space, glass cabins",
-   "use": "full screen"
+   "use": "full screen",
+   "clip_handle": 0.3
   },
   {
    "id": "B08",
    "line": 6,
    "rec": [
-    26.0,
-    28.4
+    25.91,
+    28.33
    ],
    "phrase": "Work from Nature Office",
    "src": "office_render.png",
@@ -126,8 +132,8 @@
    "id": "B09",
    "line": 6,
    "rec": [
-    28.4,
-    29.9
+    28.33,
+    29.8
    ],
    "phrase": "(nature)",
    "src": "walkthrough_1.mp4",
@@ -135,14 +141,15 @@
    "dur": 1.5,
    "x": 0.5,
    "what": "Arbour garden path",
-   "use": "full screen"
+   "use": "full screen",
+   "clip_handle": 0.3
   },
   {
    "id": "B10",
    "line": 7,
    "rec": [
-    32.6,
-    35.0
+    31.43,
+    33.2
    ],
    "phrase": "people may not go to offices",
    "src": "clubhouse.mp4",
@@ -150,14 +157,15 @@
    "dur": 2.4,
    "x": 0.55,
    "what": "Office: person walking past glass cabins",
-   "use": "picture-in-picture beside presenter"
+   "use": "picture-in-picture beside presenter",
+   "clip_handle": 0.3
   },
   {
    "id": "B11",
    "line": 8,
    "rec": [
-    40.2,
-    42.6
+    41.46,
+    43.4
    ],
    "phrase": "own workspace",
    "src": "clubhouse.mp4",
@@ -165,13 +173,14 @@
    "dur": 2.2,
    "x": 0.45,
    "what": "Office cabins, wide",
-   "use": "full screen"
+   "use": "full screen",
+   "clip_handle": 0.3
   },
   {
    "id": "B12",
    "line": 10,
    "rec": [
-    49.2,
+    49.5,
     51.6
    ],
    "phrase": "Malappuram culture",
@@ -186,8 +195,8 @@
    "id": "B13",
    "line": 11,
    "rec": [
-    55.4,
-    57.9
+    54.88,
+    57.0
    ],
    "phrase": "today's villa projects",
    "src": "villa_interior.mp4",
@@ -195,14 +204,15 @@
    "dur": 2.5,
    "x": 0.5,
    "what": "Villa living room",
-   "use": "full screen"
+   "use": "full screen",
+   "clip_handle": 0.3
   },
   {
    "id": "B14",
    "line": 11,
    "rec": [
-    60.8,
-    63.3
+    62.5,
+    64.4
    ],
    "phrase": "privacy issues",
    "src": "villa_interior.mp4",
@@ -210,14 +220,15 @@
    "dur": 2.5,
    "x": 0.5,
    "what": "Villa bedroom (private space)",
-   "use": "full screen"
+   "use": "full screen",
+   "clip_handle": 0.3
   },
   {
    "id": "B15",
    "line": 13,
    "rec": [
-    75.4,
-    77.4
+    76.0,
+    77.6
    ],
    "phrase": "inside our clubhouse",
    "src": "clubhouse.mp4",
@@ -225,13 +236,14 @@
    "dur": 2.0,
    "x": 0.5,
    "what": "Clubhouse exterior",
-   "use": "full screen"
+   "use": "full screen",
+   "clip_handle": 0.3
   },
   {
    "id": "B16",
    "line": 13,
    "rec": [
-    77.4,
+    77.6,
     79.9
    ],
    "phrase": "shared maid quarters",
@@ -240,14 +252,16 @@
    "dur": 1.95,
    "x": 0.5,
    "what": "Clubhouse maids' room (shared quarters render)",
-   "use": "full screen, label 'Shared maid quarters · planned'"
+   "use": "full screen, label 'Shared maid quarters · planned'",
+   "clip_handle": 0.3,
+   "rate": 0.85
   },
   {
    "id": "B17",
    "line": 14,
    "rec": [
-    81.2,
-    84.2
+    80.76,
+    83.2
    ],
    "phrase": "2 or 3 villas per maid",
    "src": "walkthrough_1.mp4",
@@ -255,14 +269,15 @@
    "dur": 3.0,
    "x": 0.5,
    "what": "Villa facades along the street",
-   "use": "full screen + 3-villa highlight graphic"
+   "use": "full screen + 3-villa highlight graphic",
+   "clip_handle": 0.3
   },
   {
    "id": "B18",
    "line": 17,
    "rec": [
-    95.0,
-    97.6
+    97.05,
+    98.99
    ],
    "phrase": "mothers and wives",
    "src": "villa_interior.mp4",
@@ -270,14 +285,15 @@
    "dur": 2.6,
    "x": 0.5,
    "what": "Villa kitchen",
-   "use": "full screen"
+   "use": "full screen",
+   "clip_handle": 0.3
   },
   {
    "id": "B19",
    "line": 17,
    "rec": [
-    97.6,
-    100.4
+    98.99,
+    100.5
    ],
    "phrase": "morning is hectic",
    "src": "villa_interior.mp4",
@@ -285,14 +301,15 @@
    "dur": 2.8,
    "x": 0.5,
    "what": "Villa dining area",
-   "use": "full screen"
+   "use": "full screen",
+   "clip_handle": 0.3
   },
   {
    "id": "B20",
    "line": 19,
    "rec": [
-    108.2,
-    110.8
+    108.27,
+    110.78
    ],
    "phrase": "food delivered to homes in the morning",
    "src": "walkthrough_1.mp4",
@@ -300,14 +317,15 @@
    "dur": 2.6,
    "x": 0.45,
    "what": "Villa entrances along the street",
-   "use": "full screen"
+   "use": "full screen",
+   "clip_handle": 0.3
   },
   {
    "id": "B21",
    "line": 20,
    "rec": [
-    116.0,
-    118.6
+    116.23,
+    118.86
    ],
    "phrase": "cloud kitchen",
    "src": "clubhouse.mp4",
@@ -315,14 +333,15 @@
    "dur": 2.6,
    "x": 0.5,
    "what": "Clubhouse rooftop dining",
-   "use": "full screen"
+   "use": "full screen",
+   "clip_handle": 0.3
   },
   {
    "id": "B22",
    "line": 21,
    "rec": [
-    123.0,
-    125.6
+    121.85,
+    123.43
    ],
    "phrase": "lunch or dinner",
    "src": "villa_interior.mp4",
@@ -330,13 +349,14 @@
    "dur": 2.6,
    "x": 0.5,
    "what": "Villa dining table",
-   "use": "full screen"
+   "use": "full screen",
+   "clip_handle": 0.3
   },
   {
    "id": "B23",
    "line": 22,
    "rec": [
-    129.3,
+    129.99,
     131.73
    ],
    "phrase": "inside our villa project",
@@ -345,7 +365,8 @@
    "dur": 2.43,
    "x": 0.5,
    "what": "Aerial over the whole community",
-   "use": "full screen, into logo end card"
+   "use": "full screen, into logo end card",
+   "clip_handle": 0.3
   }
  ],
  "gaps": [

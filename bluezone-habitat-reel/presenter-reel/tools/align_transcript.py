@@ -90,11 +90,20 @@ for L, Lin in zip(lines, T['lines']):
         L['take_in'] = L['take_out'] = Lin['src'][0]; L['src_in'], L['src_out'] = Lin['src'][1], Lin['src'][2]; L['override'] = True
 # word estimates
 def weight(w): return max(1, len(re.sub(r'[\W_]', '', w))) + 1.5
-for L in lines:
-    if L['take_in'] != L['take_out']: L['words'] = []; continue
-    ws = L['text'].split(); W = np.array([weight(w) for w in ws]); cum = np.concatenate([[0], np.cumsum(W)]) / W.sum()
-    a, b = L['src_in'], L['src_out']
-    L['words'] = [{'w': w, 'start_est': round(a + (b - a) * cum[j], 2), 'end_est': round(a + (b - a) * cum[j + 1], 2)} for j, w in enumerate(ws)]
+def spread(ws, a, b):
+    W = np.array([weight(w) for w in ws]); cum = np.concatenate([[0], np.cumsum(W)]) / W.sum()
+    return [{'w': w, 'start_est': round(a + (b - a) * cum[j], 2), 'end_est': round(a + (b - a) * cum[j + 1], 2)} for j, w in enumerate(ws)]
+carry = []
+for L, Lin in zip(lines, T['lines']):
+    if L['take_in'] != L['take_out']: L['words'] = []; carry = []; continue
+    ws = L['text'].split(); k = Lin.get('spill_to_next', 0)
+    own = ws[:len(ws) - k] if k else ws
+    if carry:   # words of the previous line that are actually spoken at the start of this line's time range
+        allw = spread(carry + own, L['src_in'], L['src_out'])
+        prev['words'] += allw[:len(carry)]; L['words'] = allw[len(carry):]
+    else:
+        L['words'] = spread(own, L['src_in'], L['src_out'])
+    carry = ws[len(ws) - k:] if k else []; prev = L
 json.dump({'source': tin, 'note': 'Line boundaries snapped to real pauses; word times are estimates (proportional + pause-snapped).', 'lines': lines},
           open(outj, 'w'), ensure_ascii=False, indent=1)
 md = ['# Blue Zone presenter reel: aligned transcript', '',

@@ -128,72 +128,72 @@
     {
      "w": "ഇന്ന്",
      "start_est": 11.11,
-     "end_est": 11.32
+     "end_est": 11.39
     },
     {
      "w": "നമുക്ക്",
-     "start_est": 11.32,
-     "end_est": 11.59
+     "start_est": 11.39,
+     "end_est": 11.74
     },
     {
      "w": "Blue",
-     "start_est": 11.59,
-     "end_est": 11.85
+     "start_est": 11.74,
+     "end_est": 12.09
     },
     {
      "w": "Zone",
-     "start_est": 11.85,
-     "end_est": 12.11
+     "start_est": 12.09,
+     "end_est": 12.44
     },
     {
      "w": "Habitat-ലെ",
-     "start_est": 12.11,
-     "end_est": 12.56
+     "start_est": 12.44,
+     "end_est": 13.03
     },
     {
      "w": "മൂന്ന്",
-     "start_est": 12.56,
-     "end_est": 12.77
+     "start_est": 13.03,
+     "end_est": 13.32
     },
     {
      "w": "key",
-     "start_est": 12.77,
-     "end_est": 12.99
+     "start_est": 13.32,
+     "end_est": 13.6
     },
     {
      "w": "USPs-നെ",
-     "start_est": 12.99,
-     "end_est": 13.3
+     "start_est": 13.6,
+     "end_est": 14.01
     },
     {
      "w": "കുറിച്ച്",
-     "start_est": 13.3,
-     "end_est": 13.56
+     "start_est": 14.01,
+     "end_est": 14.36
     },
     {
      "w": "സംസാരിക്കാം.",
-     "start_est": 13.56,
-     "end_est": 13.87
+     "start_est": 14.36,
+     "end_est": 14.77
     },
     {
      "w": "The",
-     "start_est": 13.87,
-     "end_est": 14.08
+     "start_est": 14.77,
+     "end_est": 15.07
     },
     {
      "w": "first",
-     "start_est": 14.08,
-     "end_est": 14.39
+     "start_est": 15.07,
+     "end_est": 15.51
     },
     {
      "w": "one",
-     "start_est": 14.39,
-     "end_est": 14.6
+     "start_est": 15.51,
+     "end_est": 15.82
     },
     {
      "w": "is...",
-     "start_est": 14.6,
-     "end_est": 14.77
+     "start_est": 15.82,
+     "end_est": 16.06
     }
    ]
   },
@@ -212,72 +212,72 @@
    "words": [
     {
      "w": "We",
-     "start_est": 14.77,
-     "end_est": 15.06
+     "start_est": 16.06,
+     "end_est": 16.29
     },
     {
      "w": "align",
-     "start_est": 15.06,
-     "end_est": 15.61
+     "start_est": 16.29,
+     "end_est": 16.73
     },
     {
      "w": "these",
-     "start_est": 15.61,
-     "end_est": 16.15
+     "start_est": 16.73,
+     "end_est": 17.17
     },
     {
      "w": "villa",
-     "start_est": 16.15,
-     "end_est": 16.7
+     "start_est": 17.17,
+     "end_est": 17.61
     },
     {
      "w": "project",
-     "start_est": 16.7,
-     "end_est": 17.41
+     "start_est": 17.61,
+     "end_est": 18.19
     },
     {
      "w": "to",
-     "start_est": 17.41,
-     "end_est": 17.71
+     "start_est": 18.19,
+     "end_est": 18.42
     },
     {
      "w": "Gen",
-     "start_est": 17.71,
-     "end_est": 18.08
+     "start_est": 18.42,
+     "end_est": 18.73
     },
     {
      "w": "Z,",
-     "start_est": 18.08,
-     "end_est": 18.29
+     "start_est": 18.73,
+     "end_est": 18.9
     },
     {
      "w": "Gen",
-     "start_est": 18.29,
-     "end_est": 18.67
+     "start_est": 18.9,
+     "end_est": 19.2
     },
     {
      "w": "Alpha,",
-     "start_est": 18.67,
-     "end_est": 19.22
+     "start_est": 19.2,
+     "end_est": 19.64
     },
     {
      "w": "and",
-     "start_est": 19.22,
-     "end_est": 19.6
+     "start_est": 19.64,
+     "end_est": 19.95
     },
     {
      "w": "Gen",
-     "start_est": 19.6,
-     "end_est": 19.97
+     "start_est": 19.95,
+     "end_est": 20.25
     },
     {
      "w": "Beta",
-     "start_est": 19.97,
-     "end_est": 20.43
+     "start_est": 20.25,
+     "end_est": 20.62
     },
     {
      "w": "generation.",
-     "start_est": 20.43,
+     "start_est": 20.62,
      "end_est": 21.4
     }
    ]
