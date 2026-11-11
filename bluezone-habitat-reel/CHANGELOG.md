@@ -1,5 +1,13 @@
 # Blue Zone Habitat reel: change log
 
+## V3 with poster cover (2026-11-11)
+- Client poster (`media/cover/client-poster.webp`, 1448×1086) made into a 9:16 cover frame `output/bluezone-v3-cover-poster-1080x1920.jpg`
+  (full poster, uncropped, over a blurred extension of itself).
+- `output/bluezone-v3-with-cover.mp4` (1080×1920, 101.2 s): poster opens the video (0–1.2 s, slow push-in), then a 0.5 s fade through black into the
+  unchanged V3 reel. The voice and subtitles move by +1.2 s (VO at 1.60 s; `bluezone-subtitles-v3-cover.srt`). The score was regenerated so music plays under
+  the poster. The poster is also embedded as MP4 cover art. QC PASS (`qc-report-v3-cover.md`; voice sync 0.0 ms; −13.4 LUFS).
+- `output/bluezone-v3-whatsapp-with-cover.mp4`: **4.69 MB**, 540×960, same cover; voice sync 0.0 ms; −15.2 LUFS, peak −0.5 dBFS.
+
 ## WhatsApp version of V3 (2026-11-09)
 - `output/bluezone-v3-whatsapp.mp4`: **4.72 MB** (under 5 MB) for WhatsApp bulk sending. Made from the V3 master; no content changes.
 - 540×960, 30 fps, H.264 High (two-pass, 320 kbps); AAC mono 48 kbps, 44.1 kHz, −15.3 LUFS, peak −0.9 dBFS (limited to avoid clipping).
