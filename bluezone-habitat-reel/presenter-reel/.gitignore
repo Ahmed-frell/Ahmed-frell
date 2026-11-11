@@ -1,2 +1,5 @@
 work/
 output/*.mp4
+output/*/shots/
+output/*/*.mp4
+output/*/*.wav
