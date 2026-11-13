@@ -50,6 +50,22 @@ Read before designing:
     - QA report covering grade, claims and limitations
     - WhatsApp version: 540×960 two-pass with the bitrate computed for < 5 MB
 
+## Variant: renders-only reel (still renders + voiceover, no presenter)
+Used for the Blue Zone renders reel (`bluezone-habitat-reel/renders-reel/`, reference 2 = a villa Story ad).
+1. **Script:** apply safe wording (planned / inspired by) before generating any voice; on-screen text carries `PLANNED` where needed.
+2. **Voice:** ElevenLabs if available. Offline fallback: AI4Bharat Indic-TTS Malayalam (FastPitch + HiFi-GAN, MIT) on coqui-tts
+   (`scripts/indic_tts_scenes.py model_dir scenes.json out_dir male 0.8`). Its vocabulary is Malayalam letters only, so write numbers
+   as words and spell out acronyms. Use `length_scale` (0.8 = ×1.25) for pace instead of time-stretching. One clip per scene, so scene
+   lengths are known; then trim, light EQ and compression, scene gaps of 0.5 s, loudnorm −16.
+3. **Shots:** one or two shots per scene, cut at the sentence pause; 10-frame dissolve between scenes, hard cuts inside.
+   Moves per shot in `shots.json` (`s` zoom where 1 = image height fills the frame, `x`/`y` focus point, optional `pulse`).
+   Pre-upscale renders to 2500 px tall (Lanczos, contrast 1.04, light unsharp; no hue change).
+4. **Background:** `scripts/render_bg.py shots.json img_dir bg.mp4` renders every camera move in Python (sub-pixel affine, antialiased),
+   about 8 min for 95 s. Remotion then draws only text and graphics over `<OffthreadVideo src="bg.mp4">`.
+5. **Typography (reference 2):** white Playfair Display italic over Anton in a cream gradient (`background-clip: text`, shadow via a parent
+   `filter: drop-shadow`), scattered letter fade with blur; Cormorant caps and numerals for labels and counters; map-pin drop + location card;
+   typewriter "Contact For Site Visit"; motion-blur logo slide on the logo's own paper colour (#F5F3E6).
+
 ## Components (templates/remotion/src)
 `TextFx` (data-driven text: rise · type · fly · overshoot · box · track · morph; exits rise · fade · morph; marker; leader) ·
 `Captions` (speech-synced beats, masked rise, letter fly with motion blur, typewriter accent, per-word Malayalam, beat-to-beat continuity) ·
@@ -62,3 +78,7 @@ in `Reel.example.tsx`: `SilhouetteFlash`/`HollySilhouette`, `Giant` (numeral beh
 - Remotion outputs full-range yuvj420p; convert to video range when muxing.
 - Offline Whisper is fine for English but hallucinates on Malayalam/Manglish, so ask for the text.
 - A green LUT over footage was rejected by the client. Keep the footage natural and the branding green.
+- Rendering speed: Chrome scaling 3750 px stills every frame ran at ~5 s/frame. Pre-render the moves (`render_bg.py`) and use
+  `setChromiumOpenGlRenderer('angle')`: ~0.35 s/frame on 4 cores (swangle was 3–5× slower for the same frames).
+- Every `bundle()` call (stills, benchmarks, renders) leaves a `/tmp/remotion-webpack-bundle-*` copy of `public/`. They are never
+  cleaned up and filled the disk (12 GB), which slowed the render 4×. Delete stale ones before a full render.

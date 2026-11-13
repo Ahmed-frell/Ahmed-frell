@@ -2,7 +2,9 @@
 
 Client choices (2026-11-13): keep the full script (~80–90 s, scenes timed to the voice); use safe wording for unverified claims.
 Lines changed from the client's draft are marked ✎. Everything else is word-for-word.
-Voice: ElevenLabs `eleven_v4`, voice "JIJO – Deep & Optimized" (native Malayalam male, advertisement).
+Voice: AI4Bharat Indic-TTS Malayalam (FastPitch + HiFi-GAN, MIT licence), male speaker, generated offline, native speed ×1.25 (`length_scale` 0.8).
+ElevenLabs (JIJO, `eleven_v4`) was the first choice, but its free tier was busy; the client asked to try another voice generator.
+TTS text = this script with numbers written as words (മൂന്ന്, നാല് ആൻഡ് അഞ്ച്; അമ്പത്തിയൊന്ന്) and "ബി എച്ച് കെ" spelled out (`work/vo/scenes.json`).
 
 | Scene | Malayalam voiceover | On-screen text |
 |---|---|---|
