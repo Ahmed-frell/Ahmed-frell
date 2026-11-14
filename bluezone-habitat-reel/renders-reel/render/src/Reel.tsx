@@ -1,7 +1,7 @@
 import React from 'react';
 import { AbsoluteFill, Audio, OffthreadVideo, Sequence, interpolate, staticFile, useCurrentFrame } from 'remotion';
 import { Counter, Move, Outro, Pin, Planned, Scatter, Tag, Title, TitleSpec, Typewriter } from './Fx';
-import { CREAM, FONT, G, SHADOW, TOTAL, f } from './theme';
+import { CREAM, FONT, G, SHADOW, TOTAL, f, raw } from './theme';
 
 // Shot list: times in seconds, timed to the voiceover (work/vo/timing.json). xin = 10-frame dissolve in (scene change).
 import SHOTS_JSON from './shots.json';
@@ -31,9 +31,9 @@ const Shots: React.FC = () => <OffthreadVideo src={staticFile('bg.mp4')} muted /
 
 const CurrentTag: React.FC = () => {
   const fr = useCurrentFrame();
-  const s = SHOTS.find((x) => fr >= f(x.from) && fr < f(x.to));
+  const s = SHOTS.find((x) => fr >= raw(x.from) && fr < raw(x.to));
   if (!s) return null;
-  const o = interpolate(fr, [f(s.from), f(s.from) + 8], [0, 1], { extrapolateRight: 'clamp' });
+  const o = interpolate(fr, [raw(s.from), raw(s.from) + 8], [0, 1], { extrapolateRight: 'clamp' });
   return <Tag text={s.tag ?? "Artist's impression"} o={o} />;
 };
 
@@ -97,7 +97,7 @@ const SiteVisit: React.FC = () => {
 
 export const Reel: React.FC = () => (
   <AbsoluteFill style={{ backgroundColor: '#000' }}>
-    <Sequence durationInFrames={f(OUTRO_FROM)} layout="none">
+    <Sequence durationInFrames={raw(OUTRO_FROM)} layout="none">
       <Shots />
       {/* soft edge vignette for legibility; no colour cast on the renders */}
       <AbsoluteFill style={{ background: 'radial-gradient(ellipse 85% 70% at 50% 50%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.28) 100%)' }} />
@@ -108,8 +108,8 @@ export const Reel: React.FC = () => (
       <Workspaces />
       <SiteVisit />
     </Sequence>
-    <Sequence from={f(OUTRO_FROM)} durationInFrames={f(TOTAL - OUTRO_FROM)}>
-      <Outro dur={f(TOTAL - OUTRO_FROM)} />
+    <Sequence from={raw(OUTRO_FROM)} durationInFrames={raw(TOTAL - OUTRO_FROM)}>
+      <Outro dur={raw(TOTAL - OUTRO_FROM)} />
     </Sequence>
     <Audio src={staticFile('mix.wav')} />
   </AbsoluteFill>

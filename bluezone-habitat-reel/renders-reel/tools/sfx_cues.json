@@ -1,199 +1,199 @@
 [
 {
 "sfx": "swish_text",
-"at": 1.0,
+"at": 0.97,
 "gain": 0,
 "why": "T1 Premium Lifestyle & Longevity letters"
 },
 {
 "sfx": "reveal_arch",
-"at": 7.25,
+"at": 6.8,
 "gain": -3,
 "why": "cut to tree-lined street"
 },
 {
 "sfx": "accent_num",
-"at": 7.95,
+"at": 7.43,
 "gain": -4,
 "why": "map pin lands (Anakkayam \u00b7 Manjeri)"
 },
 {
 "sfx": "reveal_arch",
-"at": 10.7,
+"at": 9.92,
 "gain": -3,
 "why": "scene 2 dissolve: sculpture roundabout"
 },
 {
 "sfx": "airy",
-"at": 11.4,
+"at": 10.5,
 "gain": 0,
 "why": "caps label: Inspired by longevity science"
 },
 {
 "sfx": "swish_text",
-"at": 14.3,
+"at": 12.86,
 "gain": 0,
 "why": "Introducing Blue Zone Habitat"
 },
 {
 "sfx": "swish_text",
-"at": 18.0,
+"at": 15.89,
 "gain": 0,
 "why": "Bluezone-Inspired Living in Malappuram"
 },
 {
 "sfx": "swish_text",
-"at": 22.7,
+"at": 19.88,
 "gain": 0,
 "why": "Inspired by the Blue Zones"
 },
 {
 "sfx": "reveal_arch",
-"at": 26.8,
+"at": 23.39,
 "gain": -2,
 "why": "scene 3 dissolve: aerial pull-back"
 },
 {
 "sfx": "swish_text",
-"at": 27.6,
+"at": 24.07,
 "gain": 0,
 "why": "In harmony with nature"
 },
 {
 "sfx": "airy",
-"at": 34.2,
+"at": 29.64,
 "gain": 0,
 "why": "PREMIUM ATMOSPHERE label"
 },
 {
 "sfx": "impact_soft",
-"at": 37.95,
+"at": 32.83,
 "gain": -3,
 "why": "numerals 3, 4 & 5 land"
 },
 {
 "sfx": "reveal_arch",
-"at": 41.75,
+"at": 36.07,
 "gain": -3,
 "why": "scene 4 dissolve: clubhouse reception"
 },
 {
 "sfx": "swish_text",
-"at": 42.5,
+"at": 36.71,
 "gain": 0,
 "why": "Longevity Wellness Club / Gym & Swimming Pool"
 },
 {
 "sfx": "accent_num",
-"at": 43.6,
+"at": 37.62,
 "gain": -7,
 "why": "PLANNED pill"
 },
 {
 "sfx": "swish_text",
-"at": 50.9,
+"at": 43.64,
 "gain": 0,
 "why": "In-House Cloud Kitchen"
 },
 {
 "sfx": "accent_num",
-"at": 52.0,
+"at": 44.45,
 "gain": -7,
 "why": "PLANNED pill"
 },
 {
 "sfx": "reveal_arch",
-"at": 58.75,
+"at": 49.49,
 "gain": -3,
 "why": "scene 5 dissolve: solar roofs"
 },
 {
 "sfx": "swish_text",
-"at": 59.5,
+"at": 50.11,
 "gain": 0,
 "why": "Solar-Powered Living"
 },
 {
 "sfx": "accent_num",
-"at": 60.6,
+"at": 50.98,
 "gain": -7,
 "why": "PLANNED pill"
 },
 {
 "sfx": "swish_text",
-"at": 65.8,
+"at": 55.08,
 "gain": 0,
 "why": "A smart choice"
 },
 {
 "sfx": "reveal_arch",
-"at": 70.45,
+"at": 58.74,
 "gain": -3,
 "why": "scene 6 dissolve: workspace forward track"
 },
 {
 "sfx": "swish_text",
-"at": 71.2,
+"at": 59.39,
 "gain": 0,
 "why": "Future-Ready Workspaces"
 },
 {
 "sfx": "accent_num",
-"at": 76.2,
+"at": 63.63,
 "gain": 0,
 "why": "counter lands on 51"
 },
 {
 "sfx": "impact_soft",
-"at": 76.2,
+"at": 63.63,
 "gain": -5,
 "why": "51 landing weight"
 },
 {
 "sfx": "swish_text",
-"at": 77.5,
+"at": 64.74,
 "gain": -2,
 "why": "Maid Quarters \u00b7 Wellness Club"
 },
 {
 "sfx": "reveal_arch",
-"at": 80.9,
+"at": 67.64,
 "gain": -3,
 "why": "scene 7 dissolve: lifestyle"
 },
 {
 "sfx": "swish_text",
-"at": 81.6,
+"at": 68.23,
 "gain": 0,
 "why": "Designed for Gen Z, Alpha & Beta"
 },
 {
 "sfx": "tick",
-"at": 87.0,
+"at": 72.66,
 "gain": 0,
 "why": "typewriter: Contact For Site Visit"
 },
 {
 "sfx": "accent_num",
-"at": 88.6,
+"at": 73.97,
 "gain": -4,
 "why": "phone number rises"
 },
 {
 "sfx": "riser",
-"at": 90.8,
+"at": 75.87,
 "gain": 0,
 "why": "into logo"
 },
 {
 "sfx": "whoosh_whip",
-"at": 90.9,
+"at": 75.97,
 "gain": -2,
 "why": "logo motion-blur slide"
 },
 {
 "sfx": "logo_signature",
-"at": 91.15,
+"at": 76.22,
 "gain": 0,
 "why": "logo resolves"
 }

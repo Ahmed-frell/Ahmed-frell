@@ -34,8 +34,18 @@ export const SHADOW = 'drop-shadow(0 2px 2px rgba(0,0,0,0.55)) drop-shadow(0 6px
 export const FPS = 30;
 export const W = 1080;
 export const H = 1920;
-export const TOTAL = 95.0;
-export const f = (s: number) => Math.round(s * FPS);
+import REMAP from './remap.json';
+import SHOTS_JSON from './shots.json';
+export const TOTAL = SHOTS_JSON.total;
+// raw: seconds on the final timeline. f: seconds on the first-cut (v1 voice) timeline, remapped to the current voice.
+export const raw = (s: number) => Math.round(s * FPS);
+export const remap = (t: number) => {
+  const o = REMAP.old, n = REMAP.new;
+  if (t <= o[0]) return n[0];
+  for (let i = 1; i < o.length; i++) if (t <= o[i]) return n[i - 1] + ((t - o[i - 1]) / (o[i] - o[i - 1])) * (n[i] - n[i - 1]);
+  return n[n.length - 1];
+};
+export const f = (s: number) => raw(remap(s));
 
 export const IMG: Record<string, [number, number]> = {
   office: [4442, 2500], r01: [3334, 2500], r02: [3750, 2500], r03: [3750, 2500], r04: [3750, 2500], r05: [4452, 2500],
