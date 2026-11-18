@@ -1,6 +1,7 @@
 // Blue Zone Habitat cinematic architecture reel: text / graphics layer over the pre-rendered camera moves (public/bg.mp4).
 // Typography follows the Velora reference: script italic over light sans, small, white, lower-middle, blur-in.
 import React from 'react';
+import { MapShot, StatsShot } from './Graphics';
 import { AbsoluteFill, Audio, Easing, Img, OffthreadVideo, Sequence, interpolate, random, spring, staticFile, useCurrentFrame, useVideoConfig } from 'remotion';
 import '@fontsource/allura/400.css';
 import '@fontsource/poppins/200.css';
@@ -9,7 +10,10 @@ import '@fontsource/poppins/500.css';
 import '@fontsource/poppins/600.css';
 import '@fontsource/noto-sans-malayalam/700.css';
 
-const F = (s: number) => Math.round(s * 30);
+// v2 timeline: map inserted at 3.1–7.0 s, master-plan stats at 10.5–14.3 s; F() maps v1 times onto it.
+const remap = (t: number) => (t < 5.6 ? t : t < 9.1 ? t + 1.4 : t + 5.2);
+const F = (s: number) => Math.round(remap(s) * 30);
+const R = (s: number) => Math.round(s * 30);
 const C = { clampLeft: 'clamp', extrapolateLeft: 'clamp', extrapolateRight: 'clamp' } as const;
 const G = { holly: '#013408', crusoe: '#005B0D', grass: '#089F25', pistachio: '#B4F4A5', paper: '#F5F3E6' };
 const SH = '0 2px 6px rgba(0,0,0,0.55), 0 0 22px rgba(0,0,0,0.35)';
@@ -120,7 +124,8 @@ export const Reel: React.FC = () => (
     </AbsoluteFill>
     <Sequence durationInFrames={F(3.1)}><Pin at={1.55} x={560} y={1290} /></Sequence>
     <Flash at={3.1} />
-    <Pair a={3.35} b={5.55} script="A new way" sans="of living, close to nature" />
+    <Sequence from={R(3.1)} durationInFrames={R(3.9)}><MapShot /></Sequence>
+    <Sequence from={R(10.5)} durationInFrames={R(3.8)}><StatsShot /></Sequence>
     <Pair a={5.75} b={7.15} script="Blue Zone" sans="H A B I T A T" top={1120} />
     <Pair a={7.2} b={9.05} script="Live Better." sans="Live Longer." />
     <Pair a={9.4} b={12.35} script="Green paths," sans="calm gardens" />
