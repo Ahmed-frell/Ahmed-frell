@@ -4,3 +4,4 @@ output/*.mp4
 render/node_modules/
 render/out/
 render/public/
+output/*.mp3
