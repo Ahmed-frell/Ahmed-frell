@@ -1,0 +1,46 @@
+{
+ "root": "<ABSOLUTE PATH OF THE PROJECT FOLDER>",
+ "note": "Example only. takes/start/line_frames must be set for each new video from its own transcript.",
+ "transcript": "<root>/analysis/transcript_aligned.json",
+ "max_pause": 0.28,
+ "line_frames": {
+  "1": "W",
+  "2": "C",
+  "3": "M",
+  "4": "W",
+  "6": "C",
+  "7": "M",
+  "8": "C",
+  "9": "C",
+  "10": "W",
+  "11": "M",
+  "12": "C",
+  "13": "M",
+  "14": "C",
+  "16": "C",
+  "17": "W",
+  "18": "M",
+  "19": "C",
+  "20": "M",
+  "21": "W",
+  "22": "C"
+ },
+ "takes": [
+  {
+   "id": "0035",
+   "start": 4.2
+  },
+  {
+   "id": "0036",
+   "start": 1.1
+  },
+  {
+   "id": "0037",
+   "start": 0.9
+  },
+  {
+   "id": "0043",
+   "start": 0.0
+  }
+ ]
+}

@@ -1,0 +1,10 @@
+work/
+output/*.mp4
+output/*/shots/
+output/*/*.mp4
+output/*/*.wav
+render/node_modules/
+render/out/
+render/public/aroll.mp4
+render/public/broll/
+render/public/fg/

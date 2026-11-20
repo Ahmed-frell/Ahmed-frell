@@ -1,0 +1,36 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Corm;font-weight:700;src:url(file:///home/user/seeakk-daily-video-editing/bluezone-habitat-reel/presenter-reel/render/node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-700-normal.woff2)}
+@font-face{font-family:Corm;font-weight:600;font-style:italic;src:url(file:///home/user/seeakk-daily-video-editing/bluezone-habitat-reel/presenter-reel/render/node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-600-italic.woff2)}
+@font-face{font-family:Mont;font-weight:700;src:url(file:///home/user/seeakk-daily-video-editing/bluezone-habitat-reel/presenter-reel/render/node_modules/@fontsource/montserrat/files/montserrat-latin-700-normal.woff2)}
+@font-face{font-family:Mont;font-weight:600;src:url(file:///home/user/seeakk-daily-video-editing/bluezone-habitat-reel/presenter-reel/render/node_modules/@fontsource/montserrat/files/montserrat-latin-600-normal.woff2)}
+@font-face{font-family:MlSerif;font-weight:700;src:url(file:///home/user/seeakk-daily-video-editing/bluezone-habitat-reel/presenter-reel/render/node_modules/@fontsource/noto-serif-malayalam/files/noto-serif-malayalam-malayalam-700-normal.woff2)}
+html,body{margin:0;padding:0;background:#013408}
+#c{position:relative;width:1080px;height:1920px;overflow:hidden}
+.abs{position:absolute}
+.bg{inset:0;width:1080px;height:1920px;object-fit:cover}
+.wash{inset:0;background:linear-gradient(180deg,rgba(1,52,8,.92) 0%,rgba(1,52,8,.72) 17%,rgba(1,52,8,.12) 34%,rgba(0,0,0,0) 50%,rgba(1,52,8,.35) 60%,rgba(1,52,8,.9) 74%,#013408 90%)}
+.three{left:520px;top:240px;width:560px;text-align:center;font-family:Corm;font-weight:700;font-size:1080px;line-height:.82;color:#013408;-webkit-text-stroke:4px #B4F4A5;text-shadow:0 30px 80px rgba(0,0,0,.35);font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1}
+.fg{inset:0;width:1080px;height:1920px}
+.logo{left:50%;transform:translateX(-50%);top:248px;width:150px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4))}
+.hook{left:64px;top:262px;width:800px;white-space:nowrap;font-family:MlSerif;font-weight:700;font-size:52px;line-height:1.4;color:#FFF8EC;text-shadow:0 3px 18px rgba(0,0,0,.45)}
+.hook b{color:#B4F4A5;font-weight:700}
+.key{font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1;left:0;width:1080px;top:1200px;text-align:center;font-family:Corm;font-weight:700;font-size:150px;line-height:1;color:#FFF8EC;letter-spacing:2px;text-shadow:0 6px 30px rgba(0,0,0,.5)}
+.key i{font-style:italic;font-weight:600;color:#B4F4A5}
+.list{left:0;width:1080px;top:1385px;display:flex;flex-direction:column;align-items:center;gap:16px}
+.chip{display:flex;align-items:center;gap:20px;padding:14px 34px 14px 18px;background:#013408;border-left:6px solid #B4F4A5;border-radius:8px;box-shadow:0 12px 30px rgba(0,0,0,.35);font-family:Mont;font-weight:700;font-size:38px;color:#FFF8EC;letter-spacing:.5px}
+.chip span{font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1;font-family:Corm;font-weight:700;font-size:52px;color:#B4F4A5;line-height:1}
+.tagb{left:70px;top:520px;padding:6px 14px;background:rgba(1,52,8,.85);border-left:3px solid #B4F4A5;font-family:Mont;font-weight:600;font-size:22px;letter-spacing:5px;color:#FFF8EC}
+</style></head><body><div id="c">
+<img class="abs bg" src="file:///home/user/seeakk-daily-video-editing/bluezone-habitat-reel/presenter-reel/work/thumb/bg_blur.png">
+<div class="abs wash"></div>
+<div class="abs three">3</div>
+<img class="abs fg" src="file:///home/user/seeakk-daily-video-editing/bluezone-habitat-reel/presenter-reel/work/thumb/fg.png">
+<div class="abs hook">നിങ്ങളുടെ അടുത്ത വില്ലയിൽ<br><b>ഇത് ഉണ്ടോ?</b></div>
+<img class="abs logo" src="file:///home/user/seeakk-daily-video-editing/bluezone-habitat-reel/presenter-reel/work/thumb/bluezone-logo-white.png" style="left:auto;right:60px;transform:none;top:262px;width:140px">
+<div class="abs key">3 KEY <i>USPs</i></div>
+<div class="abs list">
+<div class="chip"><span>01</span>Work-from-Nature Office</div>
+<div class="chip"><span>02</span>Shared Maid Quarters</div>
+<div class="chip"><span>03</span>Internal Cloud Kitchen</div>
+</div>
+</div></body></html>

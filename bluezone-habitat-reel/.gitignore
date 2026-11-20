@@ -1,0 +1,5 @@
+# Client media and audio stay out of Git (large, private). See ASSETS.md for the manifest.
+media/
+audio/
+output/*.mp4
+work/

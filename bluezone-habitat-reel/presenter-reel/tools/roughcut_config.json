@@ -1,0 +1,12 @@
+{
+ "root": "/home/user/seeakk-daily-video-editing/bluezone-habitat-reel/presenter-reel",
+ "note": "Rough cut v1 (no transcript yet): pre-roll fragments and the take-1 look-away removed; all other speech kept in recording order.",
+ "max_pause": 0.28,
+ "takes": [
+  {"id": "0035", "start": 4.2, "exclude": [[32.3, 38.3]]},
+  {"id": "0036", "start": 1.1},
+  {"id": "0037", "start": 1.1},
+  {"id": "0038", "start": 2.9},
+  {"id": "0043", "start": 0.3}
+ ]
+}

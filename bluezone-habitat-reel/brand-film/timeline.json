@@ -1,0 +1,15 @@
+{"fps": 30, "picture_end": 85.6, "total": 90.0, "shots": [
+ {"id": "S1", "scene": 1, "type": "card", "src": "manjeri", "from": 0, "to": 10, "move": {"s": [1.0, 1.12], "w": 1000, "cy": 0.45}, "placeholder": "AI clip 01", "label": "Photo · Manjeri"},
+ {"id": "S2", "scene": 2, "type": "video", "src": "aerial", "from": 10, "to": 20, "xin": true, "label": "Artist's impression"},
+ {"id": "S3", "scene": 3, "type": "still", "src": "r11", "from": 20, "to": 30, "xin": true, "move": {"s": [1.04, 1.14], "x": [0.42, 0.42], "y": [0.52, 0.52]}, "placeholder": "AI clip 03", "label": "Artist's impression"},
+ {"id": "S4", "scene": 4, "type": "reveal", "src": "aurexa_plan", "src2": "r04", "from": 30, "to": 40, "xin": true, "wipe": [34.4, 35.6], "move": {"s": [1.0, 1.06], "w": 1000, "cy": 0.47}, "move2": {"s": [1.0, 1.1], "x": [0.47, 0.47], "y": [0.5, 0.47]}, "label": "Floor plan indicative · Artist's impression"},
+ {"id": "S5a", "scene": 5, "type": "card", "src": "entrance", "from": 40, "to": 43.6, "xin": true, "move": {"s": [1.0, 1.06], "w": 1040, "cy": 0.47}, "label": "Artist's impression"},
+ {"id": "S5b", "scene": 5, "type": "still", "src": "mp", "from": 43.6, "to": 50, "move": {"s": [1.05, 1.22], "x": [0.42, 0.5], "y": [0.55, 0.5]}, "label": "Master plan · indicative"},
+ {"id": "S6a", "scene": 6, "type": "card", "src": "gardens", "from": 50, "to": 55, "xin": true, "move": {"s": [1.0, 1.06], "w": 1040, "cy": 0.47}, "label": "Planned · Artist's impression"},
+ {"id": "S6b", "scene": 6, "type": "still", "src": "r01", "from": 55, "to": 60, "move": {"s": [1.04, 1.14], "x": [0.5, 0.52], "y": [0.58, 0.55]}, "label": "Planned · Artist's impression"},
+ {"id": "S7a", "scene": 7, "type": "card", "src": "clubhouse", "from": 60, "to": 63.4, "xin": true, "move": {"s": [1.0, 1.06], "w": 900, "cy": 0.46}, "label": "Planned clubhouse · Artist's impression"},
+ {"id": "S7b", "scene": 7, "type": "card", "src": "library", "from": 63.4, "to": 66.4, "move": {"s": [1.0, 1.06], "w": 960, "cy": 0.46}, "label": "Planned · Artist's impression"},
+ {"id": "S7c", "scene": 7, "type": "video", "src": "office", "from": 66.4, "to": 70, "label": "Planned · Artist's impression"},
+ {"id": "S8", "scene": 8, "type": "still", "src": "r08", "from": 70, "to": 80, "xin": true, "move": {"s": [1.04, 1.16], "x": [0.62, 0.66], "y": [0.54, 0.52]}, "placeholder": "AI clip 08", "label": "Artist's impression"},
+ {"id": "S9", "scene": 9, "type": "still", "src": "r03", "from": 80, "to": 85.6, "xin": true, "move": {"s": [1.0, 1.12], "x": [0.5, 0.5], "y": [0.52, 0.49]}, "label": "Artist's impression"}
+]}

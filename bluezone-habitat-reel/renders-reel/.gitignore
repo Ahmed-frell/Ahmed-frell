@@ -1,0 +1,11 @@
+media/
+work/
+output/*.mp4
+analysis/ref/
+analysis/renders_sheet.jpg
+render/node_modules/
+render/out/
+render/public/img/
+render/public/*.wav
+render/public/brand/
+render/public/bg.mp4
