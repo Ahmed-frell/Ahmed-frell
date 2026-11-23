@@ -18,7 +18,46 @@ DEFAULTS = {
     "blend": "overlay", "opacity": 1.0,
     "in_frames": 8, "out_frames": 10, "overlap_frames": 4, "blur_px": 35,
     "max_pause_bridge": 0.6,   # don't auto-extend a chunk across a pause longer than this (s)
+    "behind": False,           # True: people occlude the text (needs --matte-model)
+    "safe_rect": None,         # [x0, y0, x1, y1] (0-1): text is clipped to this box, e.g. the picture inside letterbox bars
 }
+
+
+class PersonMatte:
+    """Person mask per frame using a MediaPipe image-segmenter .tflite (selfie_multiclass_256x256 or selfie_segmenter)."""
+    def __init__(self, model, rect_px, smooth=0.35):
+        import mediapipe as mp
+        from mediapipe.tasks import python as mpt
+        from mediapipe.tasks.python import vision
+        self.mp = mp
+        opts = vision.ImageSegmenterOptions(base_options=mpt.BaseOptions(model_asset_path=model),
+                                            output_confidence_masks=True)
+        self.seg = vision.ImageSegmenter.create_from_options(opts)
+        self.rect = rect_px          # (x0, y0, x1, y1) region to segment
+        self.smooth = smooth         # temporal smoothing (0 = none)
+        self.prev = None
+        self.cache_t = None
+        self.cache = None
+
+    def get(self, frame_u8, t):
+        if self.cache_t == t:
+            return self.cache
+        x0, y0, x1, y1 = self.rect
+        crop = np.ascontiguousarray(frame_u8[y0:y1, x0:x1])
+        r = self.seg.segment(self.mp.Image(image_format=self.mp.ImageFormat.SRGB, data=crop))
+        cm = r.confidence_masks
+        m = np.squeeze(cm[0].numpy_view()).astype(np.float32)
+        m = m if len(cm) == 1 else 1.0 - m          # multiclass: mask 0 = background
+        m = np.clip((m - 0.35) / 0.3, 0, 1)          # firm up the edge
+        im = Image.fromarray((m * 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(1.5))
+        m = np.asarray(im, dtype=np.float32) / 255.0
+        if self.prev is not None and self.smooth > 0 and np.abs(m - self.prev).mean() < 0.08:
+            m = self.smooth * self.prev + (1 - self.smooth) * m   # no smoothing across cuts
+        self.prev = m
+        full = np.zeros(frame_u8.shape[:2], np.float32)
+        full[y0:y1, x0:x1] = m
+        self.cache_t, self.cache = t, full
+        return full
 
 
 def probe(path):
@@ -118,8 +157,8 @@ def build_chunk(chunk, cfg, W):
 
 
 # ---------- compositing ----------
-def blend_into(frame, mask_img, x, y, alpha, blend, blur_r):
-    """frame: float32 HxWx3 in 0..1 (modified in place)."""
+def blend_into(frame, mask_img, x, y, alpha, blend, blur_r, clip=None, occluder=None):
+    """frame: float32 HxWx3 in 0..1 (modified in place). clip = (x0,y0,x1,y1) px; occluder = HxW person mask."""
     if alpha <= 0.002:
         return
     pad = int(math.ceil(blur_r * 3)) + 2 if blur_r > 0.05 else 0
@@ -131,11 +170,14 @@ def blend_into(frame, mask_img, x, y, alpha, blend, blur_r):
     x -= pad
     y -= pad
     H, W = frame.shape[:2]
-    x0, y0 = max(0, x), max(0, y)
-    x1, y1 = min(W, x + m.width), min(H, y + m.height)
+    cx0, cy0, cx1, cy1 = clip if clip else (0, 0, W, H)
+    x0, y0 = max(cx0, x), max(cy0, y)
+    x1, y1 = min(cx1, x + m.width), min(cy1, y + m.height)
     if x1 <= x0 or y1 <= y0:
         return
     a = np.asarray(m, dtype=np.float32)[y0 - y:y1 - y, x0 - x:x1 - x, None] * (alpha / 255.0)
+    if occluder is not None:
+        a = a * (1.0 - occluder[y0:y1, x0:x1, None])
     b = frame[y0:y1, x0:x1]
     if blend == "overlay":
         top = np.where(b < 0.5, 2 * b, 1.0)
@@ -184,15 +226,23 @@ def prepare(cfg_raw, W, H, fps, auto_overlap):
     return prepared
 
 
-def composite(frame_u8, t, prepared, fps):
+def composite(frame_u8, t, prepared, fps, matte=None):
     f = frame_u8.astype(np.float32) / 255.0
+    H, W = f.shape[:2]
     for ch in prepared:
         if t < ch["start"] or t > ch["t_last"]:
             continue
         c = ch["cfg"]
+        sr = c.get("safe_rect")
+        clip = (int(sr[0] * W), int(sr[1] * H), int(sr[2] * W), int(sr[3] * H)) if sr else None
+        occ = None
+        if c.get("behind"):
+            if matte is None:
+                sys.exit("chunk has \"behind\": true but no --matte-model was given")
+            occ = matte.get(frame_u8, t)
         for im, x, y, delay in ch["lines"]:
             a, blur = line_state(t, ch["start"], ch["end"], delay, fps, c)
-            blend_into(f, im, x, y, a * c["opacity"], c["blend"], blur)
+            blend_into(f, im, x, y, a * c["opacity"], c["blend"], blur, clip, occ)
     return (np.clip(f, 0, 1) * 255 + 0.5).astype(np.uint8)
 
 
@@ -204,6 +254,8 @@ def main():
     ap.add_argument("--crf", type=int, default=18)
     ap.add_argument("--preset", default="medium")
     ap.add_argument("--no-auto-overlap", action="store_true")
+    ap.add_argument("--matte-model", default=None,
+                    help="MediaPipe image-segmenter .tflite, needed for chunks with \"behind\": true")
     ap.add_argument("--still", type=float, default=None,
                     help="render only the frame at this time (s) to OUT as PNG")
     a = ap.parse_args()
@@ -211,13 +263,19 @@ def main():
     W, H, fps, dur = probe(a.inp)
     cfg_raw = json.load(open(a.captions))
     prepared = prepare(cfg_raw, W, H, fps, not a.no_auto_overlap)
+    matte = None
+    if a.matte_model:
+        sr = cfg_raw.get("safe_rect") or [0, 0, 1, 1]
+        matte = PersonMatte(a.matte_model, (int(sr[0] * W), int(sr[1] * H), int(sr[2] * W), int(sr[3] * H)))
 
     if a.still is not None:
         raw = subprocess.run(["ffmpeg", "-v", "error", "-ss", str(a.still), "-i", a.inp, "-frames:v", "1",
                               "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], capture_output=True, check=True).stdout
         fr = np.frombuffer(raw, np.uint8)[:W * H * 3].reshape(H, W, 3)
-        Image.fromarray(composite(fr, a.still, prepared, fps)).save(a.out)
+        Image.fromarray(composite(fr, a.still, prepared, fps, matte)).save(a.out)
         print(f"still {a.still:.2f}s -> {a.out}")
+        if matte:
+            matte.seg.close()
         return
 
     seg = ["-ss", str(a.start)] + (["-t", str(a.duration)] if a.duration else [])
@@ -237,11 +295,13 @@ def main():
             break
         t = a.start + n / fps
         fr = np.frombuffer(buf, np.uint8).reshape(H, W, 3)
-        enc.stdin.write(composite(fr, t, prepared, fps).tobytes())
+        enc.stdin.write(composite(fr, t, prepared, fps, matte).tobytes())
         n += 1
         if n % 60 == 0:
             print(f"\r{n}/{total} frames", end="", file=sys.stderr)
     enc.stdin.close()
+    if matte:
+        matte.seg.close()
     dec.wait(); rc = enc.wait()
     print(f"\nwrote {n} frames -> {a.out}" + ("" if rc == 0 else f" (encoder exit {rc})"))
     sys.exit(rc)

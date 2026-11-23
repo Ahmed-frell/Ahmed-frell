@@ -74,11 +74,21 @@ then every text layer set to **Blending Mode › Overlay**. Measured details are
   so the out-fade overlaps the next chunk's in-fade by `overlap_frames` (turn this off with `--no-auto-overlap`).
 - `x` is the alignment edge (left edge for `left`, right edge for `right`, centre for `center`). `y` is the top of the stack.
 - A line may set `"size"` (fraction of width) to override, `"delay"` (s) for staggered entry, `"key": true` for the big size.
-- Any chunk may override `blend`, `opacity`, `blur_px`, `in_frames`, `out_frames`.
+- Any chunk may override `blend`, `opacity`, `blur_px`, `in_frames`, `out_frames`, `behind`, `safe_rect`.
+- `"safe_rect": [x0, y0, x1, y1]` (0–1, top level or per chunk) clips all text to that box. Use it for **letterboxed footage**
+  (a 16:9 picture inside a 9:16 frame) so no text lands in the black bars. Find the box with a row/column mean > 6 on a frame.
+- `"behind": true` on a chunk puts the text **behind the people**: a person mask is computed per frame and cuts the text out where
+  someone is in front. Render with `--matte-model selfie_multiclass_256x256.tflite`
+  (from `https://storage.googleapis.com/mediapipe-models/image_segmenter/selfie_multiclass_256x256/float32/latest/selfie_multiclass_256x256.tflite`;
+  needs `pip install mediapipe` and `apt-get install libegl1 libgles2`). The mask is computed only inside `safe_rect` and smoothed over time,
+  but not across cuts.
+  Design rules for behind-words: one big word (size 0.28–0.40 W), placed so the head or shoulders cover part of it at mid-height. Keep
+  at least ~60% of the letters visible so it still reads. Put it on a darker wall: Overlay washes out over bright areas, so use
+  `"blend": "normal", "opacity": 0.85` there. Use one or two per shot at most, on the punch words.
 
 ## Renderer
 
-`scripts/render_cubic_blur.py IN.mp4 captions.json OUT.mp4 [--start S --duration D] [--crf 18] [--no-auto-overlap]`
+`scripts/render_cubic_blur.py IN.mp4 captions.json OUT.mp4 [--start S --duration D] [--crf 18] [--no-auto-overlap] [--matte-model M.tflite] [--still T]`
 - Python 3 + numpy + Pillow + ffmpeg. No GPU needed. Decodes frames through a pipe, composites, and re-encodes H.264 (yuv420p, +faststart),
   copying the source audio.
 - Text is rasterised once per line, with glyph-by-glyph tracking and kerning kept. Blur and opacity are applied per frame.
