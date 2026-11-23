@@ -18,6 +18,7 @@ DEFAULTS = {
     "blend": "overlay", "opacity": 1.0,
     "in_frames": 8, "out_frames": 10, "overlap_frames": 4, "blur_px": 35,
     "max_pause_bridge": 0.6,   # don't auto-extend a chunk across a pause longer than this (s)
+    "extend": True,            # False: don't auto-extend this chunk into the next one (use on the last chunk before a cut)
     "behind": False,           # True: people occlude the text (needs --matte-model)
     "safe_rect": None,         # [x0, y0, x1, y1] (0-1): text is clipped to this box, e.g. the picture inside letterbox bars
 }
@@ -216,7 +217,7 @@ def prepare(cfg_raw, W, H, fps, auto_overlap):
         # AE "blurriness" ~ 2*sigma; PIL GaussianBlur radius ~ sigma. blur_px defined at 1080 width.
         c["_blur_scale"] = (W / 1080.0) * 0.5
         end = float(ch["end"])
-        if auto_overlap and i + 1 < len(chunks):
+        if auto_overlap and c["extend"] and i + 1 < len(chunks):
             nxt = float(chunks[i + 1]["start"])
             if nxt - end <= cfg["max_pause_bridge"]:
                 end = max(end, nxt + c["overlap_frames"] / fps)

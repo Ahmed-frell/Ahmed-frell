@@ -75,6 +75,8 @@ then every text layer set to **Blending Mode › Overlay**. Measured details are
 - `x` is the alignment edge (left edge for `left`, right edge for `right`, centre for `center`). `y` is the top of the stack.
 - A line may set `"size"` (fraction of width) to override, `"delay"` (s) for staggered entry, `"key": true` for the big size.
 - Any chunk may override `blend`, `opacity`, `blur_px`, `in_frames`, `out_frames`, `behind`, `safe_rect`.
+- `"extend": false` on the **last chunk before a cut** stops the auto-overlap from stretching it into the next shot, where it would show
+  as a blurred ghost after the cut. Set its `end` about 10 frames before the cut so the blur-out finishes on the cut.
 - `"safe_rect": [x0, y0, x1, y1]` (0–1, top level or per chunk) clips all text to that box. Use it for **letterboxed footage**
   (a 16:9 picture inside a 9:16 frame) so no text lands in the black bars. Find the box with a row/column mean > 6 on a frame.
 - `"behind": true` on a chunk puts the text **behind the people**: a person mask is computed per frame and cuts the text out where
