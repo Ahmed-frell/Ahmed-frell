@@ -1,9 +1,9 @@
 ---
-name: cubic-blur-text-effect
-description: Add "cubic blur" kinetic captions to a talking-head or B-roll video - big lowercase heavy-sans key words stacked with small filler words, white text in OVERLAY blend so it takes the colour of the wall behind it, cubic fade-in and Gaussian-blur-plus-fade-out, each chunk overlapping the previous one, placed in empty space in the shot and synced word by word to speech. Renders a finished MP4 with the bundled Python renderer, or gives exact After Effects (JSX script / Animation Composer presets "Fade Cubic In" + "Gaussian Blur & Fade Eased"), Premiere or CapCut steps. Use whenever the user asks for the cubic blur text effect, "blur captions", "overlay captions", "Animation Composer caption style", captions "like the After Effects tutorial reference", aesthetic/moody/minimal kinetic captions, or wants this look on their own footage, even without naming this skill.
+name: cubic-blur
+description: Add "cubic blur" kinetic captions to a talking-head or B-roll video - big lowercase heavy-sans key words stacked with small filler words, white text in OVERLAY blend so it takes the colour of the wall behind it, cubic fade-in and Gaussian-blur-plus-fade-out, each chunk overlapping the previous one, placed in empty space in the shot and synced word by word to speech, optionally with key words masked BEHIND the people and kept out of letterbox bars. Renders a finished MP4 with the bundled Python renderer, or gives exact After Effects (JSX script / Animation Composer presets "Fade Cubic In" + "Gaussian Blur & Fade Eased"), Premiere or CapCut steps. Use whenever the user asks for cubic blur, the cubic blur text effect, text behind the person, "blur captions", "overlay captions", "Animation Composer caption style", captions "like the After Effects tutorial reference", aesthetic/moody/minimal kinetic captions, or wants this look on their own footage, even without naming this skill.
 ---
 
-# Cubic Blur Text Effect
+# Cubic Blur
 
 A minimal, premium caption style. Words appear on screen as they're spoken. They don't sit in a fixed caption bar: they float
 in the empty parts of the frame (walls, cabinet fronts, sky), take on the colour of what's behind them, and dissolve into
@@ -23,7 +23,7 @@ then every text layer set to **Blending Mode › Overlay**. Measured details are
 | Colour | Pure white with **Overlay** blend. No stroke, shadow, box, emoji or colour highlight. |
 | Hierarchy | Each chunk = 1 **key word** (big) + 0–1 line of **filler** words (small). Key word ≈ 2.4× filler size; key word width ≈ 40–60% of frame width. |
 | Stacks | Filler line can sit above *or* below the key word. Alignment varies (left / right / centre), anchored to the empty area. |
-| Placement | In negative space for the current shot: upper wall in close shots, cabinet/desk front in wide shots, wall beside a standing subject. Changes per camera setup; consistent within one shot. Text goes over the subject, not masked behind. |
+| Placement | In negative space for the current shot: upper wall in close shots, cabinet/desk front in wide shots, wall beside a standing subject. Changes per camera setup; consistent within one shot. Text goes over the subject by default. Punch words can go **behind** the people (`"behind": true`). |
 | In | Opacity 0→100 %, **cubic ease-out**, 8 frames at 30 fps (≈ 0.27 s). No movement, no scale. |
 | Out | Gaussian blur 0→35 px (at 1080 wide, builds fast) **+** opacity 100→0 % (holds, then drops), 10 frames (≈ 0.33 s). |
 | Overlap | The next chunk starts fading in **4 frames before** the previous one starts fading out. The screen is never empty mid-sentence, and there are no hard cuts between captions. |
@@ -31,12 +31,28 @@ then every text layer set to **Blending Mode › Overlay**. Measured details are
 | Sync | Each chunk's start = first syllable of its first word; its end = end of its last spoken word (+ hold, see below). |
 | Footage | Works best on a moody, darker grade (teal and tungsten in the reference). Overlay text nearly disappears on near-black areas, so place it on mid-tones. |
 
+## Setup (once per machine)
+- Required: `ffmpeg`, Python 3, `pip install numpy pillow`.
+- Font: Inter Display ExtraBold. If `/usr/share/fonts/opentype/inter/InterDisplay-ExtraBold.otf` is missing, run `fc-list | grep -i inter`,
+  or download Inter (rsms.me/inter, Google Fonts, or `npm pack @fontsource/inter`) and set `"font"` in captions.json to the .otf/.ttf path.
+  Any heavy grotesque works (Helvetica Now Display Bold, Archivo Black, Manrope ExtraBold).
+- Words behind people: `pip install mediapipe` plus `apt-get install -y libegl1 libgles2` on Linux, and the model
+  `curl -O https://storage.googleapis.com/mediapipe-models/image_segmenter/selfie_multiclass_256x256/float32/latest/selfie_multiclass_256x256.tflite`
+- Transcript alignment: `pip install pocketsphinx` (English model included, no download). If faster-whisper with a downloadable model
+  is available, prefer it for transcription.
+
 ## Workflow
 
 1. **Probe** the video: `ffprobe` for size, fps, duration and rotation. Pull a contact sheet (`fps=1,scale=360:-1,tile=6x4`) to see
    the shots and where the empty space is in each.
-2. **Words with timings.** Use the user's transcript plus word timestamps. If `faster-whisper` / `whisper` is installed, run it with
-   word timestamps. If not, ask the user for the script and align it by listening for silences (`silencedetect`). Never invent words.
+   - **Letterbox check:** if the picture is a band inside black bars (e.g. 16:9 inside 9:16), measure it: on one frame, the rows/columns
+     whose mean brightness is > 6. Set `"safe_rect"` to that band so no text ever lands in the black.
+2. **Words with timings.** Never invent words.
+   - Whisper with word timestamps if a model can be downloaded.
+   - Otherwise get the transcript from the user and run `scripts/align_words.py VIDEO transcript.txt words.json --energy`
+     (PocketSphinx forced alignment). Under music it can stretch a word across a pause (flagged "long, check"). Fix those words from
+     the speech-band energy table, where word onsets are jumps of ~8 dB or more.
+   - Words that can't be heard (music only, other language): ask the user for the text. Don't guess.
 3. **Chunk the speech** (rules in `references/style-spec.md` › Chunking):
    - one chunk = one key word + the small words around it, 1–4 words, 0.4–1.2 s on screen
    - the key word = the word carrying meaning or emphasis (noun, verb, number, the punch word); small = articles, prepositions, pronouns, connectors
@@ -46,7 +62,7 @@ then every text layer set to **Blending Mode › Overlay**. Measured details are
 5. **Write `captions.json`** (schema below; example in `templates/captions.example.json`).
 6. **Preview** a 5–8 s segment first: `python3 scripts/render_cubic_blur.py in.mp4 captions.json preview.mp4 --start 0 --duration 6`,
    then extract 3–4 stills and check them before the full render.
-7. **Render** the full video, then QC (below).
+7. **Render** the full video, then QC (below). Mark the last chunk of every shot `"extend": false`, so no blurred text ghosts after a cut.
 8. If the user edits in After Effects / Premiere / CapCut, give them `references/editor-recipes.md` steps instead of, or as well as, the render.
    `scripts/cubic_blur_ae.jsx` applies the effect to selected text layers in After Effects without Animation Composer.
 
@@ -112,4 +128,8 @@ then every text layer set to **Blending Mode › Overlay**. Measured details are
 - `scripts/render_cubic_blur.py`: renderer
 - `scripts/cubic_blur_ae.jsx`: After Effects ScriptUI-free script; select text layers, run it, and it adds the in/out keyframes, blur and Overlay
 - `scripts/words_to_chunks.py`: turns word timestamps (whisper-style JSON) into a starter `captions.json` that you then refine by hand
+- `scripts/align_words.py`: offline forced alignment of a known transcript to the audio (PocketSphinx), with a speech-energy table for fixes
 - `templates/captions.example.json`: the reference's opening lines rebuilt as captions
+- `templates/captions.letterbox-behind.example.json`: a real job. A black-and-white 16:9 clip letterboxed in 9:16, `safe_rect` on the
+  picture band, six punch words behind people ("climbing", "mercy", "one", "rule", "hunt", "back"), normal blend over bright areas,
+  `extend: false` before cuts
