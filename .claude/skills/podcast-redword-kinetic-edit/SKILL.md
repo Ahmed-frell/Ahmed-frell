@@ -51,6 +51,8 @@ Read first:
      automatically while the speaker talks and runs on under the closing logo. **The track must be a file the user supplies and is licensed
      to use. Never download commercial music.** To use "the same portion as the reference", run
      `scripts/find_music_offset.py song.m4a reference.mp4` and use the best song time as `start`.
+   - White captions never repeat the red word on screen (user rule). A white word whose text is in the active red word is hidden
+     automatically (`hide_dup_captions`, default on). Drop its tick SFX too.
    - `sfx`: extra cues `{kind: whoosh_impact|sub_boom|tick, t, gain_db}`. The tail cues are added automatically.
 5. **Matte (for text behind the speaker):** run `scripts/fg_matte.py u2net_human_seg.onnx work/aroll.mov work/matte 30 5.9-11.6 ...`
    over the red-word and behind-caption spans, then set `"matte_dir": "work/matte"`. Without a matte, red words render in front.

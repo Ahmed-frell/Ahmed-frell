@@ -819,11 +819,6 @@
   },
   {
    "kind": "tick",
-   "t": 15.96,
-   "gain_db": -26
-  },
-  {
-   "kind": "tick",
    "t": 16.44,
    "gain_db": -26
   },
@@ -831,11 +826,6 @@
    "kind": "whoosh",
    "t": 17.52,
    "gain_db": -14
-  },
-  {
-   "kind": "tick",
-   "t": 17.84,
-   "gain_db": -26
   },
   {
    "kind": "tick",
@@ -876,11 +866,6 @@
    "kind": "whoosh",
    "t": 29.56,
    "gain_db": -14
-  },
-  {
-   "kind": "tick",
-   "t": 30.0,
-   "gain_db": -26
   },
   {
    "kind": "tick",

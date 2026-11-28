@@ -195,6 +195,17 @@ class Composer:
     def active(self, t, types):
         return [e for e in self.ev if e['type'] in types and e['t'] <= t < e['end']]
 
+    @staticmethod
+    def tokens(txt):
+        import re
+        return {w for w in re.findall(r"[a-z0-9']+", txt.lower()) if w not in ('the', 'a', 'an', 'of', 'and')}
+
+    def red_tokens(self, t):
+        out = set()
+        for e in self.active(t, ['red_word']):
+            out |= self.tokens(e['text'])
+        return out
+
     def zoom(self, t):
         """Camera moves on the footage: {type: zoom, t, end, from, to, ramp (s, default whole span), cx, cy}.
         A short ramp (0.15 s) is a punch-in; ramp = span is a slow push. Footage only, overlays stay put."""
@@ -281,6 +292,11 @@ class Composer:
         """style line: words accumulate along a baseline; side: one word at a time; center: bold single word."""
         W, H = self.W, self.H; style = e.get('style', 'side'); layer = 'behind' if e.get('behind') else 'front'
         said = [w for w in e['words'] if w[1] <= t]
+        if self.cfg.get('hide_dup_captions', True):  # never say the same word twice: drop white words the red word already shows
+            red = self.red_tokens(t)
+            if style != 'line' and said and (self.tokens(said[-1][0]) & red):
+                return []  # the word being spoken is already on screen in red: show nothing, not the previous word
+            said = [w for w in said if not (self.tokens(w[0]) & red)]
         if not said:
             return []
         if style == 'line':
