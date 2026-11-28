@@ -227,13 +227,13 @@ class Composer:
         key = ('red', e['text'])
         if key not in self._cache:
             hgt = e.get('height', 0.56) * H
-            im = text_img(e['text'].upper(), F('red', hgt * 1.25), fill=tuple(e.get('colour', [215, 12, 18])) + (255,))
+            im = text_img(e['text'].upper(), F('red', hgt * 1.25), fill=tuple(e.get('colour', self.cfg.get('accent', [215, 12, 18]))) + (255,))
             im = im.resize((im.width, int(hgt)), Image.LANCZOS)
             maxw = e.get('max_width', 0.9) * W
             if im.width > maxw:
                 im = im.resize((int(maxw), im.height), Image.LANCZOS)  # horizontal squash, like DISTRIBUTIONS
             outline = im.split()[3].filter(ImageFilter.FIND_EDGES).point(lambda v: 255 if v > 40 else 0)
-            ol = Image.new('RGBA', im.size, tuple(e.get('colour', [215, 12, 18])) + (0,)); ol.putalpha(outline.filter(ImageFilter.MaxFilter(3)))
+            ol = Image.new('RGBA', im.size, tuple(e.get('colour', self.cfg.get('accent', [215, 12, 18]))) + (0,)); ol.putalpha(outline.filter(ImageFilter.MaxFilter(3)))
             flash = text_img(e['text'].upper(), F('thin', H * 0.11), spacing=H * 0.03)
             self._cache[key] = (im, ol, flash)
         im, ol, flash = self._cache[key]
@@ -253,7 +253,7 @@ class Composer:
             chrome = gradient_fill(base, [(0, (235, 245, 255)), (0.35, (150, 190, 240)), (0.5, (255, 255, 255)), (0.75, (120, 160, 215)), (1, (240, 248, 255))])
             shadow = base.split()[3].filter(ImageFilter.GaussianBlur(6))
             sh = Image.new('RGBA', base.size, (0, 0, 0, 0)); sh.putalpha(shadow.point(lambda v: v // 2))
-            red = text_img(e['text'], F('script', e.get('size', 0.5) * H), fill=(0, 0, 0, 0), stroke=3, stroke_fill=(215, 20, 25, 255), pad=20)
+            red = text_img(e['text'], F('script', e.get('size', 0.5) * H), fill=(0, 0, 0, 0), stroke=3, stroke_fill=tuple(self.cfg.get('accent', [215, 20, 25])) + (255,), pad=20)
             self._cache[key] = (chrome, sh, red)
         chrome, sh, red = self._cache[key]
         x = e.get('x', 0.5) * W - chrome.width / 2; y = e.get('y', 0.58) * H - chrome.height / 2
