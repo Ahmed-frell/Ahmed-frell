@@ -6,8 +6,8 @@ Usage:  python3 render_reel.py edit.json [--preview START-END] [--no-tail]
 Pipeline: (1) concat + cover-fit the A-roll/B-roll segments to the output size/fps (aroll.mp4),
 (2) pipe every frame through PIL and draw the layers in this order:
     footage -> layers marked behind (red word fill, behind captions) -> person matte (optional)
-    -> red-word outline over the person -> front layers (script word, stack, captions) -> HUD -> handle badge
-    -> letterbox bars,
+    -> red-word outline over the person -> front layers (script word, stack, captions) -> HUD
+    -> letterbox bars. No social watermark/handle badge is drawn on the clip or the title card.
 (3) append the grunge title card and the social end card, (4) mix dialogue + synthetic SFX, encode H.264/AAC.
 Only PIL, numpy and ffmpeg are needed. Fonts come from ../assets (all SIL OFL).
 """
@@ -264,20 +264,6 @@ class Composer:
         f = F('body', e.get('size', 0.05) * H); im = text_img(wd, f)
         return [(layer, im, e.get('x', 0.66) * W, e.get('y', 0.32) * H, ease_out((t - wt) * self.fps / 2))]
 
-    def badge(self, img, t):
-        W, H = self.W, self.H; pos = 'top_right'
-        for e in self.ev:
-            if e['type'] == 'handle_pos' and e['t'] <= t:
-                pos = e['pos']
-        g = 0.0
-        for e in self.active(t, ['icon_gradient']):
-            g = min(1, (t - e['t']) * 4, (e['end'] - t) * 4)
-        s = H * 0.065; glyph = ig_glyph(s, grad_t=g); txt = text_img(self.handle.upper(), F('handle', H * 0.042))
-        if pos == 'bottom_left':
-            paste(img, glyph, W * 0.055, H * 0.75); paste(img, txt, W * 0.055, H * 0.84)
-        else:
-            paste(img, glyph, W * 0.93 - s / 2, H * 0.12); paste(img, txt, W * 0.985 - txt.width, H * 0.215)
-
     def frame(self, fr, fi):
         W, H, fps = self.W, self.H, self.fps; t = fi / fps
         img = Image.fromarray(fr, 'RGB').convert('RGBA'); layers = []; outlines = []
@@ -301,7 +287,6 @@ class Composer:
             paste(img, *L[1:])
         if self.hud:
             self.hud.draw(img, t)
-        self.badge(img, t)
         lb = self.cfg.get('letterbox_open')
         if lb and t < lb['dur']:
             vis = H * (0.06 + 0.94 * ease_out(t / lb['dur'])) if fi > 0 else 0
@@ -321,7 +306,6 @@ class Composer:
             d.line([(x0, y0), (x0 + math.cos(ang) * L, y0 + math.sin(ang) * L)], fill=(200, 200, 200, rnd.randint(60, 160)), width=1)
         title = text_img(self.cfg.get('title', 'YOUR SHOW').upper(), F('title', H * 0.03), spacing=H * 0.018, fill=(225, 225, 225, 255))
         paste(img, title, (W - title.width) / 2, H * 0.47)
-        paste(img, ig_glyph(H * 0.04), W * 0.055, H * 0.66); paste(img, text_img(self.handle.upper(), F('handle', H * 0.028)), W * 0.055, H * 0.72)
         fade = min(1, max(0, (n - k) / (self.fps * 1.2)))
         return (np.asarray(img.convert('RGB')).astype(np.float32) * fade).astype(np.uint8)
 

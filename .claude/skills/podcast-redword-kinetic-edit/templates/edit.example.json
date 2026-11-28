@@ -21,7 +21,6 @@
      "words": [["If", 0.27], ["you", 0.6], ["want", 0.93], ["to", 1.07], ["be", 1.2]]},
     {"type": "red_word", "text": "NUMBER", "t": 1.13, "end": 1.6, "y": 0.0, "height": 0.42},
     {"type": "script_word", "text": "One,", "t": 1.6, "end": 2.33, "x": 0.48, "y": 0.52, "size": 0.85},
-    {"type": "icon_gradient", "t": 2.0, "end": 4.6},
     {"type": "stack", "t": 2.33, "end": 5.5, "x": 0.05, "y": 0.13, "size": 0.068, "lines": [
       [["You", "script", 2.33], ["need", "caps", 2.6]],
       [["to be", "caps", 3.0, 0.03], ["One", "script", 3.65]],
@@ -36,7 +35,6 @@
     {"type": "caption", "style": "side", "t": 7.45, "end": 8.9, "words": [["one", 7.45], ["than", 7.9], ["one,", 8.4]]},
     {"type": "red_word", "text": "DISTRIBUTIONS", "t": 8.9, "end": 10.4},
     {"type": "caption", "style": "side", "t": 8.95, "end": 10.4, "words": [["better", 8.95], ["distribution", 9.4], ["number", 9.9]]},
-    {"type": "handle_pos", "t": 9.5, "pos": "bottom_left"},
     {"type": "red_word", "text": "THINKING", "t": 10.4, "end": 11.6},
     {"type": "caption", "style": "side", "t": 10.45, "end": 11.47, "words": [["thinking", 10.45], ["than", 11.07], ["number", 11.2]]},
     {"type": "caption", "style": "center", "t": 11.47, "end": 12.67, "y": 0.62, "behind": true,

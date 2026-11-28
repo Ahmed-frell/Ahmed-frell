@@ -1,6 +1,6 @@
 ---
 name: podcast-redword-kinetic-edit
-description: Edit a podcast or talking-head clip into a punchy social clip in the "red-word kinetic" style analysed from the reference reel (VID_20261127_200232_220). The style has a letterbox-open intro, wide-spaced word-by-word captions, giant condensed RED key words placed behind the speaker with an outline on top, a chrome script hero word, an editorial stacked type block, a tracking-data HUD overlay, a moving social-handle badge, a cut-in guest with bold centre captions, a grunge title card with whoosh-impact and a social end card with sub boom. Renders a real MP4 with PIL + ffmpeg. Use whenever the user wants a podcast clip, founder or interview reel "like this reference", red big-word captions, text behind the speaker, or a "Figured Out"-style edit, even without naming this skill.
+description: Edit a podcast or talking-head clip into a punchy social clip in the "red-word kinetic" style analysed from the reference reel (VID_20261127_200232_220). The style has a letterbox-open intro, wide-spaced word-by-word captions, giant condensed RED key words placed behind the speaker with an outline on top, a chrome script hero word, an editorial stacked type block, a tracking-data HUD overlay, a cut-in guest with bold centre captions, a grunge title card with whoosh-impact and a social end card with sub boom. Renders a real MP4 with PIL + ffmpeg. Use whenever the user wants a podcast clip, founder or interview reel "like this reference", red big-word captions, text behind the speaker, or a "Figured Out"-style edit, even without naming this skill.
 ---
 
 # Podcast red-word kinetic edit
@@ -14,15 +14,17 @@ Read first:
 - `assets/reference-contact-sheet.jpg` shows the reference at 2 fps.
 
 ## Hard rules
-1. **Branding:** never reuse the reference channel's handle, show name or logo. Ask the user for *their* handle and show title.
+1. **No watermark:** do NOT put an Instagram (or any social) icon/handle watermark on the clip or the title card, even though the
+   reference has one. The handle appears only on the closing end card.
+2. **Branding:** never reuse the reference channel's handle, show name or logo. Ask the user for *their* handle and show title.
    The end-card glyph is a generic camera icon, not a platform logo file.
-2. **Words:** never invent the transcript. Use offline ASR if it works. If it doesn't (the network here blocks Hugging Face
+3. **Words:** never invent the transcript. Use offline ASR if it works. If it doesn't (the network here blocks Hugging Face
    models), read the captions or ask the user for the line. Confirm the key words before rendering.
-3. Never alter or regenerate the speaker's voice. Cuts only.
-4. Key-word discipline: **one red word per clause**, the noun that carries the idea (TEAM, MONEY, DISTRIBUTIONS). Use 1 script hero word
+4. Never alter or regenerate the speaker's voice. Cuts only.
+5. Key-word discipline: **one red word per clause**, the noun that carries the idea (TEAM, MONEY, DISTRIBUTIONS). Use 1 script hero word
    at the hook ("One,") and 1 editorial stack for the thesis sentence. Side words show the stressed words only.
-5. Show a `--preview` segment of any new look before the full render.
-6. Push to GitHub only with permission.
+6. Show a `--preview` segment of any new look before the full render.
+7. Push to GitHub only with permission.
 
 ## Pipeline
 1. **Ingest:** probe every take (size, fps, rotation, audio). Pick the output size. The reference is 1280×768. For Reels/Shorts use
@@ -39,7 +41,6 @@ Read first:
      letter-spaced flash, default on).
    - `script_word`: chrome script hero word with a 1-frame red outline flash.
    - `stack`: lines of `[word, "script"|"caps", t, x_offset]`. Caps wipe right→left, script fades.
-   - `handle_pos` (`top_right` → `bottom_left`) and `icon_gradient` (badge colour sweep).
    - `sfx`: extra cues `{kind: whoosh_impact|sub_boom|tick, t, gain_db}`. The tail cues are added automatically.
 5. **Matte (for text behind the speaker):** run `scripts/fg_matte.py u2net_human_seg.onnx work/aroll.mov work/matte 30 5.9-11.6 ...`
    over the red-word and behind-caption spans, then set `"matte_dir": "work/matte"`. Without a matte, red words render in front.
@@ -57,5 +58,4 @@ Read first:
 - The intro is a letterbox slit opening over 1.1 s. The tail is a 2.4 s grunge title card (fade out) and a 4.3 s end card.
 
 ## 9:16 adaptation
-Keep the grammar. Red words go to ~30 % H, and the stack starts at y 0.12. Side words go below the chin (y ~0.58), the handle sits
-bottom-left above the platform UI safe zone (y ≤ 0.80) and centre captions go to y ~0.62. Keep text out of the top 8 % and bottom 18 %.
+Keep the grammar. Red words go to ~30 % H, and the stack starts at y 0.12. Side words go below the chin (y ~0.58), and centre captions go to y ~0.62. Keep text out of the top 8 % and bottom 18 %.

@@ -14,21 +14,20 @@ Brackets are words that were spoken but never captioned. The edit captions only 
 ## Shot / structure map (seconds)
 | t | Shot | What happens |
 |---|---|---|
-| 0.00–1.10 | Host MCU, podcast set (amber curtain, record shelves, boom mic) | **Letterbox open**: frame 0 is black, then the picture opens from a thin horizontal slit (~6 % height) to full frame. Ease-out, ~1.1 s. HUD and handle are present from frame 4. |
+| 0.00–1.10 | Host MCU, podcast set (amber curtain, record shelves, boom mic) | **Letterbox open**: frame 0 is black, then the picture opens from a thin horizontal slit (~6 % height) to full frame. Ease-out, ~1.1 s. HUD is present from frame 4. (The reference also has an Instagram handle watermark top-right. **We never include it.**) |
 | 0.27–1.33 | | **Line captions**: small white sans words (Inter Regular, ~4 % H) land one by one across the frame at speech pace, spread wide ("If  you  want  to", then "be" drops to a second line). |
 | 1.13 | | 1-frame **white letter-spaced flash** of the word (thin sans), then |
 | 1.17–1.60 | | **Giant red word** `NUMBER` (condensed heavy grotesk, red #D70C12, top-anchored, ~45 % H) |
 | 1.60 | | 1-frame **red outline** script "One," → |
 | 1.67–2.33 | | **Chrome script word** "One," (huge, ~50 % H, blue-steel-white vertical gradient, soft drop shadow), centred over the speaker's body. |
-| 2.00–4.60 | | Handle icon fades **white → warm gradient** and back. |
 | 2.33–5.50 | | **Editorial stack**, upper-left: `You`(script) `NEED` / `TO BE` `One`(script) / `NUMBER` / `EVERY THING` / `GODDAMN`. Caps words are heavy italic sans, revealed by a **right-to-left wipe** (~5 frames: "ER" → "MBER" → "NUMBER"). Script words fade in. Lines are slightly offset (ragged left). |
 | 5.50 | | Single side word "You" |
 | 5.90–7.40 | | Red word `TEAM`, **behind the speaker** (his body/hand occludes the fill), with a thin red **outline drawn on top** where the letters cross him. A single **side word** (white sans ~5 % H, right of the face) changes per keyword: have / team / number. |
 | 7.40–8.90 | | Red `MONEY`: one / than / one, |
-| 8.90–10.40 | | Red `DISTRIBUTIONS`, squashed horizontally to fit ~90 % W: better / distribution / number. At 9.5 the **handle badge moves** from top-right to bottom-left (stays there till the end). |
+| 8.90–10.40 | | Red `DISTRIBUTIONS`, squashed horizontally to fit ~90 % W: better / distribution / number. (Reference: its handle watermark moves top-right → bottom-left here. **Not used in our edits.**) |
 | 10.40–11.60 | | Red `THINKING`: thinking / than / number / one, |
 | 11.60–12.67 | **Hard cut to guest** (different set, blue jacket) | **Centre word** captions: bold white sans ~7.5 % H on the chest, partly **behind the mic/body**: better / research / than / number / one. |
-| 12.67–15.00 | **Grunge title card** | Dark charcoal with vignette, film scratches and grain (re-randomised every 2 frames), wide-tracked techno title, small handle block bottom-left. Fades to black over the last ~1.2 s. Audio: **whoosh into impact** at the cut (≈ −7 dB, loudest moment of the reel). |
+| 12.67–15.00 | **Grunge title card** | Dark charcoal with vignette, film scratches and grain (re-randomised every 2 frames), wide-tracked techno title, small handle block bottom-left (omitted in our edits). Fades to black over the last ~1.2 s. Audio: **whoosh into impact** at the cut (≈ −7 dB, loudest moment of the reel). |
 | 15.00–19.00 | **End card** | Pure black, centred camera glyph (white) with a small **scale dip-pop**, then a colour sweep to a warm gradient, handle under it in a condensed caps face. Audio: **sub boom** at 15.05 that decays out by 16.8 s, then silence. |
 
 ## Rhythm
@@ -44,5 +43,5 @@ Brackets are words that were spoken but never captioned. The edit captions only 
 - Recommended deliverable: −14 LUFS integrated, −1 dBTP.
 
 ## Layer order (front to back)
-letterbox bars → handle badge → HUD → front text (script word, stack, line/side captions) → red-word outline → **speaker matte** →
+letterbox bars → HUD → front text (script word, stack, line/side captions) → red-word outline → **speaker matte** →
 behind text (red-word fill, centre captions) → footage.
