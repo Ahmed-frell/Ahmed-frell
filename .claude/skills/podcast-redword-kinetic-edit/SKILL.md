@@ -41,6 +41,12 @@ Read first:
      letter-spaced flash, default on).
    - `script_word`: chrome script hero word with a 1-frame red outline flash.
    - `stack`: lines of `[word, "script"|"caps", t, x_offset]`. Caps wipe right→left, script fades.
+   - `zoom`: camera move on the footage only, `{t, end, from, to, ramp, cx, cy}`. Use `ramp` 0.15 s for a punch-in on a red
+     word and ramp = span for a slow push or pull. Overlays don't move.
+   - Top-level `grade`: `"reference_warm"` (matches the reference) or any ffmpeg filter chain. It's applied to the footage before the text.
+   - Top-level `end_clip`: `{src, fit: contain|cover}` ends the video on the user's own logo animation instead of the generic end card.
+     Set `"title_card": null` to skip the title card. A sub boom lands on the first frame of whatever closes the video.
+   - Small output heights (e.g. 1080×566): raise `size` on line/side captions to ~0.055–0.065 so they stay readable.
    - `sfx`: extra cues `{kind: whoosh_impact|sub_boom|tick, t, gain_db}`. The tail cues are added automatically.
 5. **Matte (for text behind the speaker):** run `scripts/fg_matte.py u2net_human_seg.onnx work/aroll.mov work/matte 30 5.9-11.6 ...`
    over the red-word and behind-caption spans, then set `"matte_dir": "work/matte"`. Without a matte, red words render in front.

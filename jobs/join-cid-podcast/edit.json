@@ -1,0 +1,64 @@
+{
+  "_comment": "JOIN CID value-selling clip. Rough cut = source 12.0-31.0 s of IMG_2376.MOV (main take, per the user's transcript). Word times inside each transcript line are ESTIMATES spread evenly; snap them to the real audio once the take is downloaded. Times are on the edit timeline (source - 12.0).",
+  "segments": [{"src": "IMG_2376.MOV", "in": 12.0, "out": 31.0}],
+  "out": "join_cid_value_selling_1080x566.mp4",
+  "size": [1080, 566],
+  "fps": 30,
+  "grade": "reference_warm",
+  "handle": "@joincid",
+  "title": "JOIN CID",
+  "matte_dir": "work/matte",
+  "letterbox_open": {"dur": 1.1},
+  "hud": {"enabled": true, "params": {"seed": 5, "n": 5}},
+  "title_card": null,
+  "end_clip": {"src": "join-cid-logo-end.mp4", "fit": "contain"},
+  "auto_tail_sfx": true,
+  "sfx": [
+    {"kind": "tick", "t": 0.95, "gain_db": -20}, {"kind": "tick", "t": 5.0, "gain_db": -20},
+    {"kind": "tick", "t": 6.3, "gain_db": -20}, {"kind": "tick", "t": 10.0, "gain_db": -20},
+    {"kind": "tick", "t": 12.91, "gain_db": -20}, {"kind": "tick", "t": 17.29, "gain_db": -20},
+    {"kind": "tick", "t": 18.14, "gain_db": -20},
+    {"kind": "whoosh_impact", "t": 19.0, "gain_db": -6}
+  ],
+  "events": [
+    {"type": "zoom", "t": 0.0, "end": 4.0, "from": 1.0, "to": 1.06, "cx": 0.5, "cy": 0.4},
+    {"type": "caption", "style": "line", "size": 0.055, "t": 0.1, "end": 0.95, "x": 0.03, "y": 0.52, "words": [["Customer", 0.1], ["tharunna", 0.55]]},
+    {"type": "red_word", "text": "MONEY", "t": 0.95, "end": 1.9},
+    {"type": "caption", "style": "side", "size": 0.065, "t": 1.0, "end": 2.6, "words": [["money-ekkal", 1.0], ["nammal", 1.45], ["kodukkunna", 1.9], ["product", 2.25]]},
+    {"type": "script_word", "text": "Value", "t": 2.6, "end": 3.45, "x": 0.5, "y": 0.52, "size": 0.85},
+    {"type": "caption", "style": "side", "size": 0.065, "t": 3.45, "end": 4.0, "words": [["kooduthal aano?", 3.45]]},
+
+    {"type": "caption", "style": "line", "size": 0.055, "t": 4.0, "end": 5.0, "x": 0.03, "y": 0.52, "words": [["Ithu", 4.0], ["randum", 4.33], ["thammilulla", 4.67]]},
+    {"type": "red_word", "text": "GAP", "t": 5.0, "end": 6.3},
+    {"type": "zoom", "t": 5.0, "end": 6.3, "from": 1.0, "to": 1.1, "ramp": 0.15, "cx": 0.5, "cy": 0.38},
+    {"type": "caption", "style": "side", "size": 0.065, "t": 5.0, "end": 6.3, "words": [["gap", 5.0], ["aanu", 5.33], ["the real", 5.67]]},
+    {"type": "red_word", "text": "POWER", "t": 6.3, "end": 7.0},
+    {"type": "caption", "style": "side", "size": 0.065, "t": 6.33, "end": 7.0, "words": [["sales", 6.33], ["power.", 6.67]]},
+
+    {"type": "zoom", "t": 7.0, "end": 10.0, "from": 1.05, "to": 1.0, "cx": 0.5, "cy": 0.4},
+    {"type": "stack", "t": 7.0, "end": 10.0, "x": 0.05, "y": 0.12, "size": 0.075, "lines": [
+      [["The", "script", 7.0], ["bigger", "caps", 7.375]],
+      [["the", "script", 7.75, 0.03], ["gap,", "caps", 8.125]],
+      [["the", "script", 8.5, 0.01], ["easier", "caps", 8.875]],
+      [["the", "script", 9.25, 0.04], ["sale.", "caps", 9.625]]
+    ]},
+
+    {"type": "red_word", "text": "VALUE", "t": 10.0, "end": 11.09},
+    {"type": "caption", "style": "side", "size": 0.065, "t": 10.0, "end": 11.09, "words": [["Value", 10.0], ["convince", 10.36], ["cheythaal,", 10.73]]},
+    {"type": "caption", "style": "line", "size": 0.055, "t": 11.09, "end": 12.91, "x": 0.03, "y": 0.52, "words": [["we", 11.09], ["want", 11.82], ["to,", 12.18], ["like,", 12.55]]},
+    {"type": "red_word", "text": "CHASE", "t": 12.91, "end": 14.0},
+    {"type": "zoom", "t": 12.91, "end": 14.0, "from": 1.0, "to": 1.1, "ramp": 0.15, "cx": 0.5, "cy": 0.38},
+    {"type": "caption", "style": "side", "size": 0.065, "t": 12.91, "end": 14.0, "words": [["chase", 12.91], ["the customer", 13.27]]},
+
+    {"type": "zoom", "t": 14.0, "end": 16.0, "from": 1.1, "to": 1.0, "ramp": 0.15, "cx": 0.5, "cy": 0.38},
+    {"type": "caption", "style": "center", "t": 14.0, "end": 16.0, "y": 0.66, "behind": true,
+     "words": [["the", 14.0], ["customer", 14.4], ["will", 14.8], ["chase", 15.2], ["us.", 15.6]]},
+
+    {"type": "zoom", "t": 16.0, "end": 19.0, "from": 1.0, "to": 1.08, "cx": 0.5, "cy": 0.4},
+    {"type": "caption", "style": "line", "size": 0.055, "t": 16.0, "end": 17.29, "x": 0.03, "y": 0.52, "words": [["That's", 16.0], ["the", 16.43], ["real", 16.86]]},
+    {"type": "red_word", "text": "POWER", "t": 17.29, "end": 18.14},
+    {"type": "caption", "style": "side", "size": 0.065, "t": 17.29, "end": 18.14, "words": [["power", 17.29], ["of", 17.71]]},
+    {"type": "red_word", "text": "VALUE SELLING", "t": 18.14, "end": 19.0},
+    {"type": "caption", "style": "side", "size": 0.065, "t": 18.14, "end": 19.0, "words": [["value", 18.14], ["selling.", 18.57]]}
+  ]
+}

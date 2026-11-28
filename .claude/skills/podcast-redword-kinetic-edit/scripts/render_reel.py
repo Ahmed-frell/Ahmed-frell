@@ -145,12 +145,23 @@ def probe_size(path):
     w, h = o.split(',')[:2]; return int(w), int(h)
 
 
+# Named grades (ffmpeg filter chains). "reference_warm" matches the reference reel: warm amber/tungsten mids, slightly
+# cooled shadows, gentle S-curve, a touch less saturation, soft vignette. Skin stays natural.
+GRADES = {
+    'reference_warm': "eq=contrast=1.06:saturation=0.93:gamma=0.98,"
+                      "colorbalance=rs=-0.02:bs=0.02:rm=0.05:gm=0.01:bm=-0.05:rh=0.02:bh=-0.03,"
+                      "curves=all='0/0.02 0.25/0.22 0.75/0.78 1/0.98',vignette=PI/5",
+}
+
+
 def build_aroll(cfg, base, W, H, fps):
     out = os.path.join(base, cfg.get('work_dir', 'work'), 'aroll.mp4'); os.makedirs(os.path.dirname(out), exist_ok=True)
     segs = cfg['segments']; args = []; fc = []
+    grade = cfg.get('grade') or ''
+    grade = (',' + GRADES.get(grade, grade)) if grade else ''
     for i, s in enumerate(segs):
         args += ['-ss', str(s['in']), '-to', str(s['out']), '-i', os.path.join(base, s['src'])]
-        fc.append(f"[{i}:v]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={fps},setsar=1[v{i}];"
+        fc.append(f"[{i}:v]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={fps},setsar=1{grade}[v{i}];"
                   f"[{i}:a]aresample=48000,aformat=channel_layouts=stereo[a{i}];")
     fc.append(''.join(f'[v{i}][a{i}]' for i in range(len(segs))) + f'concat=n={len(segs)}:v=1:a=1[v][a]')
     run(['ffmpeg', '-y', '-v', 'error', *args, '-filter_complex', ''.join(fc), '-map', '[v]', '-map', '[a]',
@@ -169,6 +180,15 @@ class Composer:
 
     def active(self, t, types):
         return [e for e in self.ev if e['type'] in types and e['t'] <= t < e['end']]
+
+    def zoom(self, t):
+        """Camera moves on the footage: {type: zoom, t, end, from, to, ramp (s, default whole span), cx, cy}.
+        A short ramp (0.15 s) is a punch-in; ramp = span is a slow push. Footage only, overlays stay put."""
+        for e in self.active(t, ['zoom']):
+            ramp = e.get('ramp', e['end'] - e['t'])
+            p = ease_out((t - e['t']) / ramp) if ramp > 0 else 1
+            return e.get('from', 1.0) + (e.get('to', 1.08) - e.get('from', 1.0)) * p, e.get('cx', 0.5), e.get('cy', 0.4)
+        return None
 
     def matte(self, fi):
         if not self.matte_dir:
@@ -266,7 +286,13 @@ class Composer:
 
     def frame(self, fr, fi):
         W, H, fps = self.W, self.H, self.fps; t = fi / fps
-        img = Image.fromarray(fr, 'RGB').convert('RGBA'); layers = []; outlines = []
+        img = Image.fromarray(fr, 'RGB')
+        z = self.zoom(t)
+        if z is not None:
+            sc, cx, cy = z; cw, ch = W / sc, H / sc
+            x0 = min(max(cx * W - cw / 2, 0), W - cw); y0 = min(max(cy * H - ch / 2, 0), H - ch)
+            img = img.resize((W, H), Image.BICUBIC, box=(x0, y0, x0 + cw, y0 + ch))
+        img = img.convert('RGBA'); layers = []; outlines = []
         for e in self.active(t, ['red_word']):
             L, o = self.red_word(e, t); layers.append(L)
             if o: outlines.append(o)
@@ -361,19 +387,34 @@ def main():
         if len(buf) < nbytes:
             break
         enc.stdin.write(comp.frame(np.frombuffer(buf, np.uint8).reshape(H, W, 3), fi).tobytes()); fi += 1; nmain += 1
-    main_dur = nmain / fps; tc = cfg.get('title_card', {'dur': 2.4}); ec = cfg.get('end_card', {'dur': 4.3})
+    main_dur = nmain / fps
+    tc = cfg.get('title_card', {'dur': 2.4}) or {'dur': 0}
+    end_clip = cfg.get('end_clip')  # {"src": "logo.mp4", "fit": "contain"|"cover"}: replaces the generic end card
+    ec = cfg.get('end_card', {'dur': 4.3}) or {'dur': 0}
+    tail_dur = 0
     if tail:
         n = int(tc['dur'] * fps)
         for k in range(n):
             enc.stdin.write(comp.title_card(k, n).tobytes())
-        n2 = int(ec['dur'] * fps)
-        for k in range(n2):
-            enc.stdin.write(comp.end_card(k, n2).tobytes())
+        tail_dur += n / fps
+        if end_clip:
+            fit = 'force_original_aspect_ratio=decrease,pad=%d:%d:(ow-iw)/2:(oh-ih)/2:black' % (W, H) if end_clip.get('fit', 'contain') == 'contain' \
+                else 'force_original_aspect_ratio=increase,crop=%d:%d' % (W, H)
+            raw = subprocess.run(['ffmpeg', '-v', 'error', '-i', os.path.join(base, end_clip['src']), '-vf', f'scale={W}:{H}:{fit},fps={fps},setsar=1',
+                                  '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-'], capture_output=True, check=True).stdout
+            enc.stdin.write(raw); tail_dur += len(raw) / (W * H * 3) / fps
+        else:
+            n2 = int(ec['dur'] * fps)
+            for k in range(n2):
+                enc.stdin.write(comp.end_card(k, n2).tobytes())
+            tail_dur += n2 / fps
     enc.stdin.close(); enc.wait(); dec.wait()
-    total = main_dur + ((tc['dur'] + ec['dur']) if tail else 0)
+    total = main_dur + tail_dur
     cues = list(cfg.get('sfx', []))
     if tail and cfg.get('auto_tail_sfx', True):
-        cues += [{'kind': 'whoosh_impact', 't': main_dur, 'gain_db': -6}, {'kind': 'sub_boom', 't': main_dur + tc['dur'] + 0.05, 'gain_db': -5}]
+        if tc['dur'] > 0:
+            cues.append({'kind': 'whoosh_impact', 't': main_dur, 'gain_db': -6})
+        cues.append({'kind': 'sub_boom', 't': main_dur + tc['dur'] + 0.05, 'gain_db': -5})
     if preview:
         cues = [dict(c, t=c['t'] - preview[0]) for c in cues if preview[0] <= c['t'] < preview[1]]
     sfx = synth_sfx(cues, total); sfx_wav = os.path.join(work, 'sfx.wav')
