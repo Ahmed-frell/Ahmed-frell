@@ -69,3 +69,14 @@ Read first:
 
 ## 9:16 adaptation
 Keep the grammar. Red words go to ~30 % H, and the stack starts at y 0.12. Side words go below the chin (y ~0.58), and centre captions go to y ~0.62. Keep text out of the top 8 % and bottom 18 %.
+
+## Lessons from the JOIN CID job (2026-11-28)
+- iPhone takes are often HDR (HLG/BT.2020): set `"hdr_tonemap": true` or the picture looks grey and washed out.
+- Bright or white rooms: use the `reference_moody` grade. `reference_warm` is too mild to match the reference's dark amber set.
+- Offline word timing when Hugging Face is blocked: sherpa-onnx English zipformer from its GitHub releases
+  (`sherpa-onnx-zipformer-en-2023-06-26`) gives exact times for English key words even in Malayalam-English speech.
+- Person cutout model: `u2net_human_seg.onnx` from github.com/danielgatis/rembg releases (v0.0.0). Mattes follow `zoom` moves automatically.
+- `behind` centre captions vanish when the speaker sits centre-frame. Put them in front on the chest (y ≈ 0.78).
+- In the reference, the loud "hit" at its title card is the song itself (song 24.1 s = reference 12.5 s for "São Paulo"). Place the song so that
+  point lands on the cut into the closing logo. Under speech it stays ducked.
+- loudnorm single pass can land about 2 LU low. Check with ebur128 and add a `volume` + `alimiter` pass to reach −14 LUFS.

@@ -1,5 +1,5 @@
 {
- "_comment": "JOIN CID value-selling clip. Rough cut = source 12.10-30.25 (speech 12.2-30.1) s of IMG_2376.MOV (main take, per the user's transcript). Word times inside each transcript line are ESTIMATES spread evenly; snap them to the real audio once the take is downloaded. Times are on the edit timeline (source - 12.0).",
+ "_comment": "JOIN CID value-selling clip. Rough cut = IMG_2376.MOV 12.10-30.25 s (main take). Word times from sherpa-onnx ASR on the rough cut (English key words exact; Malayalam words placed between them). Song: user's 'Sao Paulo' recording; song 24.1 s = reference 12.5 s (its title-card hit), so it is placed to hit on the cut into the JOIN CID logo.",
  "segments": [
   {
    "src": "IMG_2376.MOV",
@@ -13,7 +13,7 @@
   566
  ],
  "fps": 30,
- "grade": "reference_warm",
+ "grade": "reference_moody",
  "handle": "@joincid",
  "title": "JOIN CID",
  "matte_dir": "work/matte",
@@ -36,50 +36,45 @@
  "sfx": [
   {
    "kind": "tick",
-   "t": 0.91,
+   "t": 0.85,
    "gain_db": -20
   },
   {
    "kind": "tick",
-   "t": 4.78,
+   "t": 5.34,
    "gain_db": -20
   },
   {
    "kind": "tick",
-   "t": 6.02,
+   "t": 6.58,
    "gain_db": -20
   },
   {
    "kind": "tick",
-   "t": 9.55,
+   "t": 9.98,
    "gain_db": -20
   },
   {
    "kind": "tick",
-   "t": 12.33,
+   "t": 13.14,
    "gain_db": -20
   },
   {
    "kind": "tick",
-   "t": 16.52,
+   "t": 16.86,
    "gain_db": -20
   },
   {
    "kind": "tick",
-   "t": 17.33,
+   "t": 17.34,
    "gain_db": -20
-  },
-  {
-   "kind": "whoosh_impact",
-   "t": 18.15,
-   "gain_db": -6
   }
  ],
  "events": [
   {
    "type": "zoom",
-   "t": 0.0,
-   "end": 3.82,
+   "t": 0,
+   "end": 3.85,
    "from": 1.0,
    "to": 1.06,
    "cx": 0.52,
@@ -89,71 +84,84 @@
    "type": "caption",
    "style": "line",
    "size": 0.055,
-   "t": 0.1,
-   "end": 0.91,
+   "t": 0.0,
+   "end": 0.85,
    "x": 0.03,
    "y": 0.52,
    "words": [
     [
      "Customer",
-     0.1
+     0.02
     ],
     [
      "tharunna",
-     0.53
+     0.56
     ]
    ]
   },
   {
    "type": "red_word",
    "text": "MONEY",
-   "t": 0.91,
-   "end": 1.81
+   "t": 0.85,
+   "end": 2.2
   },
   {
    "type": "caption",
    "style": "side",
    "size": 0.065,
-   "t": 0.96,
-   "end": 2.48,
+   "t": 0.88,
+   "end": 2.2,
    "words": [
     [
      "money-ekkal",
-     0.96
+     0.88
     ],
     [
      "nammal",
-     1.39
+     1.24
     ],
     [
      "kodukkunna",
-     1.81
-    ],
+     1.48
+    ]
+   ]
+  },
+  {
+   "type": "caption",
+   "style": "side",
+   "size": 0.065,
+   "t": 2.2,
+   "end": 2.58,
+   "words": [
     [
      "product",
-     2.15
+     2.24
     ]
    ]
   },
   {
    "type": "script_word",
    "text": "Value",
-   "t": 2.48,
-   "end": 3.3,
-   "x": 0.5,
-   "y": 0.52,
-   "size": 0.85
+   "t": 2.58,
+   "end": 3.36,
+   "x": 0.3,
+   "y": 0.55,
+   "size": 0.75
   },
   {
    "type": "caption",
    "style": "side",
    "size": 0.065,
-   "t": 3.3,
-   "end": 3.82,
+   "t": 2.92,
+   "end": 3.85,
    "words": [
     [
-     "kooduthal aano?",
-     3.3
+     "kooduthal",
+     2.92
+    ],
+    [
+     "aano?",
+     3.36
     ]
    ]
   },
@@ -161,89 +169,89 @@
    "type": "caption",
    "style": "line",
    "size": 0.055,
-   "t": 3.82,
-   "end": 4.78,
+   "t": 3.85,
+   "end": 5.34,
    "x": 0.03,
    "y": 0.52,
    "words": [
     [
      "Ithu",
-     3.82
+     3.88
     ],
     [
      "randum",
-     4.14
+     4.48
     ],
     [
      "thammilulla",
-     4.46
+     4.72
     ]
    ]
   },
   {
    "type": "red_word",
    "text": "GAP",
-   "t": 4.78,
-   "end": 6.02
+   "t": 5.34,
+   "end": 6.58
   },
   {
    "type": "zoom",
-   "t": 4.78,
-   "end": 6.02,
+   "t": 5.34,
+   "end": 6.58,
    "from": 1.0,
    "to": 1.1,
-   "ramp": 0.15,
    "cx": 0.52,
-   "cy": 0.32
+   "cy": 0.32,
+   "ramp": 0.15
   },
   {
    "type": "caption",
    "style": "side",
    "size": 0.065,
-   "t": 4.78,
-   "end": 6.02,
+   "t": 5.36,
+   "end": 6.58,
    "words": [
     [
      "gap",
-     4.78
+     5.36
     ],
     [
      "aanu",
-     5.09
+     5.72
     ],
     [
      "the real",
-     5.42
+     6.08
     ]
    ]
   },
   {
    "type": "red_word",
-   "text": "POWER",
-   "t": 6.02,
-   "end": 6.69
+   "text": "SALES POWER",
+   "t": 6.58,
+   "end": 7.18
   },
   {
    "type": "caption",
    "style": "side",
    "size": 0.065,
-   "t": 6.05,
-   "end": 6.69,
+   "t": 6.6,
+   "end": 7.18,
    "words": [
     [
      "sales",
-     6.05
+     6.6
     ],
     [
      "power.",
-     6.37
+     6.96
     ]
    ]
   },
   {
    "type": "zoom",
-   "t": 6.69,
-   "end": 9.55,
+   "t": 7.18,
+   "end": 9.98,
    "from": 1.05,
    "to": 1.0,
    "cx": 0.52,
@@ -251,8 +259,8 @@
   },
   {
    "type": "stack",
-   "t": 6.69,
-   "end": 9.55,
+   "t": 7.18,
+   "end": 9.98,
    "x": 0.05,
    "y": 0.12,
    "size": 0.075,
@@ -261,51 +269,51 @@
      [
       "The",
       "script",
-      6.69
+      7.2
      ],
      [
       "bigger",
       "caps",
-      7.05
+      7.4
      ]
     ],
     [
      [
       "the",
       "script",
-      7.4,
+      7.72,
       0.03
      ],
      [
       "gap,",
       "caps",
-      7.76
+      7.92
      ]
     ],
     [
      [
       "the",
       "script",
-      8.12,
+      8.24,
       0.01
      ],
      [
       "easier",
       "caps",
-      8.48
+      8.44
      ]
     ],
     [
      [
       "the",
       "script",
-      8.84,
+      9.12,
       0.04
      ],
      [
       "sale.",
       "caps",
-      9.19
+      9.28
      ]
     ]
    ]
@@ -313,27 +321,27 @@
   {
    "type": "red_word",
    "text": "VALUE",
-   "t": 9.55,
-   "end": 10.59
+   "t": 9.98,
+   "end": 11.74
   },
   {
    "type": "caption",
    "style": "side",
    "size": 0.065,
-   "t": 9.55,
-   "end": 10.59,
+   "t": 10.0,
+   "end": 11.74,
    "words": [
     [
      "Value",
-     9.55
+     10.0
     ],
     [
      "convince",
-     9.9
+     10.6
     ],
     [
      "cheythaal,",
-     10.25
+     11.2
     ]
    ]
   },
@@ -341,106 +349,107 @@
    "type": "caption",
    "style": "line",
    "size": 0.055,
-   "t": 10.59,
-   "end": 12.33,
+   "t": 11.74,
+   "end": 13.14,
    "x": 0.03,
    "y": 0.52,
    "words": [
     [
      "we",
-     10.59
+     11.76
     ],
     [
-     "want",
-     11.29
+     "doesn't",
+     12.0
     ],
     [
-     "to,",
-     11.64
+     "want to,",
+     12.36
     ],
     [
      "like,",
-     11.99
+     12.8
     ]
    ]
   },
   {
    "type": "red_word",
    "text": "CHASE",
-   "t": 12.33,
-   "end": 13.37
+   "t": 13.14,
+   "end": 14.06
   },
   {
    "type": "zoom",
-   "t": 12.33,
-   "end": 13.37,
+   "t": 13.14,
+   "end": 14.06,
    "from": 1.0,
    "to": 1.1,
-   "ramp": 0.15,
    "cx": 0.52,
-   "cy": 0.32
+   "cy": 0.32,
+   "ramp": 0.15
   },
   {
    "type": "caption",
    "style": "side",
    "size": 0.065,
-   "t": 12.33,
-   "end": 13.37,
+   "t": 13.16,
+   "end": 14.06,
    "words": [
     [
      "chase",
-     12.33
+     13.16
     ],
     [
      "the customer",
-     12.68
+     13.4
     ]
    ]
   },
   {
    "type": "zoom",
-   "t": 13.37,
-   "end": 15.28,
+   "t": 14.06,
+   "end": 15.7,
    "from": 1.1,
    "to": 1.0,
-   "ramp": 0.15,
    "cx": 0.52,
-   "cy": 0.32
+   "cy": 0.32,
+   "ramp": 0.15
   },
   {
    "type": "caption",
    "style": "center",
-   "t": 13.37,
-   "end": 15.28,
-   "y": 0.66,
-   "behind": true,
+   "t": 14.06,
+   "end": 15.7,
+   "y": 0.78,
+   "behind": false,
    "words": [
     [
      "the",
-     13.37
+     14.08
     ],
     [
      "customer",
-     13.76
+     14.32
     ],
     [
      "will",
-     14.14
+     14.8
     ],
     [
      "chase",
-     14.52
+     15.04
     ],
     [
      "us.",
-     14.9
+     15.36
     ]
-   ]
+   ],
+   "size": 0.085
   },
   {
    "type": "zoom",
-   "t": 15.28,
-   "end": 18.15,
+   "t": 15.7,
+   "end": 18.2,
    "from": 1.0,
    "to": 1.08,
    "cx": 0.52,
@@ -450,71 +459,79 @@
    "type": "caption",
    "style": "line",
    "size": 0.055,
-   "t": 15.28,
-   "end": 16.52,
+   "t": 15.7,
+   "end": 16.86,
    "x": 0.03,
    "y": 0.52,
    "words": [
     [
      "That's",
-     15.28
+     15.72
     ],
     [
      "the",
-     15.69
+     16.16
     ],
     [
      "real",
-     16.11
+     16.48
     ]
    ]
   },
   {
    "type": "red_word",
    "text": "POWER",
-   "t": 16.52,
-   "end": 17.33
+   "t": 16.86,
+   "end": 17.34
   },
   {
    "type": "caption",
    "style": "side",
    "size": 0.065,
-   "t": 16.52,
-   "end": 17.33,
+   "t": 16.88,
+   "end": 17.34,
    "words": [
     [
      "power",
-     16.52
+     16.88
     ],
     [
      "of",
-     16.92
+     17.16
     ]
    ]
   },
   {
    "type": "red_word",
    "text": "VALUE SELLING",
-   "t": 17.33,
-   "end": 18.15
+   "t": 17.34,
+   "end": 18.2
   },
   {
    "type": "caption",
    "style": "side",
    "size": 0.065,
-   "t": 17.33,
-   "end": 18.15,
+   "t": 17.36,
+   "end": 18.2,
    "words": [
     [
      "value",
-     17.33
+     17.36
     ],
     [
      "selling.",
-     17.74
+     17.76
     ]
    ]
   }
  ],
- "hdr_tonemap": true
+ "hdr_tonemap": true,
+ "music": {
+  "src": "sao_paulo.mp3",
+  "start": 5.95,
+  "gain_db": -9,
+  "duck_db": 12,
+  "fade_in": 0.8,
+  "fade_out": 3.0
+ }
 }

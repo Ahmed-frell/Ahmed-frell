@@ -151,6 +151,11 @@ GRADES = {
     'reference_warm': "eq=contrast=1.06:saturation=0.93:gamma=0.98,"
                       "colorbalance=rs=-0.02:bs=0.02:rm=0.05:gm=0.01:bm=-0.05:rh=0.02:bh=-0.03,"
                       "curves=all='0/0.02 0.25/0.22 0.75/0.78 1/0.98',vignette=PI/5",
+    # Closer to the reference's dark amber set when the footage is a bright/white room: darker mids, strong warm
+    # mids/highs, cooled-out blues, deeper vignette. Tested on the JOIN CID take (face stays readable).
+    'reference_moody': "eq=contrast=1.12:saturation=1.05:gamma=0.85,"
+                       "colorbalance=rs=0.04:gs=-0.01:bs=-0.06:rm=0.12:gm=0.0:bm=-0.12:rh=0.06:gh=0.0:bh=-0.10,"
+                       "curves=all='0/0 0.25/0.16 0.6/0.5 1/0.92',vignette=PI/4.5",
 }
 
 
@@ -290,11 +295,12 @@ class Composer:
     def frame(self, fr, fi):
         W, H, fps = self.W, self.H, self.fps; t = fi / fps
         img = Image.fromarray(fr, 'RGB')
-        z = self.zoom(t)
+        z = self.zoom(t); box = None
         if z is not None:
             sc, cx, cy = z; cw, ch = W / sc, H / sc
             x0 = min(max(cx * W - cw / 2, 0), W - cw); y0 = min(max(cy * H - ch / 2, 0), H - ch)
-            img = img.resize((W, H), Image.BICUBIC, box=(x0, y0, x0 + cw, y0 + ch))
+            box = (x0, y0, x0 + cw, y0 + ch)
+            img = img.resize((W, H), Image.BICUBIC, box=box)
         img = img.convert('RGBA'); layers = []; outlines = []
         for e in self.active(t, ['red_word']):
             L, o = self.red_word(e, t); layers.append(L)
@@ -306,6 +312,8 @@ class Composer:
         for e in self.active(t, ['caption']):
             layers += self.caption(e, t)
         m = self.matte(fi)
+        if m is not None and box is not None:  # the matte must follow the same camera move as the footage
+            m = m.resize((W, H), Image.BICUBIC, box=box)
         for L in [l for l in layers if l[0] == 'behind']:
             paste(img, *L[1:])
         if m is not None:
