@@ -156,6 +156,10 @@ GRADES = {
     'reference_moody': "eq=contrast=1.12:saturation=1.05:gamma=0.85,"
                        "colorbalance=rs=0.04:gs=-0.01:bs=-0.06:rm=0.12:gm=0.0:bm=-0.12:rh=0.06:gh=0.0:bh=-0.10,"
                        "curves=all='0/0 0.25/0.16 0.6/0.5 1/0.92',vignette=PI/4.5",
+    # Same warm look, one stop lighter: for wide or dimmer takes where reference_moody crushes the speaker.
+    'reference_moody_light': "eq=contrast=1.08:saturation=1.05:gamma=1.0,"
+                             "colorbalance=rs=0.03:gs=-0.01:bs=-0.05:rm=0.10:gm=0.0:bm=-0.10:rh=0.05:gh=0.0:bh=-0.08,"
+                             "curves=all='0/0 0.25/0.21 0.6/0.6 1/0.96',vignette=PI/5",
 }
 
 
@@ -169,7 +173,9 @@ def build_aroll(cfg, base, W, H, fps):
           'zscale=t=bt709:m=bt709:r=tv,format=yuv420p,') if cfg.get('hdr_tonemap') else ''
     for i, s in enumerate(segs):
         args += ['-ss', str(s['in']), '-to', str(s['out']), '-i', os.path.join(base, s['src'])]
-        fc.append(f"[{i}:v]{tm}scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={fps},setsar=1{grade}[v{i}];"
+        hold = max(0.0, s.get('video_in', s['in']) - s['in'])  # skip an in-camera move: video starts later, first good frame held
+        hv = f"trim=start={hold:.3f},setpts=PTS-STARTPTS,tpad=start_duration={hold:.3f}:start_mode=clone," if hold else ''
+        fc.append(f"[{i}:v]{hv}{tm}scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={fps},setsar=1{grade}[v{i}];"
                   f"[{i}:a]aresample=48000,aformat=channel_layouts=stereo[a{i}];")
     fc.append(''.join(f'[v{i}][a{i}]' for i in range(len(segs))) + f'concat=n={len(segs)}:v=1:a=1[v][a]')
     run(['ffmpeg', '-y', '-v', 'error', *args, '-filter_complex', ''.join(fc), '-map', '[v]', '-map', '[a]',
@@ -261,9 +267,14 @@ class Composer:
                     if p < 1 and style != 'script':
                         cut = int(im.width * (1 - p)); im = im.copy(); ImageDraw.Draw(im).rectangle([0, 0, cut, im.height], fill=(0, 0, 0, 0))
                     yy = y - (im.height * 0.38 if style == 'script' else 0)
+                    if e.get('shadow', False):  # soft dark halo so the stack reads over busy backgrounds
+                        sh = Image.new('RGBA', (im.width + 24, im.height + 24), (0, 0, 0, 0)); sh.paste(im, (12, 12), im)
+                        a_ = sh.split()[3].filter(ImageFilter.GaussianBlur(7)).point(lambda v: min(255, int(v * 1.6)))
+                        shd = Image.new('RGBA', sh.size, (0, 0, 0, 0)); shd.putalpha(a_)
+                        out.append(('front', shd, x - 12, yy - 10, 0.75 * (p if style == 'script' else 1)))
                     out.append(('front', im, x, yy, p if style == 'script' else 1))
                 x += im.width + sz * 0.15
-            y += lh * 1.06
+            y += lh * e.get('line_gap', 1.06)
         return out
 
     def caption(self, e, t):
@@ -301,6 +312,10 @@ class Composer:
             x0 = min(max(cx * W - cw / 2, 0), W - cw); y0 = min(max(cy * H - ch / 2, 0), H - ch)
             box = (x0, y0, x0 + cw, y0 + ch)
             img = img.resize((W, H), Image.BICUBIC, box=box)
+        for e in self.active(t, ['shake']):  # decaying camera shake (footage only)
+            k = 1 - (t - e['t']) / (e['end'] - e['t']); amp = e.get('px', 8) * k
+            dx = amp * math.sin(t * 90); dy = amp * math.cos(t * 77)
+            img = img.resize((int(W * 1.03), int(H * 1.03)), Image.BICUBIC).crop((int(W * 0.015 + dx), int(H * 0.015 + dy), int(W * 0.015 + dx) + W, int(H * 0.015 + dy) + H))
         img = img.convert('RGBA'); layers = []; outlines = []
         for e in self.active(t, ['red_word']):
             L, o = self.red_word(e, t); layers.append(L)
@@ -324,6 +339,9 @@ class Composer:
             paste(img, *L[1:])
         if self.hud:
             self.hud.draw(img, t)
+        for e in self.active(t, ['flash']):  # white flash, fades out
+            a_ = 1 - (t - e['t']) / (e['end'] - e['t'])
+            img.alpha_composite(Image.new('RGBA', (W, H), (255, 255, 255, int(255 * e.get('peak', 0.9) * a_))))
         lb = self.cfg.get('letterbox_open')
         if lb and t < lb['dur']:
             vis = H * (0.06 + 0.94 * ease_out(t / lb['dur'])) if fi > 0 else 0
@@ -371,6 +389,17 @@ def synth_sfx(cues, total, sr=48000):
         elif c['kind'] == 'sub_boom':
             m = int(1.4 * sr); tt = np.arange(m) / sr
             out[i:i + m] += g * np.sin(2 * math.pi * (48 - 12 * tt) * tt) * np.exp(-tt * 3)[:len(out) - i]
+        elif c['kind'] == 'whoosh':  # short swish that peaks ON t (for text slams)
+            n = int(0.32 * sr); noise = rng.normal(0, 1, n); tt = np.linspace(0, 1, n)
+            env = np.sin(np.pi * tt) ** 2; sw = np.convolve(noise, np.ones(12) / 12, 'same') * env
+            s0 = max(0, i - int(0.24 * sr)); seg = sw[:len(out) - s0]; out[s0:s0 + len(seg)] += 0.9 * g * seg
+        elif c['kind'] == 'pop':  # soft pop for words landing
+            m = int(0.09 * sr); tt = np.arange(m) / sr
+            out[i:i + m] += (g * np.sin(2 * math.pi * (900 - 5000 * tt) * tt) * np.exp(-tt * 55))[:len(out) - i]
+        elif c['kind'] == 'flash_hit':  # bright impact for a white flash
+            m = int(0.6 * sr); tt = np.arange(m) / sr
+            hit = rng.normal(0, 1, m) * np.exp(-tt * 18) * 0.5 + np.sin(2 * math.pi * (80 - 30 * tt) * tt) * np.exp(-tt * 6)
+            out[i:i + m] += (g * hit)[:len(out) - i]
         elif c['kind'] == 'tick':
             m = int(0.05 * sr); tt = np.arange(m) / sr
             out[i:i + m] += g * np.sin(2 * math.pi * 2200 * tt) * np.exp(-tt * 120)
@@ -436,12 +465,13 @@ def main():
     m_in, m_fc = [], ''
     if music:
         mstart = music.get('start', 0.0) + (preview[0] if preview else 0.0)
+        mdelay = max(0.0, -mstart); mstart = max(0.0, mstart)  # negative start = the song comes in later on the timeline
         fo = music.get('fade_out', 2.0)
         m_in = ['-ss', f'{mstart:.3f}', '-i', os.path.join(base, music['src'])]
         g = music.get('gain_db', -18); duck = music.get('duck_db', 8)
         # music sits at gain_db; while the speaker talks it is pulled down a further ~duck_db (sidechain on the dialogue)
         m_fc = (f'[3:a]aresample=48000,aformat=channel_layouts=stereo,atrim=0:{total:.3f},asetpts=PTS-STARTPTS,'
-                f'volume={g}dB,afade=t=in:d={music.get("fade_in", 0.6)},afade=t=out:st={max(0, total - fo):.3f}:d={fo}[m0];'
+                f'adelay={int(mdelay * 1000)}:all=1,volume={g}dB,afade=t=in:st={mdelay:.3f}:d={music.get("fade_in", 0.6)},afade=t=out:st={max(0, total - fo):.3f}:d={fo}[m0];'
                 f'[d]asplit=2[d][sc];[m0][sc]sidechaincompress=threshold=0.03:ratio={max(2, duck)}:attack=15:release=350[m];')
     mix = '[d][2:a][m]amix=inputs=3:normalize=0' if music else '[d][2:a]amix=inputs=2:normalize=0'
     run(['ffmpeg', '-y', '-v', 'error', '-i', silent, *dec_args, '-i', aroll, '-i', sfx_wav, *m_in, '-filter_complex',

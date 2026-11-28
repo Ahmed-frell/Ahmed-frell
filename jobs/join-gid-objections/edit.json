@@ -1,0 +1,995 @@
+{
+ "segments": [
+  {
+   "src": "IMG_2391.MOV",
+   "in": 6.9,
+   "out": 17.65
+  },
+  {
+   "src": "IMG_2391.MOV",
+   "in": 17.98,
+   "out": 31.7
+  },
+  {
+   "src": "IMG_2391.MOV",
+   "in": 32.4,
+   "out": 38.6,
+   "video_in": 32.88
+  }
+ ],
+ "size": [
+  1080,
+  566
+ ],
+ "fps": 30,
+ "hdr_tonemap": true,
+ "grade": "reference_moody_light",
+ "_comment": "JOIN GID objection-handling clip. Cuts: 6.90-17.65 | 17.98-31.70 (pause tightened) | 32.40-38.60 with video from 32.88 (removes the in-camera zoom; settled close-up held under a flash). Pre-take chatter and end clap removed. Word times: sherpa-onnx ASR on the cut.",
+ "out": "join_gid_objection_handling_1080x566.mp4",
+ "handle": "@joingid",
+ "title": "JOIN GID",
+ "matte_dir": "work/matte",
+ "letterbox_open": {
+  "dur": 1.1
+ },
+ "hud": {
+  "enabled": true,
+  "params": {
+   "seed": 9,
+   "n": 5
+  }
+ },
+ "title_card": null,
+ "end_clip": {
+  "src": "join-cid-logo-end.mp4",
+  "fit": "contain"
+ },
+ "auto_tail_sfx": true,
+ "music": {
+  "src": "sao_paulo.mp3",
+  "start": -6.57,
+  "gain_db": -9,
+  "duck_db": 12,
+  "fade_in": 2.0,
+  "fade_out": 3.0
+ },
+ "events": [
+  {
+   "type": "zoom",
+   "t": 0,
+   "end": 4.2,
+   "to": 1.07,
+   "cx": 0.48,
+   "cy": 0.42,
+   "from": 1.0
+  },
+  {
+   "type": "red_word",
+   "text": "OBJECTION",
+   "t": 0.03,
+   "end": 1.2
+  },
+  {
+   "type": "caption",
+   "style": "side",
+   "size": 0.065,
+   "t": 0.05,
+   "end": 1.2,
+   "x": 0.64,
+   "y": 0.3,
+   "words": [
+    [
+     "Objection",
+     0.05
+    ],
+    [
+     "handling.",
+     0.76
+    ]
+   ]
+  },
+  {
+   "type": "caption",
+   "style": "line",
+   "size": 0.055,
+   "t": 1.2,
+   "end": 3.2,
+   "x": 0.03,
+   "y": 0.52,
+   "words": [
+    [
+     "Namukku",
+     1.2
+    ],
+    [
+     "customers",
+     1.48
+    ],
+    [
+     "allengil",
+     1.92
+    ],
+    [
+     "clients",
+     2.04
+    ],
+    [
+     "eppozhum",
+     2.5
+    ]
+   ]
+  },
+  {
+   "type": "red_word",
+   "text": "3 THINGS",
+   "t": 3.2,
+   "end": 4.2
+  },
+  {
+   "type": "caption",
+   "style": "side",
+   "size": 0.065,
+   "t": 3.2,
+   "end": 4.2,
+   "x": 0.64,
+   "y": 0.3,
+   "words": [
+    [
+     "oru moonnu",
+     3.2
+    ],
+    [
+     "kaaryangal",
+     3.48
+    ],
+    [
+     "edukkaam,",
+     3.76
+    ]
+   ]
+  },
+  {
+   "type": "zoom",
+   "t": 4.2,
+   "end": 8.3,
+   "to": 1.06,
+   "cx": 0.48,
+   "cy": 0.42,
+   "from": 1.0
+  },
+  {
+   "type": "stack",
+   "t": 4.2,
+   "end": 8.3,
+   "x": 0.6,
+   "y": 0.1,
+   "size": 0.058,
+   "lines": [
+    [
+     [
+      "like",
+      "script",
+      4.2
+     ]
+    ],
+    [
+     [
+      "send me",
+      "caps",
+      4.48,
+      0.02
+     ]
+    ],
+    [
+     [
+      "the details,",
+      "caps",
+      4.92,
+      0.03
+     ]
+    ],
+    [
+     [
+      "I'm",
+      "script",
+      5.6
+     ],
+     [
+      "busy",
+      "caps",
+      5.92
+     ]
+    ],
+    [
+     [
+      "right now,",
+      "caps",
+      6.24,
+      0.03
+     ]
+    ],
+    [
+     [
+      "I will",
+      "script",
+      7.2
+     ],
+     [
+      "think",
+      "caps",
+      7.6
+     ]
+    ],
+    [
+     [
+      "about it.",
+      "caps",
+      7.84,
+      0.03
+     ]
+    ]
+   ],
+   "line_gap": 1.25,
+   "shadow": true
+  },
+  {
+   "type": "caption",
+   "style": "line",
+   "size": 0.055,
+   "t": 8.3,
+   "end": 9.8,
+   "x": 0.03,
+   "y": 0.52,
+   "words": [
+    [
+     "Ithokke",
+     8.36
+    ],
+    [
+     "kettal",
+     8.96
+    ],
+    [
+     "orikkalum",
+     9.4
+    ]
+   ]
+  },
+  {
+   "type": "red_word",
+   "text": "SALES",
+   "t": 9.8,
+   "end": 10.75
+  },
+  {
+   "type": "caption",
+   "style": "side",
+   "size": 0.065,
+   "t": 9.8,
+   "end": 10.75,
+   "x": 0.64,
+   "y": 0.3,
+   "words": [
+    [
+     "sales",
+     9.8
+    ],
+    [
+     "poyi ennu",
+     10.12
+    ],
+    [
+     "vicharikkaruthu.",
+     10.28
+    ]
+   ]
+  },
+  {
+   "type": "zoom",
+   "t": 10.75,
+   "end": 12.44,
+   "to": 1.08,
+   "cx": 0.48,
+   "cy": 0.42,
+   "from": 1.08,
+   "ramp": 0.01
+  },
+  {
+   "type": "caption",
+   "style": "line",
+   "size": 0.055,
+   "t": 10.75,
+   "end": 12.44,
+   "x": 0.03,
+   "y": 0.52,
+   "words": [
+    [
+     "Because",
+     11.12
+    ],
+    [
+     "every",
+     12.0
+    ]
+   ]
+  },
+  {
+   "type": "red_word",
+   "text": "OBJECTIONS",
+   "t": 12.44,
+   "end": 13.48
+  },
+  {
+   "type": "caption",
+   "style": "side",
+   "size": 0.065,
+   "t": 12.44,
+   "end": 13.48,
+   "x": 0.64,
+   "y": 0.3,
+   "words": [
+    [
+     "objections",
+     12.44
+    ],
+    [
+     "are not",
+     13.04
+    ]
+   ]
+  },
+  {
+   "type": "red_word",
+   "text": "REJECTION",
+   "t": 13.48,
+   "end": 14.48
+  },
+  {
+   "type": "zoom",
+   "t": 13.48,
+   "end": 14.48,
+   "to": 1.12,
+   "cx": 0.48,
+   "cy": 0.42,
+   "from": 1.0,
+   "ramp": 0.15
+  },
+  {
+   "type": "shake",
+   "t": 13.48,
+   "end": 13.8,
+   "px": 7
+  },
+  {
+   "type": "caption",
+   "style": "side",
+   "size": 0.065,
+   "t": 13.5,
+   "end": 14.48,
+   "x": 0.64,
+   "y": 0.3,
+   "words": [
+    [
+     "rejection,",
+     13.5
+    ],
+    [
+     "they are",
+     14.16
+    ]
+   ]
+  },
+  {
+   "type": "zoom",
+   "t": 14.48,
+   "end": 15.12,
+   "to": 1.0,
+   "cx": 0.48,
+   "cy": 0.42,
+   "from": 1.12,
+   "ramp": 0.15
+  },
+  {
+   "type": "script_word",
+   "text": "signals.",
+   "t": 14.48,
+   "end": 15.12,
+   "x": 0.76,
+   "y": 0.5,
+   "size": 0.3
+  },
+  {
+   "type": "caption",
+   "style": "line",
+   "size": 0.055,
+   "t": 15.12,
+   "end": 15.64,
+   "x": 0.03,
+   "y": 0.52,
+   "words": [
+    [
+     "Namukku",
+     15.12
+    ],
+    [
+     "avide",
+     15.36
+    ]
+   ]
+  },
+  {
+   "type": "red_word",
+   "text": "BETTER QUESTIONS",
+   "t": 15.64,
+   "end": 17.0
+  },
+  {
+   "type": "zoom",
+   "t": 15.64,
+   "end": 17.0,
+   "to": 1.08,
+   "cx": 0.48,
+   "cy": 0.42,
+   "from": 1.0,
+   "ramp": 0.15
+  },
+  {
+   "type": "caption",
+   "style": "side",
+   "size": 0.065,
+   "t": 15.66,
+   "end": 17.0,
+   "x": 0.64,
+   "y": 0.3,
+   "words": [
+    [
+     "better",
+     15.66
+    ],
+    [
+     "questions",
+     15.96
+    ],
+    [
+     "chodikkaam,",
+     16.44
+    ]
+   ]
+  },
+  {
+   "type": "caption",
+   "style": "line",
+   "size": 0.055,
+   "t": 17.0,
+   "end": 17.52,
+   "x": 0.03,
+   "y": 0.52,
+   "words": [
+    [
+     "namukku",
+     17.0
+    ],
+    [
+     "avarude",
+     17.16
+    ]
+   ]
+  },
+  {
+   "type": "red_word",
+   "text": "REAL PROBLEM",
+   "t": 17.52,
+   "end": 19.2
+  },
+  {
+   "type": "caption",
+   "style": "side",
+   "size": 0.065,
+   "t": 17.52,
+   "end": 19.2,
+   "x": 0.64,
+   "y": 0.3,
+   "words": [
+    [
+     "real",
+     17.52
+    ],
+    [
+     "problem",
+     17.84
+    ],
+    [
+     "kandetham.",
+     18.36
+    ]
+   ]
+  },
+  {
+   "type": "zoom",
+   "t": 19.2,
+   "end": 24.47,
+   "to": 1.1,
+   "cx": 0.48,
+   "cy": 0.42,
+   "from": 1.0
+  },
+  {
+   "type": "stack",
+   "t": 19.2,
+   "end": 24.47,
+   "x": 0.6,
+   "y": 0.1,
+   "size": 0.058,
+   "lines": [
+    [
+     [
+      "Because",
+      "script",
+      19.2
+     ],
+     [
+      "great",
+      "caps",
+      19.68
+     ]
+    ],
+    [
+     [
+      "salespeople",
+      "caps",
+      20.08,
+      0.02
+     ]
+    ],
+    [
+     [
+      "don't",
+      "script",
+      21.12
+     ],
+     [
+      "fight",
+      "caps",
+      21.76
+     ]
+    ],
+    [
+     [
+      "objection.",
+      "caps",
+      22.08,
+      0.03
+     ]
+    ],
+    [
+     [
+      "They",
+      "script",
+      22.88
+     ],
+     [
+      "understand",
+      "caps",
+      23.24
+     ]
+    ],
+    [
+     [
+      "the",
+      "script",
+      23.96
+     ],
+     [
+      "people.",
+      "caps",
+      24.12
+     ]
+    ]
+   ],
+   "line_gap": 1.25,
+   "shadow": true
+  },
+  {
+   "type": "flash",
+   "t": 24.47,
+   "end": 24.78,
+   "peak": 0.95
+  },
+  {
+   "type": "shake",
+   "t": 24.47,
+   "end": 24.85,
+   "px": 10
+  },
+  {
+   "type": "red_word",
+   "text": "JOIN GID",
+   "t": 24.5,
+   "end": 26.4
+  },
+  {
+   "type": "caption",
+   "style": "side",
+   "size": 0.065,
+   "t": 24.68,
+   "end": 26.4,
+   "x": 0.64,
+   "y": 0.3,
+   "words": [
+    [
+     "Join GID,",
+     24.68
+    ],
+    [
+     "we can,",
+     25.72
+    ]
+   ]
+  },
+  {
+   "type": "zoom",
+   "t": 24.47,
+   "end": 26.4,
+   "to": 1.0,
+   "cx": 0.5,
+   "cy": 0.35,
+   "from": 1.06,
+   "ramp": 0.4
+  },
+  {
+   "type": "caption",
+   "style": "line",
+   "size": 0.055,
+   "t": 26.4,
+   "end": 27.68,
+   "x": 0.03,
+   "y": 0.6,
+   "words": [
+    [
+     "like,",
+     26.48
+    ],
+    [
+     "learn",
+     26.76
+    ],
+    [
+     "how to",
+     27.2
+    ]
+   ]
+  },
+  {
+   "type": "red_word",
+   "text": "HANDLE",
+   "t": 27.68,
+   "end": 28.2
+  },
+  {
+   "type": "red_word",
+   "text": "OBJECTIONS",
+   "t": 28.2,
+   "end": 29.56
+  },
+  {
+   "type": "zoom",
+   "t": 27.68,
+   "end": 29.56,
+   "to": 1.08,
+   "cx": 0.5,
+   "cy": 0.35,
+   "from": 1.0,
+   "ramp": 0.15
+  },
+  {
+   "type": "caption",
+   "style": "side",
+   "size": 0.065,
+   "t": 27.7,
+   "end": 29.56,
+   "x": 0.64,
+   "y": 0.3,
+   "words": [
+    [
+     "handle",
+     27.7
+    ],
+    [
+     "the objections",
+     28.08
+    ],
+    [
+     "and, like,",
+     28.88
+    ]
+   ]
+  },
+  {
+   "type": "red_word",
+   "text": "SELL",
+   "t": 29.56,
+   "end": 30.7
+  },
+  {
+   "type": "zoom",
+   "t": 29.56,
+   "end": 30.7,
+   "to": 1.12,
+   "cx": 0.5,
+   "cy": 0.35,
+   "from": 1.0,
+   "ramp": 0.15
+  },
+  {
+   "type": "shake",
+   "t": 30.0,
+   "end": 30.3,
+   "px": 6
+  },
+  {
+   "type": "caption",
+   "style": "side",
+   "size": 0.065,
+   "t": 29.56,
+   "end": 30.7,
+   "x": 0.64,
+   "y": 0.3,
+   "words": [
+    [
+     "we can",
+     29.56
+    ],
+    [
+     "sell",
+     30.0
+    ],
+    [
+     "the things.",
+     30.28
+    ]
+   ]
+  }
+ ],
+ "sfx": [
+  {
+   "kind": "whoosh",
+   "t": 0.03,
+   "gain_db": -14
+  },
+  {
+   "kind": "tick",
+   "t": 0.76,
+   "gain_db": -26
+  },
+  {
+   "kind": "whoosh",
+   "t": 3.2,
+   "gain_db": -14
+  },
+  {
+   "kind": "tick",
+   "t": 3.48,
+   "gain_db": -26
+  },
+  {
+   "kind": "tick",
+   "t": 3.76,
+   "gain_db": -26
+  },
+  {
+   "kind": "whoosh",
+   "t": 9.8,
+   "gain_db": -14
+  },
+  {
+   "kind": "tick",
+   "t": 10.12,
+   "gain_db": -26
+  },
+  {
+   "kind": "tick",
+   "t": 10.28,
+   "gain_db": -26
+  },
+  {
+   "kind": "whoosh",
+   "t": 12.44,
+   "gain_db": -14
+  },
+  {
+   "kind": "tick",
+   "t": 13.04,
+   "gain_db": -26
+  },
+  {
+   "kind": "whoosh",
+   "t": 13.48,
+   "gain_db": -14
+  },
+  {
+   "kind": "tick",
+   "t": 14.16,
+   "gain_db": -26
+  },
+  {
+   "kind": "flash_hit",
+   "t": 14.48,
+   "gain_db": -16
+  },
+  {
+   "kind": "whoosh",
+   "t": 15.64,
+   "gain_db": -14
+  },
+  {
+   "kind": "tick",
+   "t": 15.96,
+   "gain_db": -26
+  },
+  {
+   "kind": "tick",
+   "t": 16.44,
+   "gain_db": -26
+  },
+  {
+   "kind": "whoosh",
+   "t": 17.52,
+   "gain_db": -14
+  },
+  {
+   "kind": "tick",
+   "t": 17.84,
+   "gain_db": -26
+  },
+  {
+   "kind": "tick",
+   "t": 18.36,
+   "gain_db": -26
+  },
+  {
+   "kind": "whoosh",
+   "t": 24.5,
+   "gain_db": -14
+  },
+  {
+   "kind": "tick",
+   "t": 25.72,
+   "gain_db": -26
+  },
+  {
+   "kind": "whoosh",
+   "t": 27.68,
+   "gain_db": -14
+  },
+  {
+   "kind": "whoosh",
+   "t": 28.2,
+   "gain_db": -14
+  },
+  {
+   "kind": "tick",
+   "t": 28.08,
+   "gain_db": -26
+  },
+  {
+   "kind": "tick",
+   "t": 28.88,
+   "gain_db": -26
+  },
+  {
+   "kind": "whoosh",
+   "t": 29.56,
+   "gain_db": -14
+  },
+  {
+   "kind": "tick",
+   "t": 30.0,
+   "gain_db": -26
+  },
+  {
+   "kind": "tick",
+   "t": 30.28,
+   "gain_db": -26
+  },
+  {
+   "kind": "flash_hit",
+   "t": 24.47,
+   "gain_db": -8
+  },
+  {
+   "kind": "pop",
+   "t": 4.2,
+   "gain_db": -16
+  },
+  {
+   "kind": "pop",
+   "t": 4.48,
+   "gain_db": -16
+  },
+  {
+   "kind": "pop",
+   "t": 4.92,
+   "gain_db": -16
+  },
+  {
+   "kind": "pop",
+   "t": 5.6,
+   "gain_db": -16
+  },
+  {
+   "kind": "pop",
+   "t": 5.92,
+   "gain_db": -16
+  },
+  {
+   "kind": "pop",
+   "t": 6.24,
+   "gain_db": -16
+  },
+  {
+   "kind": "pop",
+   "t": 7.2,
+   "gain_db": -16
+  },
+  {
+   "kind": "pop",
+   "t": 7.6,
+   "gain_db": -16
+  },
+  {
+   "kind": "pop",
+   "t": 7.84,
+   "gain_db": -16
+  },
+  {
+   "kind": "pop",
+   "t": 19.2,
+   "gain_db": -16
+  },
+  {
+   "kind": "pop",
+   "t": 19.68,
+   "gain_db": -16
+  },
+  {
+   "kind": "pop",
+   "t": 20.08,
+   "gain_db": -16
+  },
+  {
+   "kind": "pop",
+   "t": 21.12,
+   "gain_db": -16
+  },
+  {
+   "kind": "pop",
+   "t": 21.76,
+   "gain_db": -16
+  },
+  {
+   "kind": "pop",
+   "t": 22.08,
+   "gain_db": -16
+  },
+  {
+   "kind": "pop",
+   "t": 22.88,
+   "gain_db": -16
+  },
+  {
+   "kind": "pop",
+   "t": 23.24,
+   "gain_db": -16
+  },
+  {
+   "kind": "pop",
+   "t": 23.96,
+   "gain_db": -16
+  },
+  {
+   "kind": "pop",
+   "t": 24.12,
+   "gain_db": -16
+  }
+ ]
+}
