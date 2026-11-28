@@ -33,11 +33,7 @@
   "dur": 1.1
  },
  "hud": {
-  "enabled": true,
-  "params": {
-   "seed": 9,
-   "n": 5
-  }
+  "enabled": false
  },
  "title_card": null,
  "end_clip": {
@@ -46,11 +42,11 @@
  },
  "auto_tail_sfx": true,
  "music": {
-  "src": "sao_paulo.mp3",
-  "start": -6.57,
+  "src": "el_control.mp3",
+  "start": 45.0,
   "gain_db": -9,
   "duck_db": 12,
-  "fade_in": 2.0,
+  "fade_in": 0.5,
   "fade_out": 3.0
  },
  "events": [

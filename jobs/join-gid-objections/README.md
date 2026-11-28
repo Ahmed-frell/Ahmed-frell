@@ -7,7 +7,8 @@
 - Word timing: sherpa-onnx English ASR on the cut. Grade `reference_moody_light`. Text behind the speaker via u2net mattes.
 - SFX on the text: whoosh on every red word, pop on every stacked word, soft ticks on side words, flash hits on "signals." and JOIN GID.
   Camera: pushes, punch-ins on REJECTION / BETTER QUESTIONS / HANDLE OBJECTIONS / SELL, shakes on the slams.
-- Music: user's "São Paulo" recording, coming in at 6.6 s so its hit (song 24.1 s) lands on the cut to the logo; ducked under the voice.
+- Music: user's "EL CONTROL (super slowed)" from 0:45 of the track, under the whole video, ducked under the voice, fading over the logo. (Earlier version used "São Paulo".)
+- No HUD (geometric boxes and lines removed at the user's request).
 - Ends on `join-cid-logo-end.mp4` (from ../join-cid-podcast).
 
 Render: `python3 ../../.claude/skills/podcast-redword-kinetic-edit/scripts/render_reel.py edit.json`, then a gain-plus-limiter pass to −14 LUFS.
