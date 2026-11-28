@@ -421,8 +421,20 @@ def main():
     pcm = (np.clip(sfx, -1, 1) * 32767).astype(np.int16)
     run(['ffmpeg', '-y', '-v', 'error', '-f', 's16le', '-ar', '48000', '-ac', '1', '-i', '-', sfx_wav], input=pcm.tobytes())
     out = os.path.join(base, cfg.get('out', 'out.mp4') if not preview else 'preview.mp4')
-    run(['ffmpeg', '-y', '-v', 'error', '-i', silent, *dec_args, '-i', aroll, '-i', sfx_wav, '-filter_complex',
-         f'[1:a]apad,atrim=0:{total:.3f}[d];[d][2:a]amix=inputs=2:normalize=0,loudnorm=I=-14:TP=-1:LRA=11[a]',
+    music = cfg.get('music')  # {src, start, gain_db, duck_db, fade_in, fade_out}: licensed track supplied by the user
+    m_in, m_fc = [], ''
+    if music:
+        mstart = music.get('start', 0.0) + (preview[0] if preview else 0.0)
+        fo = music.get('fade_out', 2.0)
+        m_in = ['-ss', f'{mstart:.3f}', '-i', os.path.join(base, music['src'])]
+        g = music.get('gain_db', -18); duck = music.get('duck_db', 8)
+        # music sits at gain_db; while the speaker talks it is pulled down a further ~duck_db (sidechain on the dialogue)
+        m_fc = (f'[3:a]aresample=48000,aformat=channel_layouts=stereo,atrim=0:{total:.3f},asetpts=PTS-STARTPTS,'
+                f'volume={g}dB,afade=t=in:d={music.get("fade_in", 0.6)},afade=t=out:st={max(0, total - fo):.3f}:d={fo}[m0];'
+                f'[d]asplit=2[d][sc];[m0][sc]sidechaincompress=threshold=0.03:ratio={max(2, duck)}:attack=15:release=350[m];')
+    mix = '[d][2:a][m]amix=inputs=3:normalize=0' if music else '[d][2:a]amix=inputs=2:normalize=0'
+    run(['ffmpeg', '-y', '-v', 'error', '-i', silent, *dec_args, '-i', aroll, '-i', sfx_wav, *m_in, '-filter_complex',
+         f'[1:a]apad,atrim=0:{total:.3f}[d];' + m_fc + f'{mix},loudnorm=I=-14:TP=-1:LRA=11[a]',
          '-map', '0:v', '-map', '[a]', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k', '-ar', '48000', '-movflags', '+faststart', out])
     print('wrote', out, f'{total:.2f}s', f'{W}x{H}@{fps}')
 

@@ -47,6 +47,10 @@ Read first:
    - Top-level `end_clip`: `{src, fit: contain|cover}` ends the video on the user's own logo animation instead of the generic end card.
      Set `"title_card": null` to skip the title card. A sub boom lands on the first frame of whatever closes the video.
    - Small output heights (e.g. 1080×566): raise `size` on line/side captions to ~0.055–0.065 so they stay readable.
+   - Top-level `music`: `{src, start, gain_db (-16..-20), duck_db (~8), fade_in, fade_out}`. This is a bed under the dialogue that dips
+     automatically while the speaker talks and runs on under the closing logo. **The track must be a file the user supplies and is licensed
+     to use. Never download commercial music.** To use "the same portion as the reference", run
+     `scripts/find_music_offset.py song.m4a reference.mp4` and use the best song time as `start`.
    - `sfx`: extra cues `{kind: whoosh_impact|sub_boom|tick, t, gain_db}`. The tail cues are added automatically.
 5. **Matte (for text behind the speaker):** run `scripts/fg_matte.py u2net_human_seg.onnx work/aroll.mov work/matte 30 5.9-11.6 ...`
    over the red-word and behind-caption spans, then set `"matte_dir": "work/matte"`. Without a matte, red words render in front.
