@@ -159,9 +159,12 @@ def build_aroll(cfg, base, W, H, fps):
     segs = cfg['segments']; args = []; fc = []
     grade = cfg.get('grade') or ''
     grade = (',' + GRADES.get(grade, grade)) if grade else ''
+    # iPhone HDR (HLG, bt2020 10-bit) must be tonemapped to SDR bt709 first or it looks washed out/grey
+    tm = ('zscale=t=linear:npl=203,format=gbrpf32le,zscale=p=bt709,tonemap=tonemap=hable:desat=0,'
+          'zscale=t=bt709:m=bt709:r=tv,format=yuv420p,') if cfg.get('hdr_tonemap') else ''
     for i, s in enumerate(segs):
         args += ['-ss', str(s['in']), '-to', str(s['out']), '-i', os.path.join(base, s['src'])]
-        fc.append(f"[{i}:v]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={fps},setsar=1{grade}[v{i}];"
+        fc.append(f"[{i}:v]{tm}scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={fps},setsar=1{grade}[v{i}];"
                   f"[{i}:a]aresample=48000,aformat=channel_layouts=stereo[a{i}];")
     fc.append(''.join(f'[v{i}][a{i}]' for i in range(len(segs))) + f'concat=n={len(segs)}:v=1:a=1[v][a]')
     run(['ffmpeg', '-y', '-v', 'error', *args, '-filter_complex', ''.join(fc), '-map', '[v]', '-map', '[a]',
