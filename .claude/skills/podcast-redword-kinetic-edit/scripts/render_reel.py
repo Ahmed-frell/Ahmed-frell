@@ -156,6 +156,9 @@ GRADES = {
     'reference_moody': "eq=contrast=1.12:saturation=1.05:gamma=0.85,"
                        "colorbalance=rs=0.04:gs=-0.01:bs=-0.06:rm=0.12:gm=0.0:bm=-0.12:rh=0.06:gh=0.0:bh=-0.10,"
                        "curves=all='0/0 0.25/0.16 0.6/0.5 1/0.92',vignette=PI/4.5",
+    # Soft, natural, low-key "cinema portrait" look (user reference 2026-11-28): low contrast, peach-red skin (hue ~10),
+    # muted cool room falling off into a vignette. Measured: median luma ~48, skin hue 10-12, sat ~0.56.
+    'natural_lowkey': "eq=contrast=0.9:brightness=-0.03:saturation=0.8:gamma=0.95,colorbalance=rs=0.02:gs=-0.02:bs=0.03:rm=0.06:gm=-0.04:bm=0.0:rh=0.02:gh=-0.02:bh=0.0,hue=h=-6,curves=all=\'0/0.03 0.3/0.24 0.7/0.62 1/0.84\',vignette=PI/3.2",
     # Same warm look, one stop lighter: for wide or dimmer takes where reference_moody crushes the speaker.
     'reference_moody_light': "eq=contrast=1.08:saturation=1.05:gamma=1.0,"
                              "colorbalance=rs=0.03:gs=-0.01:bs=-0.05:rm=0.10:gm=0.0:bm=-0.10:rh=0.05:gh=0.0:bh=-0.08,"
@@ -332,6 +335,13 @@ class Composer:
             k = 1 - (t - e['t']) / (e['end'] - e['t']); amp = e.get('px', 8) * k
             dx = amp * math.sin(t * 90); dy = amp * math.cos(t * 77)
             img = img.resize((int(W * 1.03), int(H * 1.03)), Image.BICUBIC).crop((int(W * 0.015 + dx), int(H * 0.015 + dy), int(W * 0.015 + dx) + W, int(H * 0.015 + dy) + H))
+        for e in self.active(t, ['bw']):  # black & white section on the footage only; fades in and out
+            fi_, fo_ = e.get('fade_in', 0.2), e.get('fade_out', 0.3)
+            k = min(1.0, (t - e['t']) / fi_ if fi_ else 1.0, (e['end'] - t) / fo_ if fo_ else 1.0)
+            g_ = img.convert('L')
+            if e.get('contrast', 1.15) != 1:
+                c_ = e.get('contrast', 1.15); g_ = g_.point(lambda v: max(0, min(255, int((v - 128) * c_ + 128))))
+            img = Image.blend(img, g_.convert('RGB'), max(0.0, k))
         img = img.convert('RGBA'); layers = []; outlines = []
         for e in self.active(t, ['red_word']):
             L, o = self.red_word(e, t); layers.append(L)

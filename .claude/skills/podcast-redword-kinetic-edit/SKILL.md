@@ -55,6 +55,9 @@ Read first:
      automatically (`hide_dup_captions`, default on). Drop its tick SFX too.
    - Top-level `"accent": [R, G, B]` recolours the big key words, their outline and the script word's flash (default reference red
      `[215, 12, 18]`; JOIN GID objection video uses pure blue `#0000FF` = `[0, 0, 255]`).
+   - `bw`: `{t, end, fade_in, fade_out, contrast}` turns the footage black and white for a section (e.g. while the speaker lists customer
+     excuses). Text stays in colour. Put a soft whoosh on the way in and out.
+   - Grade `natural_lowkey`: soft, low-contrast, natural skin, dim room (matched to a user still). Use it when the user wants less contrast.
    - `sfx`: extra cues `{kind: whoosh_impact|sub_boom|tick, t, gain_db}`. The tail cues are added automatically.
 5. **Matte (for text behind the speaker):** run `scripts/fg_matte.py u2net_human_seg.onnx work/aroll.mov work/matte 30 5.9-11.6 ...`
    over the red-word and behind-caption spans, then set `"matte_dir": "work/matte"`. Without a matte, red words render in front.

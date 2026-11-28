@@ -23,7 +23,7 @@
  ],
  "fps": 30,
  "hdr_tonemap": true,
- "grade": "reference_moody_light",
+ "grade": "natural_lowkey",
  "_comment": "JOIN GID objection-handling clip. Cuts: 6.90-17.65 | 17.98-31.70 (pause tightened) | 32.40-38.60 with video from 32.88 (removes the in-camera zoom; settled close-up held under a flash). Pre-take chatter and end clap removed. Word times: sherpa-onnx ASR on the cut.",
  "out": "join_gid_objection_handling_1080x566.mp4",
  "handle": "@joingid",
@@ -744,6 +744,14 @@
      30.28
     ]
    ]
+  },
+  {
+   "type": "bw",
+   "t": 4.2,
+   "end": 8.35,
+   "fade_in": 0.2,
+   "fade_out": 0.3,
+   "contrast": 1.15
   }
  ],
  "sfx": [
@@ -971,6 +979,16 @@
    "kind": "pop",
    "t": 24.12,
    "gain_db": -16
+  },
+  {
+   "kind": "whoosh",
+   "t": 4.3,
+   "gain_db": -18
+  },
+  {
+   "kind": "whoosh",
+   "t": 8.3,
+   "gain_db": -18
   }
  ],
  "accent": [
